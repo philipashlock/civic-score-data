@@ -30,6 +30,16 @@
     <script>
     $(document).ready(function() {
 
+      $("#needsForm").hide();
+      $("#needsHelp1").click(function (event) { 
+          $("#needsProceed").prop("disabled", false)
+          event.preventDefault();
+      });
+      $("#needsHelp0").click(function (event) { 
+          $("#needsProceed").prop("disabled", true)
+          event.preventDefault();
+      });
+
     });
     </script>
   </head>
@@ -50,13 +60,12 @@
     <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
     <form id="newInfo" class="form-horizontal">
       <fieldset>
-      <label class="">
         <!--Step 1. School Info -->
       <div>
         <h3>Step 1. School Information</h3>
         <div class="control-group">
           <label class="control-label" for="inputSchoolName">School Name: </label>
-          <div class="controls"><input type="text" id="inputSchoolName" placeholder="School Name"></div>
+          <div class="controls"><input type="text" id="inputSchoolName" placeholder="School Name" disabled></div>
         </div>
           
         <div class="control-group">
@@ -86,12 +95,27 @@
           <div class="controls"><input type="text" id="inputOpenDate" placeholder="Open Date"></div>
         </div>
         
+        <div class="control-group">
+          <span class="control-label">Does your school need help at this time?</span>
+          <div class="controls">
+            <label class="radio"><input type="radio" name="optionsRadios" id="needsHelp1" value="yes">Yes</label>
+            <label class="radio"><input type="radio" name="optionsRadios" id="needsHelp0" value="no">No</label>
+          </div>
+        </div>
+        
+        <button class="btn">Submit and Return to School Page</button>
+        <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
+        
     </div>
+    </fieldset>
+    </form>
     
      <!-- Step2 School status and needs -->
-      <div>
+      <div id="needsForm">
         <h3>Step 2. School Status and Needs</h3>
-        
+        <form id="newNeeds" class="form-horizontal">
+          <fieldset>
+            
         <div class="control-group">
           <span class="control-label">Does your school have electricity?</span>
           <div class="controls">
