@@ -181,14 +181,35 @@ class Api extends REST_Controller {
 
 	}	
 	
-	function search_get() {	
+	
+	
+	function status_get() {	
 
-			$input = $this->input->get('input', TRUE);
+		
+		$nces_id = $this->input->get('district', TRUE);		
+		
+		
+		
+		if(!empty($nces_id)) {
 
+				$query = $this->db->get_where('status', array('entity_type' => 'district','entity_nces_id' => $nces_id));				
+			
+				$status = $this->status_model($query);
+		
+			
+				if(!empty($status)) {
+					return	$this->response($status, 200);
+				} else {
+					$response = array('error' => "No Status Data for $nces_id");
+					return $this->response($response, 400);
+				}
+		}
 
 
 	}	
-
+	
+	
+	
 	
 	
 	function get_district_by_location($lat, $long) {	
@@ -286,7 +307,55 @@ class Api extends REST_Controller {
 		
 		return $district;
 		
-	}	
+	}
+	
+	
+	
+	function status_model($query) {
+		if ($query->num_rows() > 0) {
+		   foreach ($query->result() as $rows)  {	
+			
+				//$status['status_id']				       = $rows->status_id 				        ;
+				$status['entity_type'] 			           = $rows->entity_type 			        ;
+				$status['entity_nces_id'] 			       = $rows->entity_nces_id 			        ;
+				$status['contact_point_name'] 		       = $rows->contact_point_name 		        ;
+				$status['contact_point_email'] 	           = $rows->contact_point_email 	        ;
+				$status['website'] 				           = $rows->website 				        ;
+				$status['status'] 	                       = $rows->status 	                        ;
+				$status['open_date_student'] 		       = $rows->open_date_student 		        ;
+				$status['open_date_teachers'] 		       = $rows->open_date_teachers 		        ;
+				$status['relocation_information'] 	       = $rows->relocation_information 	        ;
+				$status['q_fema_resources'] 		       = $rows->q_fema_resources 		        ;
+				$status['q_electricity_status'] 	       = $rows->q_electricity_status 	        ;
+                $status['q_student_transport'] 	           = $rows->q_student_transport 	        ;
+                $status['q_student_percentage'] 	       = $rows->q_student_percentage 	        ;
+                $status['q_teacher_transport'] 	           = $rows->q_teacher_transport 	        ;
+                $status['q_teacher_percentage'] 	       = $rows->q_teacher_percentage 	        ;
+                $status['q_student_resources'] 	           = $rows->q_student_resources 	        ;
+                $status['q_building_water'] 		       = $rows->q_building_water 		        ;
+                $status['q_building_mold'] 		           = $rows->q_building_mold 		        ;
+                $status['q_building_structural'] 	       = $rows->q_building_structural 	        ;
+                $status['q_building_structural_notes']     = $rows->q_building_structural_notes     ;
+                $status['q_building_cafeteria'] 		   = $rows->q_building_cafeteria 		    ;
+                $status['q_building_cafeteria_notes'] 	   = $rows->q_building_cafeteria_notes 	    ;
+                $status['q_building_contents'] 		       = $rows->q_building_contents 		    ;
+                $status['q_building_contents_notes'] 	   = $rows->q_building_contents_notes 	    ;
+                $status['q_building_ada'] 				   = $rows->q_building_ada 				    ;
+                $status['q_building_ada_notes'] 		   = $rows->q_building_ada_notes 		    ;
+                $status['q_building_access'] 			   = $rows->q_building_access 			    ;
+                $status['q_building_access_notes']         = $rows->q_building_access_notes         ;
+						 
+		   }
+		}		
+		
+		if (!empty($status)) {
+			return $status;
+		}
+		else {
+			return false;
+		}
+		
+	}		
 	
 	
 	
