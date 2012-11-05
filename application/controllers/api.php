@@ -147,7 +147,8 @@ class Api extends REST_Controller {
 		
 		
 		if(!empty($nces_id)) {
-
+				
+				$nces_id  = ltrim($nces_id, '0');
 
 
 				$query = $this->db->get_where('schools', array('agency_id_nces' => $nces_id));				
