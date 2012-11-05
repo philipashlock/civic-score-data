@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>DemocracyMap API</title>
+	<title>SandySchool API</title>
 
 <style type="text/css">
 
@@ -45,45 +45,58 @@ code {
 </head>
 <body>
 
-<h1>Welcome to the experimental DemocracyMap API</h1>
-
-<p>Currently this demo is limited to the United States</p>
+<h1>Welcome to the experimental SandySchools API</h1>
 
 
-<h1>GeoWeb DNS Endpoints</h1>
+<h1>SandySchools Methods &amp; Resources</h1>
 
-<pre>URL: http://api.democracymap.org/geowebdns/endpoints</pre>
+<h2>School Search by School Name</h2>
+<pre>URL: <?php echo $website_root ?>/schools/search</pre>
 
-<p>There are just a few parameters</p>
+<p>Parameters</p>
 
 <ul>
-	<li><strong>location</strong> <em>(options: location string or lat, long).</em> This is any string that can be geocoded</li>
-	<li><strong>format</strong> <em>(options: json, xml).</em> This specifies the format of the response.</li>
-	<li><strong>geojson</strong> <em>(options: true, false).</em> This specifies whether you want a geojson representation of the boundary returned</li>
+	<li><strong>input</strong> This is any string that can be searched</li>
 </ul>
 
 <h3>Example Call</h3>
 <p>
-	<a href="http://api.democracymap.org/geowebdns/endpoints?location=chicago&format=json&geojson=true">http://api.democracymap.org/geowebdns/endpoints?location=chicago&amp;format=json&amp;geojson=true</a>
-</p>	
-
-<h1>Source and More information</h1>
-<p>You can find a description of <a href="http://wiki.open311.org/GeoWeb_DNS">GeoWeb DNS on the Open311 wiki</a>. The source code for this is <a href="https://github.com/GSA-OCSIT/democracymap-restserver">available on github</a>. This is experimental, don't expect it to be accurate or to stick around</p>
-
-<h1>Credits</h1>
-<p>
-This is built on the same data as the main <a href="http://beta.democracymap.org">DemocracyMap demo</a>, so I'm repeating those credits here. City data from U.S. Census (including the <a href="http://www.census.gov/govs/cog/">2007 Census of Governments</a>) with updated URLs provided by the <a href="http://api.sba.gov/doc/geodata.html">SBA U.S. City &amp; County Web Data API</a>. 
-US Congressional data from the <a href="http://services.sunlightlabs.com/docs/Sunlight_Congress_API/">Sunlight Congress API</a>. 
-Congressional district boundaries from <a href="http://www.govtrack.us/congress/findyourreps.xpd">GovTrack.us</a>. 
-State legislative data from the <a href="http://openstates.org/api/">OpenStates API</a>. 
-NYC data <em>scraped</em> from <a href="http://nyc.gov">nyc.gov</a>. NYC boundary data from <a href="http://www.nyc.gov/data">NYC OpenData</a>. 
-City-level geospatial data served by <a href="http://geoserver.org">GeoServer</a>. 
-All geocoding courtesy of <a href="http://developer.yahoo.com/geo/placefinder/">Yahoo! PlaceFinder</a>. 
-Tweet stream uses the <a href="http://tweet.seaofclouds.com/">Tweet! jQuery plugin from seaofclouds</a>. 
+	<a href="<?php echo $website_root ?>/schools/search?input=atlantic%20ave"><?php echo $website_root ?>/schools/search?input=atlantic%20ave</a>
 </p>
 
-<p> 
-	Please check out the  <a href="http://lists.open311.org/groups/discuss/">Open311 mailing list</a> and the <a href="http://forums.e-democracy.org/groups/democracymap">DemocracyMap mailing list</a>.
+<h2>School Search by District ID</h2>
+<pre>URL: <?php echo $website_root ?>/schools/by_district</pre>
+
+<p>Parameters</p>
+
+<ul>
+	<li><strong>district_id</strong> This is the NCES ID for the School District</li>
+</ul>
+
+<h3>Example Call</h3>
+<p>
+	<a href="<?php echo $website_root ?>/schools/by_district?district_id=3406330"><?php echo $website_root ?>/schools/by_district?district_id=3406330</a>
+</p>
+
+<h2>District Search by Location or District ID</h2>
+<pre>URL: <?php echo $website_root ?>/schools/district</pre>
+
+<p>Parameters</p>
+
+<ul>
+	<li><strong>id</strong> This is the NCES ID for the School District</li>
+	<li><strong>location</strong> This is any string that can be geocoded</li>
+
+</ul>
+
+
+
+<h3>Example Calls</h3>
+<p>
+	<a href="<?php echo $website_root ?>/schools/district?id=3406330"><?php echo $website_root ?>/schools/district?id=3406330</a>
+</p>
+<p>
+	<a href="<?php echo $website_root ?>/schools/district?location=haddon%20heights"><?php echo $website_root ?>/schools/district?location=haddon%20heights</a>
 </p>
 
 

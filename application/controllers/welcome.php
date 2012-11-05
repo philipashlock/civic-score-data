@@ -18,6 +18,12 @@ class Welcome extends CI_Controller {
 			$data['ganalytics_id'] = $this->config->item('ganalytics_id');
 		}		
 		
+		
+		if($this->config->item('website_root')) {
+			$data['website_root'] = $this->config->item('website_root');
+		}		
+			
+		
 		$this->load->view('welcome_message', $data);
 	}
 }
