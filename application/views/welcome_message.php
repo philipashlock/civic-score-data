@@ -50,36 +50,27 @@ code {
 
 <h1>SandySchools Methods &amp; Resources</h1>
 
-<h2>School Search by School Name</h2>
-<pre>URL: <?php echo $website_root ?>/schools/search</pre>
+<h2>School Search by School Name or District ID</h2>
+<pre>URL: <?php echo $website_root ?>/api/schools</pre>
 
 <p>Parameters</p>
 
 <ul>
-	<li><strong>input</strong> This is any string that can be searched</li>
+	<li><strong>search</strong> This is any string that can be searched</li>
+	<li><strong>district</strong> This is the NCES ID for the School District</li>
 </ul>
 
-<h3>Example Call</h3>
+<h3>Example Calls</h3>
 <p>
-	<a href="<?php echo $website_root ?>/schools/search?input=atlantic%20ave"><?php echo $website_root ?>/schools/search?input=atlantic%20ave</a>
+	<a href="<?php echo $website_root ?>/api/schools?search=atlantic%20ave"><?php echo $website_root ?>/api/schools?search=atlantic%20ave</a>
+</p>
+<p>
+	<a href="<?php echo $website_root ?>/api/schools?district=3406330"><?php echo $website_root ?>/api/schools?district=3406330</a>
 </p>
 
-<h2>School Search by District ID</h2>
-<pre>URL: <?php echo $website_root ?>/schools/by_district</pre>
-
-<p>Parameters</p>
-
-<ul>
-	<li><strong>district_id</strong> This is the NCES ID for the School District</li>
-</ul>
-
-<h3>Example Call</h3>
-<p>
-	<a href="<?php echo $website_root ?>/schools/by_district?district_id=3406330"><?php echo $website_root ?>/schools/by_district?district_id=3406330</a>
-</p>
 
 <h2>District Search by Location or District ID</h2>
-<pre>URL: <?php echo $website_root ?>/schools/district</pre>
+<pre>URL: <?php echo $website_root ?>/api/district</pre>
 
 <p>Parameters</p>
 
@@ -93,10 +84,10 @@ code {
 
 <h3>Example Calls</h3>
 <p>
-	<a href="<?php echo $website_root ?>/schools/district?id=3406330"><?php echo $website_root ?>/schools/district?id=3406330</a>
+	<a href="<?php echo $website_root ?>/api/district?id=3406330"><?php echo $website_root ?>/api/district?id=3406330</a>
 </p>
 <p>
-	<a href="<?php echo $website_root ?>/schools/district?location=haddon%20heights"><?php echo $website_root ?>/schools/district?location=haddon%20heights</a>
+	<a href="<?php echo $website_root ?>/api/district?location=haddon%20heights"><?php echo $website_root ?>/api/district?location=haddon%20heights</a>
 </p>
 
 

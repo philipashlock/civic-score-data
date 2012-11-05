@@ -1,12 +1,27 @@
 <?php
 require APPPATH.'/libraries/REST_Controller.php';
 
-class Schools extends REST_Controller {
+class Api extends REST_Controller {
+
+
 
 
 	public function index_get()
 	{
-		$this->load->view('welcome_message');
+		$data = array();
+		
+		// See if we have google analytics tracking code
+		if($this->config->item('ganalytics_id')) {
+			$data['ganalytics_id'] = $this->config->item('ganalytics_id');
+		}		
+		
+		
+		if($this->config->item('website_root')) {
+			$data['website_root'] = $this->config->item('website_root');
+		}	
+		
+		
+		$this->load->view('welcome_message', $data);
 	}
 
 	
@@ -76,21 +91,46 @@ class Schools extends REST_Controller {
 
 	
 	
-	function by_district_get() {	
+	function schools_get() {	
 
-		$nces_id = $this->input->get('district_id', TRUE);
+		
+		$nces_id = $this->input->get('district', TRUE);		
+		$search = $this->input->get('search', TRUE);
+		
+		
+		
+		if(!empty($nces_id)) {
 
 
-			$query = $this->db->get_where('schools', array('agency_id_nces' => $nces_id));				
+
+				$query = $this->db->get_where('schools', array('agency_id_nces' => $nces_id));				
 			
-			$schools = $this->school_model($query);
+				$schools = $this->school_model($query);
 		
 			
+				if(!empty($schools)) {
+					return	$this->response($schools, 200);
+				} else {
+					return $this->response('error', 400);
+				}
+		}
+		
+		if(!empty($search)) {
+		
+
+			$this->db->like('full_name', $search);
+			$query = $this->db->get('schools');
+		
+			$schools = $this->school_model($query);
+	
+		
 			if(!empty($schools)) {
 				return	$this->response($schools, 200);
 			} else {
 				return $this->response('error', 400);
-			}
+			}		
+		
+		}
 
 	}	
 	
@@ -99,17 +139,6 @@ class Schools extends REST_Controller {
 			$input = $this->input->get('input', TRUE);
 
 
-			$this->db->like('full_name', $input);
-			$query = $this->db->get('schools');
-			
-			$schools = $this->school_model($query);
-		
-			
-			if(!empty($schools)) {
-				return	$this->response($schools, 200);
-			} else {
-				return $this->response('error', 400);
-			}
 
 	}	
 
@@ -191,7 +220,7 @@ class Schools extends REST_Controller {
 				$data['longitude'] =                 $rows->longitude;          
 				$data['state_school_id'] =           $rows->state_school_id;    
 				$data['state_agency_id'] =           $rows->state_agency_id;   
-				$data['api_district'] = 'http://' . $_SERVER['SERVER_NAME'] . '/schools/district?id=' . $data['agency_id_nces'];
+				$data['api_district'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/district?id=' . $data['agency_id_nces'];
 				 
 				
 				$schools[] = $data;	      	
@@ -227,7 +256,7 @@ class Schools extends REST_Controller {
 					$data['latitude']			=  $rows->latitude;
 					$data['longitude']		=  $rows->longitude;
 					$data['agency_type']		=  $rows->agency_type;
-					$data['api_district_schools'] = 'http://' . $_SERVER['SERVER_NAME'] . '/schools/by_district?district_id=' . $data['agency_id_nces'];
+					$data['api_district_schools'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/schools?district=' . $data['agency_id_nces'];
 						      	
 			   }
 			
