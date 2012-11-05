@@ -55,6 +55,7 @@ class Api extends REST_Controller {
 	{
 		
 			$data['location'] 						= $this->input->get('location', TRUE);
+			$data['county'] 						= $this->input->get('county', TRUE);						
 			$data['id'] 							= $this->input->get('id', TRUE);
 			
 			
@@ -73,44 +74,64 @@ class Api extends REST_Controller {
 
 				if(!empty($data['latitude']) && !empty($data['longitude'])) {
 
-					$district = $this->get_district_by_location($data['latitude'], $data['longitude']);
+					$districts = $this->get_district_by_location($data['latitude'], $data['longitude']);
 
 				}				
 				
 				
 			}
 			if(!empty($data['id'])) {
-				$district = $this->get_district_by_id($data['id']);
+				$districts = $this->get_district_by_id($data['id']);
 			}
 			
 			
-			if(!empty($district)) {
+			if(!empty($data['county'])) {
 				
-				$district = $this->district_extend($district);
+				$search = $data['county'];
 				
-				//if nj
-				if (trim(strtolower($district['location_state'])) == 'nj') {
+				$this->db->like('county_name', $search);
+				$query = $this->db->get('districts');
 
-					$state_agency_id = $district['state_agency_id'];
-					$state_county_code = substr($state_agency_id, 0, 2);
-					$state_district_code = substr($state_agency_id, 2, 4);	
+				$districts = $this->district_model($query);				
 				
-					$state_county_code = ltrim($state_county_code, '0');
-					$state_district_code = ltrim($state_district_code, '0');
+				
+			}			
+	
+			
+			if(!empty($districts)) {
+				
+				foreach($districts as $key => $district) {
+				
+					$updated_district[$key] = $this->district_extend($district);
+				
+					//if nj
+					if (trim(strtolower($updated_district[$key]['location_state'])) == 'nj') {
+
+						$state_agency_id = $updated_district[$key]['state_agency_id'];
+						$state_county_code = substr($state_agency_id, 0, 2);
+						$state_district_code = substr($state_agency_id, 2, 4);	
+				
+						$state_county_code = ltrim($state_county_code, '0');
+						$state_district_code = ltrim($state_district_code, '0');
 				
 										
 				
-					$query = $this->db->get_where('nj_districts', array('county_code' => $state_county_code, 'district_code' => $state_district_code));				
+						$query = $this->db->get_where('nj_districts', array('county_code' => $state_county_code, 'district_code' => $state_district_code));				
 		
-					$district = $this->nj_district_model($district, $query);				
+						$updated_district[$key] = $this->nj_district_model($updated_district[$key], $query);	
+								
+					}
+				
 				}
+				
+				$districts = $updated_district;
 				
 				
 			}			
 			
 					
 
-			$this->response($district, 200);
+			$this->response($districts, 200);
 	}
 	
 	
@@ -198,6 +219,8 @@ class Api extends REST_Controller {
 			}
 
 	}	
+	
+	
 	
 	
 	function get_district_by_id($nces_id) {	
@@ -316,6 +339,8 @@ class Api extends REST_Controller {
 		
 			if ($query->num_rows() > 0) {
 			   foreach ($query->result() as $rows)  {	
+					$data = null;
+				
 					$data['agency_name_full']			=  $rows->agency_name_full;
 					$data['agency_name']				=  $rows->agency_name;
 					$data['agency_id_nces']			=  $rows->agency_id_nces;
@@ -335,10 +360,11 @@ class Api extends REST_Controller {
 					$data['longitude']		=  $rows->longitude;
 					$data['agency_type']		=  $rows->agency_type;
 					$data['api_district_schools'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/schools?district=' . $data['agency_id_nces'];
-						      	
+					
+	      			$district[] = $data;
 			   }
 			
-			return $data;
+			return $district;
 			
 			}
 			

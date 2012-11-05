@@ -69,7 +69,7 @@ code {
 </p>
 
 
-<h2>District Search by Location or District ID</h2>
+<h2>District Search by Location, County, District ID</h2>
 <pre>URL: <?php echo $website_root ?>/api/district</pre>
 
 <p>Parameters</p>
@@ -77,6 +77,7 @@ code {
 <ul>
 	<li><strong>id</strong> This is the NCES ID for the School District</li>
 	<li><strong>location</strong> This is any string that can be geocoded</li>
+	<li><strong>county</strong> This is any string that can be searched on the county field</li>
 
 </ul>
 
@@ -89,6 +90,12 @@ code {
 <p>
 	<a href="<?php echo $website_root ?>/api/district?location=haddon%20heights"><?php echo $website_root ?>/api/district?location=haddon%20heights</a>
 </p>
+
+<p>
+	<a href="<?php echo $website_root ?>/api/district?county=Middlesex"><?php echo $website_root ?>/api/district?county=Middlesex</a>
+</p>
+
+
 
 
 <?php
