@@ -82,6 +82,32 @@ class Api extends REST_Controller {
 			if(!empty($data['id'])) {
 				$district = $this->get_district_by_id($data['id']);
 			}
+			
+			
+			if(!empty($district)) {
+				
+				$district = $this->district_extend($district);
+				
+				//if nj
+				if (trim(strtolower($district['location_state'])) == 'nj') {
+
+					$state_agency_id = $district['state_agency_id'];
+					$state_county_code = substr($state_agency_id, 0, 2);
+					$state_district_code = substr($state_agency_id, 2, 4);	
+				
+					$state_county_code = ltrim($state_county_code, '0');
+					$state_district_code = ltrim($state_district_code, '0');
+				
+										
+				
+					$query = $this->db->get_where('nj_districts', array('county_code' => $state_county_code, 'district_code' => $state_district_code));				
+		
+					$district = $this->nj_district_model($district, $query);				
+				}
+				
+				
+			}			
+			
 					
 
 			$this->response($district, 200);
@@ -193,6 +219,58 @@ class Api extends REST_Controller {
 
 	}	
 	
+	function district_extend($district) {
+		
+		$district['state_county_code']			= null;
+		$district['state_county_name']			= null;
+		$district['state_district_code']		= null;
+		$district['state_district_name']		= null;
+		$district['state_charter_school_code']	= null;
+		$district['supt_title']					= null;
+		$district['supt_first_name']			= null;
+		$district['supt_last_name']				= null;
+		$district['supt_title_2']				= null;
+		$district['supt_email']	   			 	= null;
+		$district['state_phone']		   			 	= null;
+		$district['website']	   			 	= null;
+		
+		return $district;
+		
+	}
+	
+	
+	
+	
+	function nj_district_model($district, $query) {
+		if ($query->num_rows() > 0) {
+		   foreach ($query->result() as $rows)  {	
+			
+				$district['state_county_code']				= $rows->county_code		 ;
+				$district['state_county_name']				= $rows->county_name		 ;
+				$district['state_district_code']				= $rows->district_code	     ;
+				$district['state_district_name']				= $rows->district_name	     ;
+				$district['state_charter_school_code']		= $rows->charter_school_code ;
+				$district['supt_title']					= $rows->supt_title				 ;
+				$district['supt_first_name']			= $rows->supt_first_name		     ;
+				$district['supt_last_name']				= $rows->supt_last_name			 ;
+				$district['supt_title_2']				= $rows->supt_title_2			     ;
+				$district['supt_email']	   			 	= $rows->supt_email	   			 ;
+				$district['state_phone']		   			 	= $rows->phone		   			 ;
+				$district['website']	   			 	= $rows->website	   			     ;
+						 				   	
+		   }
+		}		
+		
+		return $district;
+		
+	}	
+	
+	
+	
+	
+	
+	
+	
 	
 	function school_model($query) {
 		if ($query->num_rows() > 0) {
@@ -269,8 +347,6 @@ class Api extends REST_Controller {
 			}	
 		
 	}
-	
-	
 	
 
 
