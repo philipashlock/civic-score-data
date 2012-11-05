@@ -45,18 +45,25 @@
       <a href="index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
       <div class="span3">
         <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
-        <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
       </div>
       </div>
     </header>
     
     <!--search form -->
     <div id="search" class="span9">
-    <p>Enter the name of your school to find information on its status. </p>
-    <form class="form-search span9">
+    <span class="help-block">Search to find your school:</span>
+    <form class="form-horizontal">
       <fieldset>
-      <input type="text" id="focusedInput" class="input-medium search-query">
-      <button type="submit" class="btn" id="submit"><i class="icon-search"></i> Search</button>
+        <div class="control-group">
+          <label class="control-label" for="inputSchoolName">School Name/DistrictID: </label>
+          <div class="controls"><input type="text" id="inputSchoolName" placeholder="School Name"></div>
+        </div>
+          
+        <div class="control-group">
+          <label class="control-label" for="inputContactName">Location: </label>
+          <div class="controls"><input type="text" id="inputContactName" placeholder="Point of Contact"></div>
+        </div>
+          <button type="submit" class="btn" id="submit"><i class="icon-search"></i> Search</button>
       </fieldset>
     </form>
     

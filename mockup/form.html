@@ -41,7 +41,6 @@
         <a href="index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
         <div class="span3">
           <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
-          <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
         </div>
         </div>
       </header>
@@ -59,87 +58,39 @@
           <label class="control-label" for="inputSchoolName">School Name: </label>
           <div class="controls"><input type="text" id="inputSchoolName" placeholder="School Name"></div>
         </div>
-        
+          
         <div class="control-group">
-          <span class="control-label">School Level:</span>
-           <div class="controls"> 
-             <select>
-              <option>-- Select School Levels --</option>
-              <option>Elementary (K-5)</option>
-              <option>Middle (6-8)</option>
-              <option>High (9-12)</option>
-              <option>K-12</option>
-              <option>Higher Ed</option>
+          <label class="control-label" for="inputContactName">Point of Contact: </label>
+          <div class="controls"><input type="text" id="inputContactName" placeholder="Point of Contact"></div>
+        </div>
+          
+        <div class="control-group">
+          <label class="control-label" for="inputContactPhone">Phone Number: </label>
+          <div class="controls"><input type="text" id="inputContactPhone" placeholder="Contact Phone"></div>
+        </div>
+          
+        <div class="control-group">
+          <span class="control-label">Current School Status:</span>
+          <div class="controls">
+            <select>
+              <option>-- Select School Status --</option>
+              <option>Open</option>
+              <option>Relocated</option>
+              <option>Closed</option>
             </select>
           </div>
-          
-          <div class="control-group">  
-            <span class="control-label">Type of School:</span>
-            <div class="controls">
-              <label class="radio"><input type="radio" name="optionsRadios" id="optionsRadios1" value="public" checked>Public</label>
-              <label class="radio"><input type="radio" name="optionsRadios" id="optionsRadios2" value="private">Private</label>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="inputCounty">County: </label>
-            <div class="controls"><input type="text" id="inputCounty" placeholder="County"></div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="inputCity">City: </label>
-            <div class="controls"><input type="text" id="inputCity" placeholder="City"></div>
-          </div>
-          
-          <div class="control-group">
-            <span class="control-label">State:</span>
-            <div class="controls">
-              <select>
-                <option>-- Select State --</option>
-                <option>New York</option>
-                <option>New Jersey</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="inputContactName">Point of Contact: </label>
-            <div class="controls"><input type="text" id="inputContactName" placeholder="Point of Contact"></div>
-          </div>
-          
-          <div class="control-group">
-            <label class="control-label" for="inputContactPhone">Phone Number: </label>
-            <div class="controls"><input type="text" id="inputContactPhone" placeholder="Contact Phone"></div>
-          </div>
-          
-          <div class="control-group">
-            <span class="control-label">Current School Status:</span>
-            <div class="controls">
-              <select>
-                <option>-- Select School Status --</option>
-                <option>Open</option>
-                <option>Relocated</option>
-                <option>Closed</option>
-              </select>
-            </div>
-          </div>
+        </div>
           
         <div class="control-group">
           <label class="control-label" for="inputOpenDate">When does/did your school open/relocate? </label>
           <div class="controls"><input type="text" id="inputOpenDate" placeholder="Open Date"></div>
         </div>
-          
-        </div>
         
-      </div>
+    </div>
+    
      <!-- Step2 School status and needs -->
       <div>
         <h3>Step 2. School Status and Needs</h3>
-        
-        <div class="control-group">
-          <label class="control-label" for="inputOpenDate">If your school is closed, what specific resources do you need to open? </label>
-          <div class="controls"><input type="text" id="inputNeeds" placeholder="Needs"></div>
-        </div>
         
         <div class="control-group">
           <span class="control-label">Does your school have electricity?</span>
