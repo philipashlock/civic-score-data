@@ -1,0 +1,19 @@
+#logo {
+  float: left;
+}
+
+#header_btns {
+  float: right;
+}
+
+.open {
+  background-color: #9FF781;
+}
+
+.closed {
+  background-color: #F78181;
+}
+
+.relocated {
+  background-color: #F3F781;
+}

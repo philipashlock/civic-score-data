@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <title> School Status Finder </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+     <script src="js/bootstrap.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#results").hide();
+        $("#submit").click(function (event) { 
+            $("#results").show(); 
+            event.preventDefault();
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+    <!--header -->
+    <header class="page-header span9 row">
+      <div class="row">
+      <div id="logo" class="span6"><h1>School Status Finder</h1></div>
+      <div class="span3">
+        <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
+        <a href="" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
+      </div>
+      </div>
+    </header>
+    
+    <!--search form -->
+    <div id="search" class="span9">
+    <p>Enter the name of your school to find information on its status. </p>
+    <form class="form-search span9">
+      <fieldset>
+      <input type="text" id="focusedInput" class="input-medium search-query">
+      <button type="submit" class="btn" id="submit"><i class="icon-search"></i> Search</button>
+      </fieldset>
+    </form>
+    
+    <!--results -->
+    <div>
+    <div id="results" class="span9">
+      <h2>Results</h2>
+      <table class="table">
+        <th>School Info</th><th>Status</th>
+        <tbody\>
+          <tr>
+            <td>School 1 </td>
+            <td class="closed"><i></i> Closed </td>
+          </tr>
+          <tr>
+            <td>School 2 </td>
+            <td class="relocated"><i></i> Relocated </td>
+          </tr>
+          <tr>
+            <td>School 3 </td>
+            <td class="open"><i></i> Open </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!--about modal -->
+    <div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="aboutModalLabel">About School Status Finder</h3>
+      </div>
+      <div class="modal-body">
+        <p>This tool was made by #HurricaneHackers, distributed team of international voluteers working with the New York Tech Meetup and FEMA. For more information, <a href="">click here</a>.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
