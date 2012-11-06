@@ -153,11 +153,10 @@ class Api extends REST_Controller {
 			$entity_type = 'id_nces';
 			$nces_id = $this->input->get('id', TRUE);		
 		}
-		
-		$id_search = array($entity_type => $nces_id);
-		
-		
+				
 		if(!empty($nces_id)) {
+			
+				$id_search = array($entity_type => $nces_id);
 				
 				$nces_id  = ltrim($nces_id, '0');
 
