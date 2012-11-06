@@ -1,107 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>School</title>
+  <meta charset="utf-8">
+  <title> School Status Finder </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<style type="text/css">
+  <!-- Le styles -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 
-body {
- background-color: #fff;
- margin: 40px;
- font-family: Lucida Grande, Verdana, Sans-serif;
- font-size: 14px;
- color: #4F5155;
-}
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-a {
- color: #003399;
- background-color: transparent;
- font-weight: normal;
-}
+  <!-- Le fav and touch icons -->
+  <link rel="shortcut icon" href="assets/ico/favicon.ico">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+   <script src="js/bootstrap.js"></script>
+  <script>
+  $(document).ready(function() {
 
-h1 {
- color: #444;
- background-color: transparent;
- border-bottom: 1px solid #D0D0D0;
- font-size: 16px;
- font-weight: bold;
- margin: 24px 0 2px 0;
- padding: 5px 0 6px 0;
-}
-
-code {
- font-family: Monaco, Verdana, Sans-serif;
- font-size: 12px;
- background-color: #f9f9f9;
- border: 1px solid #D0D0D0;
- color: #002166;
- display: block;
- margin: 14px 0 14px 0;
- padding: 12px 10px 12px 10px;
-}
-
-</style>
-
-		  <link rel="stylesheet" type="text/css" href="/css/style.css" />
-
+  });
+  </script>
 </head>
 <body>
-
-<h1>School</h1>
-
-<?php
-
-if (!empty($school)) {
-	
-?>
-
-<div class="school">
-
-<?php echo $school['full_name']; ?>
-
-<br />
-
-<?php echo $school['county_name']; ?>
-
-</div>
-
-<?php
-}
-?>
-
-
-
-
-
-
-
-
-
-
-
-<?php
-if (isset($ganalytics_id)):
-?>
-
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', '<?php echo $ganalytics_id;?>']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-
-
+  <div class="container">
+  <!--header -->
+  <header class="page-header span9 row">
+    <div class="row">
+    <a href="index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
+    <div class="span3">
+      <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
+    </div>
+    </div>
+  </header>
+  <?php
+    if (!empty($school)) {
+	?>
+  <div id="schoolinfo" class="span9">
+     <div class="row">
+       <div id="schoolName" class="span6"><h3><?php echo $school['full_name']; ?></h3></div>
+       <div class="span3">
+         <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
+       </div>
+     </div>
+     <div id="status">
+       <h3>Status</h3>
+     </div>
+     <div id="details">
+       <h3>Details</h3>
+       <table class="table">
+         <th>Accessibility</th>
+         <th>Needs and Damages</th>
+       </table>
+     </div>
+  </div>
+    </div>
+  <?php
+  }
+  ?>
 	<?php
 	endif;		
 	?>
 
+  
+  <!--about modal -->
+  <div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="aboutModalLabel">About School Status Finder</h3>
+    </div>
+    <div class="modal-body">
+      <p>This tool was made by #HurricaneHackers, distributed team of international volunteers working with the <a href="http://nytm.org">New York Tech Meetup (NYTM)</a> and FEMA. For more information, <a href="">click here</a>.<br/><br/>Made lovingly with Twitter Bootstrap and jQuery.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>
 </body>
 </html>
