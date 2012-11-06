@@ -136,7 +136,7 @@
         
           <div class="control-group">
             <label class="control-label" for="inputContactPhone">Phone Number: </label>
-            <div class="controls"><input type="text" id="inputContactPhone" placeholder="Contact Phone"></div>
+            <div class="controls"><input type="text" id="inputContactPhone" value="<?php echo $entity['phone']; ?>"></div>
           </div>
         
           <div class="control-group">
@@ -164,7 +164,7 @@
             </div>
           </div>
       
-          <button class="btn btn-success">Submit and Return to School Page</button>
+          <button id="submitInfo" class="btn btn-success">Submit and Return to School Page</button>
           <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
       
       </fieldset>
@@ -322,45 +322,6 @@
     </div>
   
   </div>
-  <?php
-    if (!empty($status)) {
-	?>
-  <div id="schoolinfo" class="span9">
-     <div class="row">
-       <div id="schoolName" class="span6">
-	
-	       <h3><?php echo $entity['full_name']; ?></h3>
-
-
-       </div>
-       <div class="span3">
-         <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
-       </div>
-     </div>
-
-	<?php if (!empty($status['status'])): ?>
-     <div id="status">
-       <h3>Status</h3>
-       <p><?php echo $status['status']; ?></p>
-     </div>
-	<?php else : ?>
-     <div id="status">
-       <h3>No Status Info</h3>
-     </div>
-	<?php endif ?>
-
-     <div id="details">
-       <h3>Details</h3>
-       <table class="table">
-         <th>Accessibility</th>
-         <th>Needs and Damages</th>
-       </table>
-     </div>
-  </div>
-    </div>
-  <?php
-  }
-  ?>
 
   <!--about modal -->
   <div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
@@ -369,11 +330,19 @@
       <h3 id="aboutModalLabel">About School Status Finder</h3>
     </div>
     <div class="modal-body">
-      <p>This tool was made by #HurricaneHackers, distributed team of international volunteers working with the <a href="http://nytm.org">New York Tech Meetup (NYTM)</a> and FEMA. For more information, <a href="">click here</a>.<br/><br/>Made lovingly with Twitter Bootstrap and jQuery.</p>
+      <p>This tool was developed by:</p>
+      <ul>
+        <li>Philip Ashlock: server-side and database</li>
+        <li><a href="http://about.me/ashley_williams">Ashley Williams: client-side/frontend</a></li>
+        <li>Ryan Panchadsaram: project management, FEMA/DOE coordinator</li>
+        <li>Noel Hidalgo: NYTM and #hurricanehackers liason</li>
+      </ul>
+      <p>This tool was one project, among many, inspired by the work of <a href="http://hurricanehackers.com">#HurricaneHackers</a>, a distributed team of international volunteers working alongside the <a href="http://nytm.org">New York Tech Meetup (NYTM)</a>. For more information, <a href="http://hurricanehackers.com">click here</a>.<br/><br/>Made lovingly with <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> and <a href="http://jquery.com">jQuery</a>.</p>
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
+  </div>
   </div>
 </body>
 </html>
