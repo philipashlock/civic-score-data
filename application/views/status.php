@@ -98,7 +98,7 @@
   <!--header -->
   <header class="page-header span9 row">
     <div class="row">
-    <a href="index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
+    <a href="../mockup/index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
     <div class="span3">
       <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
     </div>
