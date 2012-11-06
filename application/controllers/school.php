@@ -37,16 +37,47 @@ class School extends CI_Controller {
 	}
 	
 	
+	function school_id($id) {
+
+		// $id = $this->input->get('id', TRUE);
+
+		$entity = $this->get_entity_by_id('schools', $id);		
+		$status = $this->get_status_by_id('school', $id);
+
+		$data['entity'] = $entity;
+		$data['status'] = $status;
+
+		$this->load->view('status', $data);
+	
+	}
+	
+	
+	
+	function district($id) {
+
+		$entity = $this->get_entity_by_id('district', $id);		
+		$status = $this->get_status_by_id('school', $id);
+
+		$data['entity'] = $entity;
+		$data['status'] = $status;
+
+		$this->load->view('status', $data);
+			
+
+	}		
+	
+	
 	
 	function get_entity_by_id($entity, $id) {
 
-		$url = $this->config->item('website_root') . '/api/' . $entity . '?id=' . $id;
+		$url = $this->config->item('website_root') . '/api/' . $entity . '?id=' . $id;	
 		
 		$entity = $this->curl_to_json($url);
 
-		return $entity;				
+		return $entity[0];				
 
 	}	
+	
 	
 	function get_status_by_id($entity, $id) {
 		
@@ -56,8 +87,7 @@ class School extends CI_Controller {
 
 		return $status;				
 
-	}	
-	
+	}
 	
 	function curl_to_json($url) {
 
