@@ -109,11 +109,11 @@
   </div>
   
   <div class="span9">
-  <ul class="nav nav-tabs span9" id="myTab">
-    <li class="active"><a href="#infoForm">School Info</a></li>
-    <li><a href="#accessForm">Accessibility</a></li>
-    <li><a href="#needsForm">Needs and Damage</a></li>
-  </ul>
+    <ul class="nav nav-tabs span9" id="myTab">
+      <li class="active"><a href="#infoForm">School Info</a></li>
+      <li><a href="#accessForm">Accessibility</a></li>
+      <li><a href="#needsForm">Needs and Damage</a></li>
+    </ul>
   </div>
   
   <div class="tab-content span9">
@@ -126,7 +126,7 @@
       
           <div class="control-group">
             <label class="control-label" for="inputSchoolName">School Name: </label>
-            <div class="controls"><input type="text" id="inputSchoolName" placeholder="School Name" disabled></div>
+            <div class="controls"><input type="text" id="inputSchoolName" value="<?php echo $entity['full_name']; ?>" disabled></div>
           </div>
         
           <div class="control-group">

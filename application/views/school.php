@@ -58,7 +58,7 @@
          </address>
        </div>
        <div class="span3">
-         <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
+         <a href="../status/school/<?php echo $entity['id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
        </div>
      </div>
 	<?php if (!empty($status['status'])): ?>
