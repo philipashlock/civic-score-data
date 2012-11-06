@@ -29,11 +29,69 @@
      <script src="js/bootstrap.js"></script>
     <script>
     $(document).ready(function() {
+      $("#supplyDetails").hide();
+      $("#electricityDetails").hide();
+      $("#waterDetails").hide();
+      $("#moldDetails").hide();
+      $("#structureDetails").hide();
+      $("#cafeteriaDetails").hide();
+      $("#otherDetails").hide();
+      $("#ADAcompDetails").hide();
+      $("#etcDetails").hide();
+      
       
       $('#myTab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
       })
+
+      $('.pChk').click(function() {
+          if( $("#needElectricity").is(':checked')) {
+              $("#electricityDetails").show();
+          } else {
+              $("#electricityDetails").hide();
+          }
+          if( $("#needSupplies").is(':checked')) {
+              $("#supplyDetails").show();
+          } else {
+              $("#supplyDetails").hide();
+          }
+          if( $("#needWaterDamage").is(':checked')) {
+              $("#waterDetails").show();
+          } else {
+              $("#waterDetails").hide();
+          }
+          if( $("#needMold").is(':checked')) {
+              $("#moldDetails").show();
+          } else {
+              $("#moldDetails").hide();
+          }
+          if( $("#needStructure").is(':checked')) {
+              $("#structureDetails").show();
+          } else {
+              $("#structureDetails").hide();
+          }
+          if( $("#needCafeteria").is(':checked')) {
+              $("#cafeteriaDetails").show();
+          } else {
+              $("#cafeteriaDetails").hide();
+          }
+          if( $("#needOther").is(':checked')) {
+              $("#otherDetails").show();
+          } else {
+              $("#otherDetails").hide();
+          }
+          if( $("#needADAcomp").is(':checked')) {
+              $("#ADAcompDetails").show();
+          } else {
+              $("#ADAcompDetails").hide();
+          }
+          if( $("#needEtc").is(':checked')) {
+              $("#etcDetails").show();
+          } else {
+              $("#etcDetails").hide();
+          }
+      });
 
     });
     </script>
@@ -152,13 +210,14 @@
         
       <!-- Step3 School Needs -->
       <div id="needsForm" class="tab-pane">
-        <h3>Step 3. School Needs</h3>
+        <h3>Step 3. School Needs and Damage</h3>
+        <p class="help-block">Please check the statements that indicate what needs and damage your school incurred as a result of Hurricane Sandy. The boxes you check will ask you to provide specific details of the needs or damage. Additionally, if the need or damage is critical to the opening of your school, please indicate that by checking the "Necessary for Opening" box, which will flag that need or damage as a priority.</p>
         <form id="newNeed" class="form-horizontal">
         <fieldset>  
-          <div id="electricity">
-            <label class="checkbox"><input type="checkbox" id="needElectricity" value="">The school has no electricity</label>
-            <div class="control-group">
-              <label class="control-label" for="inputElectricityDetails">If yes, please explain </label>
+          <div>
+            <label class="checkbox"><input type="checkbox" id="needElectricity" class="pChk" value="">The school has no electricity</label>
+            <div class="control-group" id="electricityDetails">
+              <label class="control-label" for="inputElectricityDetails">Please explain </label>
               <div class="controls">
                 <input type="text" id="inputElectricityDetails">
                 <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -167,11 +226,11 @@
           </div>
             
         <div>
-            <label class="checkbox"><input type="checkbox" id="needSupplies" value="">The school's supplies and technology were damaged</label>
+            <label class="checkbox"><input type="checkbox" id="needSupplies" class="pChk" value="">The school's supplies and technology were damaged</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputSupplyDetails">If yes, please explain </label>
+        <div class="control-group" id="supplyDetails">
+          <label class="control-label" for="inputSupplyDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputSupplyDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -179,11 +238,11 @@
         </div>
         
         <div>
-            <label class="checkbox"><input type="checkbox" id="needWaterDamage" value="">The school has water damage</label>
+            <label class="checkbox"><input type="checkbox" id="needWaterDamage" class="pChk" value="">The school has water damage</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputWaterDetails">If yes, please explain </label>
+        <div class="control-group" id="waterDetails">
+          <label class="control-label" for="inputWaterDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputWaterDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -191,11 +250,11 @@
         </div>
         
         <div>
-            <label class="checkbox"><input type="checkbox" id="needMold" value="">There is mold in the school</label>
+            <label class="checkbox"><input type="checkbox" id="needMold" class="pChk" value="">There is mold in the school</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputMoldDetails">If yes, please explain </label>
+        <div class="control-group" id="moldDetails">
+          <label class="control-label" for="inputMoldDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputMoldDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -203,11 +262,11 @@
         </div>
             
         <div>
-            <label class="checkbox"><input type="checkbox" id="needStructure" value="">The school's building has structural damage?</label>
+            <label class="checkbox"><input type="checkbox" id="needStructure" class="pChk" value="">The school's building has structural damage</label>
         </div>
             
-        <div class="control-group">
-          <label class="control-label" for="inputStructureDetails">If yes, please explain </label>
+        <div class="control-group" id="structureDetails">
+          <label class="control-label" for="inputStructureDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputStructureDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -215,11 +274,11 @@
         </div>
            
         <div>
-            <label class="checkbox"><input type="checkbox" id="needCafeteria" value="">The school's cafeteria was damaged</label>
+            <label class="checkbox"><input type="checkbox" id="needCafeteria" class="pChk" value="">The school's cafeteria was damaged</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputCafeteriaDetails">If yes, please explain </label>
+        <div class="control-group" id="cafeteriaDetails">
+          <label class="control-label" for="inputCafeteriaDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputCafeteriaDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -227,11 +286,11 @@
         </div>
            
         <div>
-            <label class="checkbox"><input type="checkbox" id="needOther" value="">Other contents of the school's building were damaged</label>
+            <label class="checkbox"><input type="checkbox" id="needOther" class="pChk" value="">Other contents of the school's building were damaged</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputOtherDetails">If yes, please explain </label>
+        <div class="control-group" id="otherDetails">
+          <label class="control-label" for="inputOtherDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputOtherDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -239,11 +298,11 @@
         </div>
            
         <div>
-            <label class="checkbox"><input type="checkbox" id="needADAcomp" value="">The ADA compliance of the school's building was affected</label>
+            <label class="checkbox"><input type="checkbox" id="needADAcomp" class="pChk" value="">The ADA compliance of the school's building was affected</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputADAcompDetails">If yes, please explain </label>
+        <div class="control-group" id="ADAcompDetails">
+          <label class="control-label" for="inputADAcompDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputADAcompDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
@@ -251,11 +310,11 @@
         </div>
            
         <div>
-            <label class="checkbox"><input type="checkbox" id="needEtc" value="">There are other issues preventing students, faculty, and staff from physically entering the building</label>
+            <label class="checkbox"><input type="checkbox" id="needEtc" class="pChk" value="">There are other issues preventing students, faculty, and staff from physically entering the building</label>
         </div>
         
-        <div class="control-group">
-          <label class="control-label" for="inputEtcDetails">If yes, please explain </label>
+        <div class="control-group" id="etcDetails">
+          <label class="control-label" for="inputEtcDetails">Please explain </label>
           <div class="controls">
             <input type="text" id="inputEtcDetails">
             <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
