@@ -141,16 +141,27 @@ class Api extends REST_Controller {
 	function schools_get() {	
 
 		
-		$nces_id = $this->input->get('district', TRUE);		
 		$search = $this->input->get('search', TRUE);
 		
+		
+		if($this->input->get('district', TRUE)) {
+			$entity_type = 'agency_id_nces';
+			$nces_id = $this->input->get('district', TRUE);							
+		}
+		
+		if($this->input->get('id', TRUE)) {
+			$entity_type = 'id_nces';
+			$nces_id = $this->input->get('id', TRUE);		
+		}
+		
+		$id_search = array($entity_type => $nces_id);
 		
 		
 		if(!empty($nces_id)) {
 				
 				$nces_id  = ltrim($nces_id, '0');
 
-				$query = $this->db->get_where('schools', array('agency_id_nces' => $nces_id));				
+				$query = $this->db->get_where('schools', $id_search);				
 			
 				$schools = $this->school_model($query);
 		
