@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>DemocracyMap API</title>
+	<title>School</title>
 
 <style type="text/css">
 
@@ -48,114 +48,22 @@ code {
 </head>
 <body>
 
-<h1>Your Government</h1>
-
-
-<div class="row" id="searchbox">
-	<form action="/demo/" method="get">
-		<label for="addressid">Address or Location</label>
-
-		<input type="text" name="location" id="addressid" />
-		<input type="submit" value="Go!" id="address-submit" />
-	</form>
-</div>
+<h1>School</h1>
 
 <?php
 
-if (!empty($jurisdictions['jurisdictions'])) {
+if (!empty($school)) {
 	
 ?>
 
-<div class="jurisdictions">
-	<ul class="jurisdiction-list">
-	
+<div class="school">
 
-<?php
-foreach ($jurisdictions['jurisdictions'] as $jurisdiction) {
-?>	
+<?php echo $school['full_name']; ?>
 
+<br />
 
-<li class="jurisdiction"> 
-	
-	
-	<?php 
-	if (!empty($jurisdiction['url'])) { 
-	?>
-	<h2>
-		<a href="<?php echo $jurisdiction['url']?>"> <!-- data->jurisdictions->elected_office->url OR data->jurisdictions->elected_office->url_contact -->
-			<?php echo $jurisdiction['name']?> <!-- data->jurisdictions->elected_office->title -->
-		</a>
-	</h2>
-		<a href="<?php echo $jurisdiction['url']?>"> <!-- data->jurisdictions->elected_office->url OR data->jurisdictions->elected_office->url_contact -->
-			<?php echo $jurisdiction['url']?> <!-- data->jurisdictions->elected_office->title -->
-		</a>	
-	<?php
-	} else {
-	?>	
-		
-	<h2>		
-	<?php echo $jurisdiction['name']?> 		
-	</h2>		
-		
-	<?php
-	}
-	?>	
-	
-	
-	<!-- Again, limit to data->jurisdictions->elected_office->type = executive -->
+<?php echo $school['county_name']; ?>
 
-<?php
-if (!empty($jurisdiction['elected_office'])) {	
-?>
-
-<ul class="elected-list">
-
-	
-<?php 
-foreach ($jurisdiction['elected_office'] as $elected) {
-?>	
-	
-		<li>
-			<div class="text-box">													
-				<h3>
-					
-					<?php 
-					if (!empty($elected['url'])) { 
-					?>
-					<a href="<?php echo $elected['url']?>"> <!-- data->jurisdictions->elected_office->url OR data->jurisdictions->elected_office->url_contact -->
-						<?php echo $elected['title']?> <!-- data->jurisdictions->elected_office->title -->
-					</a>
-					<?php
-					} else {
-					 echo $elected['title'];
-					}
-					?>
-				</h3>													
-				<h4>
-						<?php echo $elected['name_full']?> <!-- data->jurisdictions->elected_office->name_full -->
-				</h4> 
-			</div>										
-			<img class="elected-photo" src="<?php echo $elected['url_photo']?>" /> <!-- data->jurisdictions->elected_office->url_photo -->
-		</li>
-	
-<?php
-}	
-?>	
-
-</ul>
-
-<?php
-}	
-?>										
-	
-</li>
-
-	
-	
-<?php	
-}
-?>
-	</ul>
 </div>
 
 <?php

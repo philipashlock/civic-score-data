@@ -229,12 +229,11 @@ class Api extends REST_Controller {
 
 	}	
 	
-	public function status_post()
-	{
+	public function status_post() {
 	    // ...create new book
 	
-		$this->input->get('entity', TRUE)
-		$this->input->get('nces_id', TRUE)
+		$this->input->get('entity', TRUE);
+		$this->input->get('nces_id', TRUE);
 	
 		$data = array(
 		   'title' => 'My title' ,
