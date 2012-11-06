@@ -42,7 +42,7 @@
             $.each(data, function(){
               $("#results").show()
 					    $('#resultsTable').append(
-					        '<tr><td>' + this.full_name + '</td><td>' + this.operational_status + '</td></tr>'
+					        '<tr><td><a href="../school/?id=' + this.id_nces + '">' + this.full_name + '</a></td><td>' + this.operational_status + '</td></tr>'
 					      );
 					    });
 				    }
