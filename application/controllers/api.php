@@ -229,6 +229,30 @@ class Api extends REST_Controller {
 
 	}	
 	
+	public function status_post()
+	{
+	    // ...create new book
+	
+		$this->input->get('entity', TRUE)
+		$this->input->get('nces_id', TRUE)
+	
+		$data = array(
+		   'title' => 'My title' ,
+		   'name' => 'My Name' ,
+		   'date' => 'My date'
+		);
+
+		$this->db->insert('mytable', $data);	
+	
+		if($this->input->get('entity', TRUE)) {
+			$entity_type = 'district';
+			$nces_id = $this->input->get('nces_id', TRUE);					
+		}	
+	
+
+	    $this->response($book, 201); // Send an HTTP 201 Created
+	}	
+	
 	
 	
 	
