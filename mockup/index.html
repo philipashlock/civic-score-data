@@ -29,12 +29,38 @@
      <script src="js/bootstrap.js"></script>
     <script>
     $(document).ready(function() {
-        $("#results").hide();
-        $("#submit").click(function (event) { 
-            $("#results").show(); 
+	
+	
+ 	
+	
+		$("#submit").click(function (event) { 
+
             event.preventDefault();
-        });
-        
+			var searchstring = $("#inputNameorID").val();
+
+				$.ajax({
+				  url: 'http://schools.civicagency.org/api/schools?search=' + searchstring,
+				  success: function(data) {
+
+					$.each(data, function(){
+
+						$("#results").show()
+					    $('#resultsTable').append(
+					        '<tr><td>' + this.full_name + '</td><td>' + this.operational_status + '</td></tr>'
+					    );
+
+					    });
+				  }
+				});
+
+
+		});	
+	
+	
+	
+	
+        $("#results").hide();
+  
         $("#inputNameorID").click(function (event) {
           $("#inputLocation").prop('disabled', true);
         });
@@ -78,20 +104,12 @@
     <div>
     <div id="results" class="span9">
       <h2>Results</h2>
-      <table class="table">
+      <table class="table" id="resultsTable">
         <th>School Info</th><th>Status</th>
-        <tbody\>
+        <tbody>
           <tr>
             <td><a href="school_landing.html">School 1 </a></td>
             <td class="closed"><i></i> Closed </td>
-          </tr>
-          <tr>
-            <td>School 2 </td>
-            <td class="relocated"><i></i> Relocated </td>
-          </tr>
-          <tr>
-            <td>School 3 </td>
-            <td class="open"><i></i> Open </td>
           </tr>
         </tbody>
       </table>
