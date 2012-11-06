@@ -8,9 +8,9 @@
   <meta name="author" content="">
 
   <!-- Le styles -->
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/bootstrap-responsive.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="/mockup/css/bootstrap.css" rel="stylesheet">
+  <link href="/mockup/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="/mockup/css/styles.css" rel="stylesheet">
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -19,13 +19,13 @@
 
   <!-- Le fav and touch icons -->
   <link rel="shortcut icon" href="assets/ico/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/mockup/assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/mockup/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/mockup/assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/mockup/assets/ico/apple-touch-icon-57-precomposed.png">
   
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-   <script src="js/bootstrap.js"></script>
+   <script src="/mockup/js/bootstrap.js"></script>
   <script>
   $(document).ready(function() {
 
@@ -54,7 +54,7 @@
            <h4>Address:</h4><br/>
            <?php echo $school['location_address']; ?><br/>
            <?php echo $school['location_city']; ?>, <?php echo $school['location_state']; ?> <?php echo $school['location_zip']; ?><br/>
-           <h4>Phone:</h4> <?php echo $school['location_phone']; ?><br/>
+           <h4>Phone:</h4> <?php if (isset($school['location_phone'])) echo $school['location_phone']; ?><br/>
          </address>
        </div>
        <div class="span3">
@@ -77,11 +77,7 @@
   <?php
   }
   ?>
-	<?php
-	endif;		
-	?>
 
-  
   <!--about modal -->
   <div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
     <div class="modal-header">
