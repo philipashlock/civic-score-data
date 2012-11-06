@@ -432,10 +432,17 @@ $this->methods['key'] = FALSE;
 				$status['q_building_ada_required']		       = $rows->q_building_ada_required;		   
 				$status['q_building_access']				       = $rows->q_building_access;			
 				$status['q_building_access_notes']		       = $rows->q_building_access_notes;		   
-				$status['q_building_access_required']		   = $rows->q_building_access_required;
-						 
+				$status['q_building_access_required']		   = $rows->q_building_access_required;						 
 		   }
 		}		
+		
+		
+		// make sure null values are really null
+		function check_null(&$item, $key)
+		{ $item = (empty($item)) ? null : $item; }		
+		array_walk($status, 'check_null');
+		
+		
 		
 		if (!empty($status)) {
 			
