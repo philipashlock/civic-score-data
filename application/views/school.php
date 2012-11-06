@@ -54,7 +54,7 @@
            <h4>Address:</h4><br/>
            <?php echo $school['location_address']; ?><br/>
            <?php echo $school['location_city']; ?>, <?php echo $school['location_state']; ?> <?php echo $school['location_zip']; ?><br/>
-           <h4>Phone:</h4> <?php if (isset($school['location_phone'])) echo $school['location_phone']; ?><br/>
+           <h4>Phone:</h4> <?php if (isset($school['phone'])) echo $school['phone']; ?><br/>
          </address>
        </div>
        <div class="span3">
