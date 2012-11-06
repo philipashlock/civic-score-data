@@ -91,6 +91,7 @@
             $("#etcDetails").hide();
         }
   });
+});
   </script>
 </head>
 <body>
