@@ -30,36 +30,24 @@
     <script>
     $(document).ready(function() {
 	
-	
+      $("#results").hide();
  	
-	
-		$("#submit").click(function (event) { 
-
-            event.preventDefault();
-			var searchstring = $("#inputNameorID").val();
+	    $("#submit").click(function (event) { 
+        event.preventDefault();
+			  var searchstring = $("#inputNameorID").val();
 
 				$.ajax({
 				  url: 'http://schools.civicagency.org/api/schools?search=' + searchstring,
 				  success: function(data) {
-
-					$.each(data, function(){
-
-						$("#results").show()
+            $.each(data, function(){
+              $("#results").show()
 					    $('#resultsTable').append(
 					        '<tr><td>' + this.full_name + '</td><td>' + this.operational_status + '</td></tr>'
-					    );
-
+					      );
 					    });
-				  }
-				});
-
-
-		});	
-	
-	
-	
-	
-        $("#results").hide();
+				    }
+				  });
+        });	
   
         $("#inputNameorID").click(function (event) {
           $("#inputLocation").prop('disabled', true);
@@ -67,6 +55,7 @@
         $("#inputLocation").click(function (event) {
           $("#inputNameorID").prop('disabled', true);
         });
+
     });
     </script>
   </head>
@@ -96,6 +85,7 @@
           <label class="control-label" for="inputLocation">Location: </label>
           <div class="controls"><input type="text" id="inputLocation" placeholder="State, City, County"></div>
         </div>
+          <button type="submit" class="btn btn-warning" id="reset">Reset</button>
           <button type="submit" class="btn btn-success" id="submit"><i class="icon-search icon-white"></i> Search</button>
       </fieldset>
     </form>
