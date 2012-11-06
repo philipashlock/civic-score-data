@@ -54,7 +54,7 @@
            <h4>Address:</h4><br/>
            <?php echo $entity['location_address']; ?><br/>
            <?php echo $entity['location_city']; ?>, <?php echo $entity['location_state']; ?> <?php echo $entity['location_zip']; ?><br/>
-           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?><?php echo $entity['longitude']; ?>"View on a map</p>
+           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>"View on a map</p>
            <h4>Phone:</h4> <?php if (isset($entity['phone'])) echo $entity['phone']; ?><br/>
          </address>
        </div>
