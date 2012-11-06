@@ -40,7 +40,8 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-
+$route['status/school/(:num)'] = "status/school/$1";
+$route['status/district/(:num)'] = "status/district/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

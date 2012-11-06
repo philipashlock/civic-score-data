@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class School extends CI_Controller {
+class Status extends CI_Controller {
 
 	function __construct()
 	{
@@ -17,36 +17,59 @@ class School extends CI_Controller {
 		
 		if(!empty($school_id)){
 			
-			$school = $this->get_entity_by_id('schools', $school_id);
+			$school = $this->get_status_by_id('school', $school_id);
 			
 			$data['school'] = (!empty($school[0])) ? $school[0] : null;
-
 			
-		}
-		
-		
-			
-		
-		// See if we have google analytics tracking code
-		if($this->config->item('ganalytics_id')) {
-			$data['ganalytics_id'] = $this->config->item('ganalytics_id');
 		}		
 		
 		
-		$this->load->view('school', $data);
+		$this->load->view('status', $data);
 	}
 	
+	
+	function district($id) {
+
+		//$id = $this->input->get('id', TRUE);
+
+		$entity = $this->get_entity_by_id('district', $id);				
+		$status = $this->get_status_by_id('district', $id);
+
+		$data['entity'] = $entity;
+		$data['status'] = $status;
+
+		$this->load->view('status', $data);
+			
+
+	}	
+	
+	
+	function school($id) {
+
+		// $id = $this->input->get('id', TRUE);
+
+		$entity = $this->get_entity_by_id('schools', $id);		
+		$status = $this->get_status_by_id('school', $id);
+
+		$data['entity'] = $entity;
+		$data['status'] = $status;
+
+		$this->load->view('status', $data);
+			
+
+	}	
 	
 	
 	function get_entity_by_id($entity, $id) {
 
-		$url = $this->config->item('website_root') . '/api/' . $entity . '?id=' . $id;
+		$url = $this->config->item('website_root') . '/api/' . $entity . '?id=' . $id;	
 		
 		$entity = $this->curl_to_json($url);
 
-		return $entity;				
+		return $entity[0];				
 
 	}	
+	
 	
 	function get_status_by_id($entity, $id) {
 		
@@ -57,7 +80,6 @@ class School extends CI_Controller {
 		return $status;				
 
 	}	
-	
 	
 	function curl_to_json($url) {
 

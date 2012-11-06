@@ -3,9 +3,6 @@ require APPPATH.'/libraries/REST_Controller.php';
 
 class Api extends REST_Controller {
 
-
-
-
 	public function index_get()
 	{
 		$data = array();
@@ -138,9 +135,11 @@ class Api extends REST_Controller {
 
 	
 	
-	function schools_get() {	
+	function schools_get() {
+			
 
-		
+$this->methods['key'] = FALSE; 
+
 		$search = $this->input->get('search', TRUE);
 		
 		
