@@ -150,7 +150,6 @@ class Api extends REST_Controller {
 				
 				$nces_id  = ltrim($nces_id, '0');
 
-
 				$query = $this->db->get_where('schools', array('agency_id_nces' => $nces_id));				
 			
 				$schools = $this->school_model($query);
@@ -187,13 +186,24 @@ class Api extends REST_Controller {
 	function status_get() {	
 
 		
-		$nces_id = $this->input->get('district', TRUE);		
 		
+		if($this->input->get('district', TRUE)) {
+			$entity_type = 'district';
+			$nces_id = $this->input->get('district', TRUE);					
+		}
 		
+		if($this->input->get('school', TRUE)) {
+			$entity_type = 'school';
+			$nces_id = $this->input->get('school', TRUE);		
+		}		
 		
-		if(!empty($nces_id)) {
-
-				$query = $this->db->get_where('status', array('entity_type' => 'district','entity_nces_id' => $nces_id));				
+		$status_search = array('entity_type' => $entity_type, 'entity_nces_id' => $nces_id);
+			
+		if(!empty($status_search['entity_nces_id'])) {
+				
+				$status_search['entity_nces_id']  = ltrim($status_search['entity_nces_id'], '0');
+				
+				$query = $this->db->get_where('status', $status_search);				
 			
 				$status = $this->status_model($query);
 		
@@ -201,7 +211,7 @@ class Api extends REST_Controller {
 				if(!empty($status)) {
 					return	$this->response($status, 200);
 				} else {
-					$response = array('error' => "No Status Data for $nces_id");
+					$response = array('error' => "No Status Data for {$status_search['entity_nces_id']}");
 					return $this->response($response, 400);
 				}
 		}
@@ -350,6 +360,12 @@ class Api extends REST_Controller {
 		}		
 		
 		if (!empty($status)) {
+			
+			$type = $status['entity_type'];
+			$id = $status['entity_nces_id'];
+			$key_name = 'api_' . $type;
+			$status[$key_name] = 'http://' . $_SERVER['SERVER_NAME'] . "/api/$type?id=$id";			
+			
 			return $status;
 		}
 		else {
