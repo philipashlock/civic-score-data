@@ -230,53 +230,46 @@ class Api extends REST_Controller {
 	}	
 	
 	public function status_post() {
-	    // ...create new book
 	
-		$this->input->get('entity', TRUE);
-		$this->input->get('nces_id', TRUE);
+		//$this->input->get('entity', TRUE);
+		//$this->input->get('nces_id', TRUE);
 	
 		$data = array(
-	   		"entity_type" 					=> $this->input->get('entity_type', TRUE),
-	   		"entity_nces_id" 				=> $this->input->get('entity_nces_id', TRUE),
-	   		"contact_point_name" 			=> $this->input->get('contact_point_name', TRUE),
-	   		"contact_point_email"			=> $this->input->get('contact_point_email', TRUE),
-	   		"website" 						=> $this->input->get('website', TRUE),
-	   		"status" 						=> $this->input->get('status', TRUE) ,                                     
-	   		"open_date_student" 			=> $this->input->get('open_date_student', TRUE),						   
-	   		"open_date_teachers" 			=> $this->input->get('open_date_teachers', TRUE),						   
-	   		"relocation_information" 		=> $this->input->get('relocation_information', TRUE),					   
-	   		"q_fema_resources" 				=> $this->input->get('q_fema_resources', TRUE),						   
-	   		"q_electricity_status" 			=> $this->input->get('q_electricity_status', TRUE),					   
-	   		"q_student_transport" 			=> $this->input->get('q_student_transport', TRUE),						   
-	   		"q_student_percentage" 			=> $this->input->get('q_student_percentage', TRUE),					   
-	   		"q_teacher_transport" 			=> $this->input->get('q_teacher_transport', TRUE),						   
-	   		"q_teacher_percentage" 			=> $this->input->get('q_teacher_percentage', TRUE),					   
-	   		"q_student_resources" 			=> $this->input->get('q_student_resources', TRUE),						   
-	   		"q_building_water" 				=> $this->input->get('q_building_water', TRUE),						   
-	   		"q_building_mold" 				=> $this->input->get('q_building_mold', TRUE),							   
-	   		"q_building_structural" 		=> $this->input->get('q_building_structural', TRUE),					   
-	   		"q_building_structural_notes" 	=> $this->input->get('q_building_structural_notes', TRUE),				   
-	   		"q_building_cafeteria" 			=> $this->input->get('q_building_cafeteria', TRUE),					   
-	   		"q_building_cafeteria_notes" 	=> $this->input->get('q_building_cafeteria_notes', TRUE),				   
-	   		"q_building_contents" 			=> $this->input->get('q_building_contents', TRUE),						   
-	   		"q_building_contents_notes" 	=> $this->input->get('q_building_contents_notes', TRUE),				   
-	   		"q_building_ada" 				=> $this->input->get('q_building_ada', TRUE),							   
-	   		"q_building_ada_notes" 			=> $this->input->get('q_building_ada_notes', TRUE),					   
-	   		"q_building_access" 			=> $this->input->get('q_building_access', TRUE),						   
-	   		"q_building_access_notes" 		=> $this->input->get('q_building_access_notes', TRUE)
+	   		"entity_type" 					=> $this->input->post('entity_type', TRUE),
+	   		"entity_nces_id" 				=> $this->input->post('entity_nces_id', TRUE),
+	   		"contact_point_name" 			=> $this->input->post('contact_point_name', TRUE),
+	   		"contact_point_email"			=> $this->input->post('contact_point_email', TRUE),
+	   		"website" 						=> $this->input->post('website', TRUE),
+	   		"status" 						=> $this->input->post('status', TRUE) ,                                     
+	   		"open_date_student" 			=> $this->input->post('open_date_student', TRUE),						   
+	   		"open_date_teachers" 			=> $this->input->post('open_date_teachers', TRUE),						   
+	   		"relocation_information" 		=> $this->input->post('relocation_information', TRUE),					   
+	   		"q_fema_resources" 				=> $this->input->post('q_fema_resources', TRUE),						   
+	   		"q_electricity_status" 			=> $this->input->post('q_electricity_status', TRUE),					   
+	   		"q_student_transport" 			=> $this->input->post('q_student_transport', TRUE),						   
+	   		"q_student_percentage" 			=> $this->input->post('q_student_percentage', TRUE),					   
+	   		"q_teacher_transport" 			=> $this->input->post('q_teacher_transport', TRUE),						   
+	   		"q_teacher_percentage" 			=> $this->input->post('q_teacher_percentage', TRUE),					   
+	   		"q_student_resources" 			=> $this->input->post('q_student_resources', TRUE),						   
+	   		"q_building_water" 				=> $this->input->post('q_building_water', TRUE),						   
+	   		"q_building_mold" 				=> $this->input->post('q_building_mold', TRUE),							   
+	   		"q_building_structural" 		=> $this->input->post('q_building_structural', TRUE),					   
+	   		"q_building_structural_notes" 	=> $this->input->post('q_building_structural_notes', TRUE),				   
+	   		"q_building_cafeteria" 			=> $this->input->post('q_building_cafeteria', TRUE),					   
+	   		"q_building_cafeteria_notes" 	=> $this->input->post('q_building_cafeteria_notes', TRUE),				   
+	   		"q_building_contents" 			=> $this->input->post('q_building_contents', TRUE),						   
+	   		"q_building_contents_notes" 	=> $this->input->post('q_building_contents_notes', TRUE),				   
+	   		"q_building_ada" 				=> $this->input->post('q_building_ada', TRUE),							   
+	   		"q_building_ada_notes" 			=> $this->input->post('q_building_ada_notes', TRUE),					   
+	   		"q_building_access" 			=> $this->input->post('q_building_access', TRUE),						   
+	   		"q_building_access_notes" 		=> $this->input->post('q_building_access_notes', TRUE)
 		);
 		
 		
 
 		$this->db->insert('status', $data);	
-	
-		if($this->input->get('entity', TRUE)) {
-			$entity_type = 'district';
-			$nces_id = $this->input->get('nces_id', TRUE);					
-		}	
-	
 
-	    $this->response($book, 201); // Send an HTTP 201 Created
+	    $this->response($data, 201); // Send an HTTP 201 Created
 	}	
 	
 	
