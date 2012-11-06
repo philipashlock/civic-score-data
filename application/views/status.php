@@ -58,10 +58,18 @@
          <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
        </div>
      </div>
+
+	<?php if (!empty($status['status'])): ?>
      <div id="status">
        <h3>Status</h3>
        <p><?php echo $status['status']; ?></p>
      </div>
+	<?php else : ?>
+     <div id="status">
+       <h3>No Status Info</h3>
+     </div>
+	<?php endif ?>
+
      <div id="details">
        <h3>Details</h3>
        <table class="table">
