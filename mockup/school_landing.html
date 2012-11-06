@@ -28,27 +28,34 @@
   </head>
   <body>
     <!--header -->
-    <header class="page-header span9 row">
+    <header class="page-header span9">
       <div class="row">
       <a href="index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
-      <div class="span3">
-        <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
-      </div>
+        <div class="span3">
+          <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
+        </div>
       </div>
     </header>
     
     <!-- School Info -->
-    <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
-    <div id="schoolinfo">
-      <h2>School Name</h2>
-      
-    </div>
-    <div id="status">
-    </div>
-    <div id="details">
-      <h2>Details</h2>
-      <table class="table">
-      </table>
+   
+    <div id="schoolinfo" class="span9">
+       <div class="row">
+         <div id="schoolName" class="span6"><h3>School Name</h3></div>
+         <div class="span3">
+           <a href="form.html" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
+         </div>
+       </div>
+       <div id="status">
+         <h3>Status</h3>
+       </div>
+       <div id="details">
+         <h3>Details</h3>
+         <table class="table">
+           <th>Accessibility</th>
+           <th>Needs and Damages</th>
+         </table>
+       </div>
     </div>
   </body>
 </html>
