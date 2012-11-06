@@ -44,17 +44,17 @@
     </div>
   </header>
   <?php
-    if (!empty($school)) {
+    if (!empty($entity)) {
 	?>
   <div id="schoolinfo" class="span9">
      <div class="row">
        <div id="schoolName" class="span6">
-         <h3><?php echo $school['full_name']; ?></h3>
+         <h3><?php echo $entity['full_name']; ?></h3>
          <address>
            <h4>Address:</h4><br/>
-           <?php echo $school['location_address']; ?><br/>
-           <?php echo $school['location_city']; ?>, <?php echo $school['location_state']; ?> <?php echo $school['location_zip']; ?><br/>
-           <h4>Phone:</h4> <?php if (isset($school['phone'])) echo $school['phone']; ?><br/>
+           <?php echo $entity['location_address']; ?><br/>
+           <?php echo $entity['location_city']; ?>, <?php echo $entity['location_state']; ?> <?php echo $entity['location_zip']; ?><br/>
+           <h4>Phone:</h4> <?php if (isset($entity['phone'])) echo $entity['phone']; ?><br/>
          </address>
        </div>
        <div class="span3">

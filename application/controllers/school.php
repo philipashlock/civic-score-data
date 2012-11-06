@@ -47,7 +47,7 @@ class School extends CI_Controller {
 		$data['entity'] = $entity;
 		$data['status'] = $status;
 
-		$this->load->view('status', $data);
+		$this->load->view('school', $data);
 	
 	}
 	
