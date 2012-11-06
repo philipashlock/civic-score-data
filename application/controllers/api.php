@@ -237,11 +237,11 @@ class Api extends REST_Controller {
 	
 		$data = array(
 	   		"entity_type" 					=> $this->input->get('entity_type', TRUE),
-	   		"entity_nces_id" 				=> $this->input->get('entity_nces_id', TRUE)
-	   		"contact_point_name" 			=> $this->input->get('contact_point_name', TRUE)
-	   		"contact_point_email"			=> $this->input->get('contact_point_email', TRUE)
-	   		"website" 						=> $this->input->get('website', TRUE)
-	   		"status" 						=> $this->input->get('status', TRUE)                                      
+	   		"entity_nces_id" 				=> $this->input->get('entity_nces_id', TRUE),
+	   		"contact_point_name" 			=> $this->input->get('contact_point_name', TRUE),
+	   		"contact_point_email"			=> $this->input->get('contact_point_email', TRUE),
+	   		"website" 						=> $this->input->get('website', TRUE),
+	   		"status" 						=> $this->input->get('status', TRUE) ,                                     
 	   		"open_date_student" 			=> $this->input->get('open_date_student', TRUE),						   
 	   		"open_date_teachers" 			=> $this->input->get('open_date_teachers', TRUE),						   
 	   		"relocation_information" 		=> $this->input->get('relocation_information', TRUE),					   
