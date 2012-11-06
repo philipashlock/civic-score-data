@@ -374,6 +374,7 @@ class Api extends REST_Controller {
 			$type = $status['entity_type'];
 			$id = $status['entity_nces_id'];
 			$key_name = 'api_' . $type;
+			$type = ($type == 'school') ? 'schools' : $type;
 			$status[$key_name] = 'http://' . $_SERVER['SERVER_NAME'] . "/api/$type?id=$id";			
 			
 			return $status;
