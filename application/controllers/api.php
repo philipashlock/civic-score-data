@@ -408,6 +408,7 @@ class Api extends REST_Controller {
 				$data['state_school_id'] =           $rows->state_school_id;    
 				$data['state_agency_id'] =           $rows->state_agency_id;   
 				$data['api_district'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/district?id=' . $data['agency_id_nces'];
+				$data['api_status'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/status?school=' . $data['agency_id_nces'];					
 				 
 				
 				$schools[] = $data;	      	
@@ -446,6 +447,8 @@ class Api extends REST_Controller {
 					$data['longitude']		=  $rows->longitude;
 					$data['agency_type']		=  $rows->agency_type;
 					$data['api_district_schools'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/schools?district=' . $data['agency_id_nces'];
+					$data['api_district_status'] = 'http://' . $_SERVER['SERVER_NAME'] . '/api/status?district=' . $data['agency_id_nces'];					
+					
 					
 	      			$district[] = $data;
 			   }
