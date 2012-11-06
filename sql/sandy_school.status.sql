@@ -34,26 +34,39 @@ CREATE TABLE `status` (
   `open_date_teachers` datetime DEFAULT NULL,
   `relocation_information` text,
   `q_fema_resources` text,
-  `q_electricity_status` varchar(255) DEFAULT NULL,
   `q_student_transport` text,
   `q_student_percentage` text,
   `q_teacher_transport` text,
   `q_teacher_percentage` text,
-  `q_student_resources` varchar(255) DEFAULT NULL,
-  `q_building_water` varchar(255) DEFAULT NULL,
-  `q_building_mold` varchar(255) DEFAULT NULL,
+  `q_electricity` tinyint(1) DEFAULT NULL,
+  `q_electricity_notes` text,
+  `q_electricity_status_required` tinyint(1) DEFAULT NULL,
+  `q_student_resources` tinyint(1) DEFAULT NULL,
+  `q_student_resources_notes` text,
+  `q_student_resources_required` tinyint(1) DEFAULT NULL,
+  `q_building_water` tinyint(1) DEFAULT NULL,
+  `q_building_water_notes` text,
+  `q_building_water_required` tinyint(1) DEFAULT NULL,
+  `q_building_mold` tinyint(1) DEFAULT NULL,
+  `q_building_mold_notes` text,
+  `q_building_mold_required` tinyint(1) DEFAULT NULL,
   `q_building_structural` varchar(255) DEFAULT NULL,
   `q_building_structural_notes` text,
+  `q_building_structural_required` tinyint(1) DEFAULT NULL,
   `q_building_cafeteria` varchar(255) DEFAULT NULL,
   `q_building_cafeteria_notes` text,
+  `q_building_cafeteria_required` tinyint(1) DEFAULT NULL,
   `q_building_contents` varchar(255) DEFAULT NULL,
   `q_building_contents_notes` text,
+  `q_building_contents_required` tinyint(1) DEFAULT NULL,
   `q_building_ada` varchar(255) DEFAULT NULL,
   `q_building_ada_notes` text,
+  `q_building_ada_required` tinyint(1) DEFAULT NULL,
   `q_building_access` varchar(255) DEFAULT NULL,
   `q_building_access_notes` text,
+  `q_building_access_required` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +75,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'district','3407350',NULL,NULL,NULL,'closed','2012-11-05 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'school','340735000000','John Doe','jd@mail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'school','340735002746','Peter Smith','pete.smith@gmail.com',NULL,'closed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `status` VALUES (6,'school','340633001536','0','0','hello','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','0','0','0','0','0',0,NULL,NULL,0,NULL,NULL,0,NULL,NULL,0,NULL,NULL,'0','0',NULL,'0','0',NULL,'0','0',NULL,'0','0',NULL,'0','0',NULL);
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-05 19:35:43
+-- Dump completed on 2012-11-06 17:47:00
