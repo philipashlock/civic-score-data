@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `status`;
 CREATE TABLE `status` (
   `status_id` int(8) NOT NULL AUTO_INCREMENT,
   `entity_type` varchar(255) NOT NULL,
-  `entity_nces_id` int(8) NOT NULL,
+  `entity_nces_id` varchar(255) NOT NULL,
   `contact_point_name` text,
   `contact_point_email` text,
   `website` text,
@@ -53,7 +53,7 @@ CREATE TABLE `status` (
   `q_building_access` varchar(255) DEFAULT NULL,
   `q_building_access_notes` text,
   PRIMARY KEY (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (1,'district',3407350,NULL,NULL,NULL,'closed','2012-11-05 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `status` VALUES (1,'district','3407350',NULL,NULL,NULL,'closed','2012-11-05 00:00:00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'school','340735000000','John Doe','jd@mail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'school','340735002746','Peter Smith','pete.smith@gmail.com',NULL,'closed',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -75,4 +75,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-05 18:00:40
+-- Dump completed on 2012-11-05 19:35:43
