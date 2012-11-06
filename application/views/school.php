@@ -54,7 +54,7 @@
            <h4>Address:</h4><br/>
            <?php echo $entity['location_address']; ?><br/>
            <?php echo $entity['location_city']; ?>, <?php echo $entity['location_state']; ?> <?php echo $entity['location_zip']; ?><br/>
-           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>">View on a map</a></p>
+           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>"View on a map</p>
            <h4>Phone:</h4> <?php if (isset($entity['phone'])) echo $entity['phone']; ?><br/>
          </address>
        </div>
@@ -74,9 +74,110 @@
 	<?php endif ?>
      <div id="details">
        <h3>Details</h3>
-       <table class="table">
-         <th>Accessibility</th>
-         <th>Needs and Damages</th>
+       <h4>Accessibility</h4>
+       <table class="table" id="accessTable">
+         <th>Personnel Category</th><th>Transporation</th><th>Attendance %</th>
+         <tr>
+           <td>Students</td>
+           <td>	<?php if (!empty($status['q_student_transport'])): echo $status['q_student_transport'];
+                      else: ?>No data found<?php endif ?></td>
+           <td>	<?php if (!empty($status['q_student_percentage'])): echo $status['q_student_percentage'];
+                      else: ?>No data found<?php endif ?></td>
+         </tr>
+         <tr>
+           <td>Teachers and Staff</td>
+           <td>	<?php if (!empty($status['q_teacher_transport'])): echo $status['q_teacher_transport'];
+                      else: ?>No data found<?php endif ?></td>
+           <td>	<?php if (!empty($status['q_teacher_percentage'])): echo $status['q_teacher_percentage'];
+                      else: ?>No data found<?php endif ?></td>
+           </tr>
+        </table>
+        <h4>Needs and Damages</h4>
+        <table class="table" id="needTable">
+         <th>Category</th><th>Present?</th><th>Details</th><th>Priority?</th>
+          <tr>
+             <td>Electricity</td>
+             <td><?php if (!empty($status['q_building_water'])): ?><?php echo $status['q_building_water']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+             <td><?php if (!empty($status['q_building_cafeteria_notes'])): ?><?php echo $status['q_building_cafeteria_notes']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+             <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_student_percentage']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+           </tr>
+          <tr>
+             <td>Supplies and Technology</td>
+             <td><?php if (!empty($status['q_building_water'])): ?><?php echo $status['q_building_water']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+             <td><?php if (!empty($status['q_building_cafeteria_notes'])): ?><?php echo $status['q_building_cafeteria_notes']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+             <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_student_percentage']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+           </tr>
+          <tr>
+             <td>Water Damage</td>
+             <td><?php if (!empty($status['q_building_water'])): ?><?php echo $status['q_building_water']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+             <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_building_cafeteria_notes']; ?>
+               <?php else : ?>No data found<?php endif ?> </td>
+             <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_student_percentage']; ?>
+               <?php else : ?>No data found<?php endif ?></td>
+           </tr>
+          <tr>
+            <td>Mold</td>
+            <td><?php if (!empty($status['q_building_mold'])): ?><?php echo $status['q_building_mold']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_building_cafeteria_notes']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_student_percentage']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+          </tr>
+          <tr>
+            <td>Structural Damage</td>
+            <td><?php if (!empty($status['q_building_structural'])): ?><?php echo $status['q_building_structural']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_building_structural_notes']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_student_percentage'])): ?><?php echo $status['q_student_percentage']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+          </tr>
+          <tr>
+          <tr>
+            <td>Cafeteria</td>
+            <td><?php if (!empty($status['q_building_cafeteria'])): ?><?php echo $status['q_building_cafeteria']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_structural'])): ?><?php echo $status['q_building_cafeteria_notes']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_structural'])): ?><?php echo $status['q_student_percentage']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+          </tr>
+          <tr>
+            <td>Other Contents</td>
+            <td><?php if (!empty($status['q_building_contents'])): ?><?php echo $status['q_building_contents']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_contents'])): ?><?php echo $status['q_building_contents_notes']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_contents'])): ?><?php echo $status['q_student_percentage']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+          </tr>
+          <tr>
+            <td>ADA compliance</td>
+            <td><?php if (!empty($status['q_building_ada'])): ?><?php echo $status['q_building_ada']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_ada'])): ?><?php echo $status['q_building_ada_notes']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_ada'])): ?><?php echo $status['q_student_percentage']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+          </tr>
+          <tr>
+            <td>Access to Building</td>
+            <td><?php if (!empty($status['q_building_ada'])): ?><?php echo $status['q_building_access']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_ada'])): ?><?php echo $status['q_building_access_notes']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+            <td><?php if (!empty($status['q_building_ada'])): ?><?php echo $status['q_student_percentage']; ?>
+              <?php else : ?>No data found<?php endif ?></td>
+          </tr>
+         </table>
        </table>
      </div>
   </div>
