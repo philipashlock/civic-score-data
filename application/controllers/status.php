@@ -76,10 +76,10 @@ class Status extends CI_Controller {
 	
 //		echo $this->db->last_query(); exit;
 		
-		$redirect_url = "$entity_type/$entity_nces_id";
+		$redirect_url = "/$entity_type/$entity_nces_id";
 
 		// with 200 redirect
-		redirect($redirect_url, 'refresh', 200);
+		redirect($redirect_url, 'refresh');
 			
 	}
 
