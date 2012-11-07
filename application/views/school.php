@@ -61,98 +61,113 @@
                       else: ?>No data found<?php endif ?></td>
            </tr>
         </table>
+
+
+		<?php 		
+		function format_needs($needs_type) {
+			if (isset($needs_type)) { 
+				if ($needs_type == 1) 		return '<i class="icon-wrench"></i>'; 
+				elseif ($needs_type == 0) 	return '<i class="icon-ok"></i>';
+			} else {						return 'No data found'; } 
+		}			
+		?>
+
         <h4>Needs and Damages</h4>
         <table class="table" id="needTable">
          <th>Category</th><th>Present?</th><th>Details</th><th>Priority?</th>
           <tr>
              <td>Electricity</td>
-             <td><?php if (!empty($status['q_electricity']) {
-                        switch $status['q_electricity'] {
-                          case '1':
-                            return echo "<icon class="icon-wrench"></i>";
-                            break;
-                          case '0':
-                            return echo "<icon class="icon-ok"></i>";
-                            break;
-                          default:
-                            break;
-                          }
-                        } else: ?>?<?php endif ?></td>
+             <td>
+				<?php echo format_needs($status['q_electricity']); ?>
+			 </td>
              <td><?php if (!empty($status['q_electricity_notes'])): echo $status['q_electricity_notes'];
                          else: ?>No data found<?php endif ?></td>
-             <td><?php if (!empty($status['q_electricity_status_required'])): echo $status['q_electricity_status_required'];
+             <td><?php if (isset($status['q_electricity_status_required'])): echo $status['q_electricity_status_required'];
                          else: ?>No data found<?php endif ?></td>
            </tr>
            <tr>
               <td>Supplies and Technology</td>
-              <td><?php if (!empty($status['q_student_resources'])): echo $status['q_student_resources'];
-                          else: ?>No data found<?php endif ?></td>
+              <td>				
+				<?php echo format_needs($status['q_student_resources']); ?>
+			  </td>
               <td><?php if (!empty($status['q_student_resources_notes'])): echo $status['q_student_resources_notes'];
                           else: ?>No data found<?php endif ?></td>
-              <td><?php if (!empty($status['q_student_resources_required'])): echo $status['q_student_resources_required'];
+              <td><?php if (isset($status['q_student_resources_required'])): echo $status['q_student_resources_required'];
                           else: ?>No data found<?php endif ?></td>
             </tr>
             <tr>
                <td>Water Damage</td>
-               <td><?php if (!empty($status['q_building_water'])): echo $status['q_building_water'];
-                           else: ?>No data found<?php endif ?></td>
+	           <td>				
+			     <?php echo format_needs($status['q_building_water']); ?>
+			   </td>
                <td><?php if (!empty($status['q_building_water_notes'])): echo $status['q_building_water_notes'];
                            else: ?>No data found<?php endif ?></td>
-               <td><?php if (!empty($status['q_building_water_required'])): echo $status['q_building_water_required'];
+               <td><?php if (isset($status['q_building_water_required'])): echo $status['q_building_water_required'];
                            else: ?>No data found<?php endif ?></td>
              </tr>
              <tr>
                 <td>Mold</td>
-                <td><?php if (!empty($status['q_building_mold'])): echo $status['q_building_mold	'];
-                            else: ?>No data found<?php endif ?></td>
+	           <td>				
+			     <?php echo format_needs($status['q_building_mold']); ?>
+			   </td>
                 <td><?php if (!empty($status['q_building_mold_notes'])): echo $status['q_building_mold_notes'];
                             else: ?>No data found<?php endif ?></td>
-                <td><?php if (!empty($status['q_building_mold_required'])): echo $status['q_building_mold_required'];
+                <td><?php if (isset($status['q_building_mold_required'])): echo $status['q_building_mold_required'];
                             else: ?>No data found<?php endif ?></td>
               </tr>
               <tr>
                  <td>Structural Damage</td>
-                 <td><?php if (!empty($status['q_building_structural'])): echo $status['q_building_structural'];
-                             else: ?>No data found<?php endif ?></td>
+	           <td>				
+			     <?php echo format_needs($status['q_building_structural']); ?>
+			   </td>
+
                  <td><?php if (!empty($status['q_building_structural_notes'])): echo $status['q_building_structural_notes'];
                              else: ?>No data found<?php endif ?></td>
-                 <td><?php if (!empty($status['q_building_structural_required'])): echo $status['q_building_structural_required'];
+                 <td><?php if (isset($status['q_building_structural_required'])): echo $status['q_building_structural_required'];
                              else: ?>No data found<?php endif ?></td>
                </tr>
                <tr>
                   <td>Cafeteria</td>
-                  <td><?php if (!empty($status['q_building_cafeteria'])): echo $status['q_building_cafeteria'];
-                              else: ?>No data found<?php endif ?></td>
+	           <td>				
+			     <?php echo format_needs($status['q_building_cafeteria']); ?>
+			   </td>
+
                   <td><?php if (!empty($status['q_building_cafeteria_notes'])): echo $status['q_building_cafeteria_notes'];
                               else: ?>No data found<?php endif ?></td>
-                  <td><?php if (!empty($status['q_building_cafeteria_required'])): echo $status['q_building_cafeteria_required'];
+                  <td><?php if (isset($status['q_building_cafeteria_required'])): echo $status['q_building_cafeteria_required'];
                               else: ?>No data found<?php endif ?></td>
                 </tr>
                 <tr>
                    <td>Other Contents</td>
-                   <td><?php if (!empty($status['q_building_contents'])): echo $status['q_building_contents'];
-                               else: ?>No data found<?php endif ?></td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_contents']); ?>
+				   </td>
+
                    <td><?php if (!empty($status['q_building_contents_notes'])): echo $status['q_building_contents_notes'];
                                else: ?>No data found<?php endif ?></td>
-                   <td><?php if (!empty($status['q_building_contents_required'])): echo $status['q_building_contents_required'];
+                   <td><?php if (isset($status['q_building_contents_required'])): echo $status['q_building_contents_required'];
                                else: ?>No data found<?php endif ?></td>
                  </tr>
                  <tr>
                     <td>ADA Compliance</td>
-                    <td><?php if (!empty($status['q_building_ada'])): echo $status['q_building_ada'];
-                                else: ?>No data found<?php endif ?></td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_ada']); ?>
+				   </td>
+
                     <td><?php if (!empty($status['q_building_ada_notes'])): echo $status['q_building_ada_notes'];
                                 else: ?>No data found<?php endif ?></td>
-                    <td><?php if (!empty($status['q_building_ada_required'])): echo $status['q_building_ada_required'];
+                    <td><?php if (isset($status['q_building_ada_required'])): echo $status['q_building_ada_required'];
                                 else: ?>No data found<?php endif ?></td>
                   </tr>
                   <tr>
                      <td>Access Damage</td>
-                     <td><?php if (!empty($status['q_building_access'])): echo $status['q_building_access'];
-                                 else: ?>No data found<?php endif ?></td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_access']); ?>
+				   </td>
+
                      <td><?php if (!empty($status['q_building_access_notes'])): echo $status['q_building_access_notes'];
                                  else: ?>No data found<?php endif ?></td>
-                     <td><?php if (!empty($status['q_building_access_required'])): echo $status['q_building_access_required'];
+                     <td><?php if (isset($status['q_building_access_required'])): echo $status['q_building_access_required'];
                                  else: ?>No data found<?php endif ?></td>
                    </tr>
 
