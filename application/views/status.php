@@ -138,8 +138,8 @@
           <div class="control-group">
             <span class="control-label">Does your school need help at this time?</span>
             <div class="controls">
-              <label class="radio"><input type="radio" name="optionsRadios" id="needsHelp1" value="yes">Yes</label>
-              <label class="radio"><input type="radio" name="optionsRadios" id="needsHelp0" value="no">No</label>
+              <label class="radio"><input type="radio" name="q_fema_resources" id="needsHelp1" value="yes">Yes</label>
+              <label class="radio"><input type="radio" name="q_fema_resources" id="needsHelp0" value="no">No</label>
             </div>
           </div>
       
