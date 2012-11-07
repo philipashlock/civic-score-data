@@ -117,12 +117,12 @@
     </ul>
   </div>
   
-  <div class="tab-content span9">
+  <form method="post" action="/status/update" class="tab-content span9">
   
     <!-- Step1 School Info -->
     <div id="infoForm" class="tab-pane active">
       <h3>Step 1. School Information</h3>
-      <form id="newInfo" class="form-horizontal">
+      <div id="newInfo" class="form-horizontal">
         <fieldset>
       
           <div class="control-group">
@@ -143,7 +143,7 @@
           <div class="control-group">
             <span class="control-label">Current School Status:</span>
             <div class="controls">
-              <select>
+              <select name="status">
                 <option>-- Select School Status --</option>
                 <option>Open</option>
                 <option>Relocated</option>
@@ -169,13 +169,13 @@
           <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
       
       </fieldset>
-    </form>
+    </div>
   </div>
   
     <!-- Step2 School Access -->
     <div id="accessForm" class="tab-pane">
       <h3>Step 2. School Accessibilty</h3>
-      <form id="newAccess" class="form-horizontal">
+      <div id="newAccess" class="form-horizontal">
         <fieldset>
       
           <div class="control-group">
@@ -202,14 +202,14 @@
           <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
       
         </fieldset>
-      </form>
-    </div>  
+      </div>
+    </div>  <!-- End Step2 School Access -->
       
     <!-- Step3 School Needs -->
     <div id="needsForm" class="tab-pane">
       <h3>Step 3. School Needs and Damage</h3>
       <p class="help-block">Please check the statements that indicate what needs and damage your school incurred<strong> as a result of Hurricane Sandy</strong>. <br/><br/>The boxes you check will ask you to provide the specific details of the needs or damage. <br/><br/>Additionally, if the need or damage is critical to the opening of your school, please indicate that by checking the "Necessary for Opening" box, which will flag that need or damage as a priority.<br/><br/></p>
-      <form id="newNeed" class="form-horizontal">
+      <div id="newNeed" class="form-horizontal">
       <fieldset>  
         <div>
           <label class="checkbox"><input type="checkbox" id="needElectricity" class="pChk" value="">The school has no electricity</label>
@@ -317,12 +317,16 @@
           <label class="checkbox"><input type="checkbox" value="">Necessary for Opening</label>
         </div>
       </div>     
-    <button class="btn btn-success">Submit and Return to School Page</button> 
+
+    <input type="hidden" name="entity_nces_id" value="<?php echo $entity['id_nces']; ?>" /> 
+    <input type="hidden" name="entity_type" value="school" /> 
+
+    <input type="submit" class="btn btn-success" value="Submit and Return to School Page" /> 
     </fieldset>
-    </form>
     </div>
+    </div>    <!-- End Step3 School Needs -->
   
-  </div>
+  </form>
 
   <!--about modal -->
   <div id="aboutModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">

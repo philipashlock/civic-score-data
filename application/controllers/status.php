@@ -40,7 +40,6 @@ class Status extends CI_Controller {
 
 		$this->load->view('status', $data);
 			
-
 	}	
 	
 	
@@ -59,6 +58,32 @@ class Status extends CI_Controller {
 
 	}	
 	
+
+	
+	function update() {
+
+		$this->load->helper('url');
+
+		$entity_type = $this->input->post('entity_type', TRUE);
+		$entity_nces_id = $this->input->post('entity_nces_id', TRUE);
+		//$entity_nces_id = $this->input->post('status', TRUE);
+		
+		
+
+		$data = $this->input->post();
+	
+		$this->db->insert('status', $data);	
+	
+//		echo $this->db->last_query(); exit;
+		
+		$redirect_url = "$entity_type/$entity_nces_id";
+
+		// with 200 redirect
+		redirect($redirect_url, 'refresh', 200);
+			
+	}
+
+
 	
 	function get_entity_by_id($entity, $id) {
 
