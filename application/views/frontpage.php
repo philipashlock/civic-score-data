@@ -20,13 +20,13 @@
 
 	        			 switch(this.status) {
 	        			   case 'open':
-	        			      var schoolstatus = 'class="open"><i icon-ok-sign></i>' + this.status + '</td></tr>';
+	        			      var schoolstatus = ' class="open"><i icon-ok-sign></i>' + this.status + '</td></tr>';
 	        			      break;
 	        			    case 'closed':
-	        			      var schoolstatus = 'class="closed"><i icon-minus-sign></i>' + this.status + '</td></tr>';
+	        			      var schoolstatus = ' class="closed"><i icon-minus-sign></i>' + this.status + '</td></tr>';
 	        			      break;
 	        			    case 'relocated':
-	        			      var schoolstatus = 'class="relocated">' + this.status + '</td></tr>';
+	        			      var schoolstatus = ' class="relocated">' + this.status + '</td></tr>';
 							  break;
 	        			    default:
 	        			      var schoolstatus = '>No data found</td></tr>';
