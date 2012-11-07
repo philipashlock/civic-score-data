@@ -107,6 +107,11 @@
             <label class="control-label" for="inputContactPhone">Phone Number: </label>
             <div class="controls"><input type="text" id="inputContactPhone" value="<?php echo $entity['phone']; ?>"></div>
           </div>
+          
+          <div class="control-group">
+            <label class="control-label" for="inputContactEmail">Email: </label>
+            <div class="controls"><input type="text" id="inputContactEmail" value=""></div>
+          </div>
         
           <div class="control-group">
             <span class="control-label">Current School Status:</span>
