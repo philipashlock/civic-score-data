@@ -25,10 +25,10 @@
 					        			      return 'class="open"><i icon-ok-sign></i>' + this.status + '</td></tr>';
 					        			      break;
 					        			    case 'closed':
-					        			      return 'class="closed"><i icon-ok-sign></i>' + this.status + '</td></tr>';
+					        			      return 'class="closed"><i icon-minus-sign></i>' + this.status + '</td></tr>';
 					        			      break;
 					        			    case 'relocated':
-					        			      return 'class="relocated"><i icon-ok-sign></i>' + this.status + '</td></tr>';
+					        			      return 'class="relocated"><i icon-warning-sign></i>' + this.status + '</td></tr>';
 					        			    default:
 					        			      return 'No data found</td></tr>';
 					        			 }
