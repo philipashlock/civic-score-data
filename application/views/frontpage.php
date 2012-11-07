@@ -19,10 +19,10 @@
               			$("#results").show()
 
 	        			 switch(this.status) {
-	        			   case 'open':
+	        			   case 'Open':
 	        			      var schoolstatus = 'class="open"><i icon-ok-sign></i>' + this.status + '</td></tr>';
 	        			      break;
-	        			    case 'closed':
+	        			    case 'Closed':
 	        			      var schoolstatus = 'class="closed"><i icon-minus-sign></i>' + this.status + '</td></tr>';
 	        			      break;
 	        			    case 'Relocated':
