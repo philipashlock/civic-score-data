@@ -30,7 +30,7 @@
 					        			    case 'relocated':
 					        			      return 'class="relocated"><i icon-warning-sign></i>' + this.status + '</td></tr>';
 					        			    default:
-					        			      return 'No data found</td></tr>';
+					        			      return '>No data found</td></tr>';
 					        			 }
 					      				);					   
 			 							});
