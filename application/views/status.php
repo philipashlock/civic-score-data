@@ -73,6 +73,7 @@
 <?php include 'header_inc_view.php';?>
 
 
+
   <div class="span9">
   <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
   </div>
@@ -100,7 +101,7 @@
         
           <div class="control-group">
             <label class="control-label" for="inputContactName">Point of Contact: </label>
-            <div class="controls"><input type="text" id="inputContactName" name="contact_point_name" value="<?php if (!empty($status['contact_point_name'])) $status['contact_point_name']; ?>" placeholder="Point of Contact"></div>
+            <div class="controls"><input type="text" id="inputContactName" name="contact_point_name" value="<?php if (!empty($status['contact_point_name'])) echo $status['contact_point_name']; ?>" placeholder="Point of Contact"></div>
           </div>
         
           <div class="control-group">
@@ -118,10 +119,10 @@
             <div class="controls">
               <select name="status">
                 <option>-- Select School Status --</option>
-				<?php if (!empty($status['status'])) $status = $status['status']; else $status = ''; ?>
-                <option value="open"<?php if ($status == 'open') echo ' selected="selected"'?>>Open</option>
-                <option value="relocated"<?php if ($status == 'relocated') echo ' selected="selected"'?>>Relocated</option>
-                <option value="closed"<?php if ($status == 'closed') echo ' selected="selected"'?>>Closed</option>
+				<?php if (!empty($status['status'])) $entity_status = $status['status']; else $entity_status = ''; ?>
+                <option value="open"<?php if ($entity_status == 'open') echo ' selected="selected"'?>>Open</option>
+                <option value="relocated"<?php if ($entity_status == 'relocated') echo ' selected="selected"'?>>Relocated</option>
+                <option value="closed"<?php if ($entity_status == 'closed') echo ' selected="selected"'?>>Closed</option>
               </select>
             </div>
           </div>
@@ -139,12 +140,11 @@
           <div class="control-group">
             <span class="control-label">Does your school need help at this time?</span>
             <div class="controls">
-              <label class="radio"><input type="radio" name="q_fema_resources" id="needsHelp1" value="1">Yes</label>
-              <label class="radio"><input type="radio" name="q_fema_resources" id="needsHelp0" value="">No</label>
+              <label class="radio"><input type="radio" name="q_fema_resources" id="needsHelp1" <?php if (isset($status['q_fema_resources']) && $status['q_fema_resources'] == 1) echo ' checked="checked" '; ?>value="1">Yes</label>
+              <label class="radio"><input type="radio" name="q_fema_resources" id="needsHelp0" <?php if (isset($status['q_fema_resources']) && $status['q_fema_resources'] == 0) echo ' checked="checked" '; ?>value="0">No</label>
             </div>
           </div>
       
-          <button id="submitInfo" class="btn btn-success">Submit and Return to School Page</button>
           <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
       
       </fieldset>
@@ -157,27 +157,27 @@
       <div id="newAccess" class="form-horizontal">
         <fieldset>
       
+
           <div class="control-group">
             <label class="control-label" for="inputTransStatusStud">What mode of transportation is available to students? </label>
-            <div class="controls"><input type="text" id="inputTransStatusStud" name="q_student_transport" placeholder="Student Transportation Status"></div>
+            <div class="controls"><input type="text" id="inputTransStatusStud" name="q_student_transport" value="<?php if (!empty($status['q_student_transport'])) echo $status['q_student_transport']; ?>" placeholder="Student Transportation Status"></div>
           </div>
       
           <div class="control-group">
             <label class="control-label" for="inputStudentPercent">What (approximate) percentage of your students can get to school? </label>
-            <div class="controls"><input type="text" id="inputStudentPercent" name="q_student_percentage" placeholder="Attendance%"></div>
+            <div class="controls"><input type="text" id="inputStudentPercent" name="q_student_percentage" value="<?php if (!empty($status['q_student_percentaged'])) echo $status['q_student_percentage']; ?>" placeholder="Attendance%"></div>
           </div>
 
           <div class="control-group">
             <label class="control-label" for="inputTransStatusTeach">What mode of transportation is available to faculty and staff? </label>
-            <div class="controls"><input type="text" id="inputTransStatusTeach" name="q_teacher_transport" placeholder="Teacher Transportation Status"></div>
+            <div class="controls"><input type="text" id="inputTransStatusTeach" name="q_teacher_transport" value="<?php if (!empty($status['q_teacher_transportd'])) echo $status['q_teacher_transport']; ?>" placeholder="Teacher Transportation Status"></div>
           </div>
       
           <div class="control-group">
             <label class="control-label" for="inputTeacherPercent">What (approximate) percentage of faculty and staff can get to school? </label>
-            <div class="controls"><input type="text" id="inputTeacherPercent" name="q_teacher_percentage" placeholder="Attendance%"></div>
+            <div class="controls"><input type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentaged'])) echo $status['q_teacher_percentage']; ?>" placeholder="Attendance%"></div>
           </div>
       
-          <button class="btn btn-success">Submit and Return to School Page</button>
           <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
       
         </fieldset>
