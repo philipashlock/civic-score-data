@@ -18,7 +18,7 @@ class Api extends REST_Controller {
 		}	
 		
 		
-		$this->load->view('welcome_message', $data);
+		$this->load->view('api_docs', $data);
 	}
 
 	
