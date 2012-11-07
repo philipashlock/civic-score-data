@@ -23,7 +23,8 @@
            <?php echo $entity['location_address']; ?><br/>
            <?php echo $entity['location_city']; ?>, <?php echo $entity['location_state']; ?> <?php echo $entity['location_zip']; ?><br/>
            <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>">View on a map</a></p>
-           <h4>Phone:</h4> <?php if (isset($entity['phone'])) echo $entity['phone']; ?><br/>
+           <h4>Phone:</h4> <?php if (!empty($status['contact_point_phone'])) echo $status['contact_point_phone']; elseif (!empty($entity['phone'])) echo $entity['phone']; ?><br/>
+           <h4>Email:</h4> <?php if (isset($status['contact_point_email'])) echo $status['contact_point_email' else: "No email address listed"]; ?><br/>
          </address>
        </div>
        <div class="span3">
