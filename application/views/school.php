@@ -66,8 +66,18 @@
          <th>Category</th><th>Present?</th><th>Details</th><th>Priority?</th>
           <tr>
              <td>Electricity</td>
-             <td><?php if (!empty($status['q_electricity'])): echo $status['q_electricity'];
-                         else: ?>No data found<?php endif ?></td>
+             <td><?php if (!empty($status['q_electricity']) {
+                        switch $status['q_electricity'] {
+                          case '1':
+                            return echo "<icon class="icon-wrench"></i>";
+                            break;
+                          case '0':
+                            return echo "<icon class="icon-ok"></i>";
+                            break;
+                          default:
+                            break;
+                          }
+                        } else: ?>?<?php endif ?></td>
              <td><?php if (!empty($status['q_electricity_notes'])): echo $status['q_electricity_notes'];
                          else: ?>No data found<?php endif ?></td>
              <td><?php if (!empty($status['q_electricity_status_required'])): echo $status['q_electricity_status_required'];
