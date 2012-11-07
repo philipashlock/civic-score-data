@@ -231,8 +231,8 @@
       <div class="control-group" id="moldDetails">
         <label class="control-label" for="inputMoldDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputMoldDetails" name="q_mold_notes">
-          <label class="checkbox"><input type="checkbox" name="q_mold_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputMoldDetails" name="q_building_mold_notes">
+          <label class="checkbox"><input type="checkbox" name="q_building_mold_required" value="">Necessary for Opening</label>
         </div>
       </div>
           
