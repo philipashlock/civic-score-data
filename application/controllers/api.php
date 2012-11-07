@@ -138,8 +138,6 @@ class Api extends REST_Controller {
 	function schools_get() {
 			
 
-$this->methods['key'] = FALSE; 
-
 		$search = $this->input->get('search', TRUE);
 		
 		
@@ -158,7 +156,10 @@ $this->methods['key'] = FALSE;
 				$id_search = array($entity_type => $nces_id);
 				
 				$nces_id  = ltrim($nces_id, '0');
-
+				
+				
+				$this->db->select('schools.*, status.status as status');		
+				$this->db->join('status', 'schools.id_nces = status.entity_nces_id', 'left');		
 				$query = $this->db->get_where('schools', $id_search);				
 			
 				$schools = $this->school_model($query);
@@ -174,8 +175,11 @@ $this->methods['key'] = FALSE;
 		if(!empty($search)) {
 		
 
-			$this->db->like('full_name', $search);
+			$this->db->select('schools.*, status.status as status');
+			$this->db->like('full_name', $search);			
+			$this->db->join('status', 'schools.id_nces = status.entity_nces_id', 'left');		
 			$query = $this->db->get('schools');
+
 		
 			$schools = $this->school_model($query);
 	
@@ -474,7 +478,8 @@ $this->methods['key'] = FALSE;
 			
 				$data['full_name'] =                 $rows->full_name;          
 				$data['name'] =                      $rows->name;               
-				$data['id_nces'] =                   $rows->id_nces;            
+				$data['id_nces'] =                   $rows->id_nces;     
+				$data['status'] =                   $rows->status;     				       
 				$data['agency_name'] =               $rows->agency_name;        
 				$data['agency_id_nces'] =            $rows->agency_id_nces;     
 				$data['county_name'] =               $rows->county_name;        
