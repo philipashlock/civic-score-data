@@ -14,12 +14,13 @@
 				$.ajax({
 				  url: '/api/schools?search=' + searchstring,
 				  success: function(data) {
-            $.each(data, function(){
-              $("#results").show()
-					    $('#resultsTable').append(
-					        '<tr><td><a href="../school/' + this.id_nces + '">' + this.full_name + '</a></td><td>' + this.operational_status + '</td></tr>'
-					      );
-					    });
+					
+					$.each(data, function(){
+              			$("#results").show()
+			  			$('#resultsTable').append(
+					        			'<tr><td><a href="../school/' + this.id_nces + '">' + this.full_name + '</a></td><td>' + this.status + '</td></tr>'
+					      				);					   
+			 							});
 				    }
 				  });
         });	
