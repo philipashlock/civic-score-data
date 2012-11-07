@@ -191,109 +191,109 @@
       <div id="newNeed" class="form-horizontal">
       <fieldset>  
         <div>
-          <label class="checkbox"><input type="checkbox" id="needElectricity" name="q_electricity" class="pChk" value="1">The school has no electricity</label>
+          <label class="checkbox"><input type="checkbox" id="needElectricity" name="q_electricity" class="pChk" value="1" <?php if (!empty($status['q_electricity'])) echo 'checked="checked"'; ?>>The school has no electricity</label>
           <div class="control-group" id="electricityDetails">
             <label class="control-label" for="inputElectricityDetails">Please explain </label>
             <div class="controls">
-              <input type="text" id="inputElectricityDetails" name="q_electricity_notes">
-              <label class="checkbox"><input type="checkbox" value="" name="q_electricity_status_required">Necessary for Opening</label>
+              <input type="text" id="inputElectricityDetails" name="q_electricity_notes" value="<?php if (!empty($status['q_electricity_notes'])) echo $status['q_electricity_notes']; ?>">
+              <label class="checkbox"><input type="checkbox" value="1" name="q_electricity_status_required" <?php if (!empty($status['q_electricity_status_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
             </div>
           </div>
         </div> 
           
       <div>
-          <label class="checkbox"><input type="checkbox" id="needSupplies" name="q_student_resources" class="pChk" value="1">The school's supplies and technology were damaged</label>
+          <label class="checkbox"><input type="checkbox" id="needSupplies" name="q_student_resources" class="pChk" value="1" <?php if (!empty($status['q_student_resources'])) echo 'checked="checked"'; ?>>The school's supplies and technology were damaged</label>
       </div>
       
       <div class="control-group" id="supplyDetails">
         <label class="control-label" for="inputSupplyDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputSupplyDetails" name="q_student_resources_notes">
-          <label class="checkbox"><input type="checkbox" name="q_student_resources_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputSupplyDetails" name="q_student_resources_notes" value="<?php if (!empty($status['q_student_resources_notes'])) echo $status['q_student_resources_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_student_resources_required" value="1" <?php if (!empty($status['q_student_resources_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
       
       <div>
-          <label class="checkbox"><input type="checkbox" id="needWaterDamage" name="q_building_water" class="pChk" value="1">The school has water damage</label>
+          <label class="checkbox"><input type="checkbox" id="needWaterDamage" name="q_building_water" class="pChk" value="1" <?php if (!empty($status['q_building_water'])) echo 'checked="checked"'; ?>>The school has water damage</label>
       </div>
       
       <div class="control-group" id="waterDetails">
-        <label class="control-label" for="inputWaterDetails" name="q_building_water_notes">Please explain </label>
+        <label class="control-label" for="inputWaterDetails" name="q_building_water_notes" value="<?php if (!empty($status['q_building_water_notes'])) echo $status['q_building_water_notes']; ?>">Please explain </label>
         <div class="controls">
           <input type="text" id="inputWaterDetails">
-          <label class="checkbox"><input type="checkbox" name="q_building_water_required" value="1">Necessary for Opening</label>
+          <label class="checkbox"><input type="checkbox" name="q_building_water_required" value="1" <?php if (!empty($status['q_building_water_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
       
       <div>
-          <label class="checkbox"><input type="checkbox" id="needMold" name="q_building_mold" class="pChk" value="1">There is mold in the school</label>
+          <label class="checkbox"><input type="checkbox" id="needMold" name="q_building_mold" class="pChk" value="1" <?php if (!empty($status['q_building_mold'])) echo 'checked="checked"'; ?>>There is mold in the school</label>
       </div>
       
       <div class="control-group" id="moldDetails">
         <label class="control-label" for="inputMoldDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputMoldDetails" name="q_building_mold_notes">
-          <label class="checkbox"><input type="checkbox" name="q_building_mold_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputMoldDetails" name="q_building_mold_notes" value="<?php if (!empty($status['q_building_mold_notes'])) echo $status['q_building_mold_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_building_mold_required" value="1" <?php if (!empty($status['q_building_mold_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
           
       <div>
-          <label class="checkbox"><input type="checkbox" id="needStructure" name="q_building_structural" class="pChk" value="1">The school's building has structural damage</label>
+          <label class="checkbox"><input type="checkbox" id="needStructure" name="q_building_structural" class="pChk" value="1" <?php if (!empty($status['q_building_structural'])) echo 'checked="checked"'; ?>>The school's building has structural damage</label>
       </div>
           
       <div class="control-group" id="structureDetails">
         <label class="control-label" for="inputStructureDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputStructureDetails" name="q_building_structural_notes">
-          <label class="checkbox"><input type="checkbox" name="q_building_structural_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputStructureDetails" name="q_building_structural_notes" value="<?php if (!empty($status['q_building_structural_notes'])) echo $status['q_building_structural_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_building_structural_required" value="1" <?php if (!empty($status['q_building_structural_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needCafeteria" name="q_building_cafeteria" class="pChk" value="1">The school's cafeteria was damaged</label>
+          <label class="checkbox"><input type="checkbox" id="needCafeteria" name="q_building_cafeteria" class="pChk" value="1" <?php if (!empty($status['q_building_cafeteria'])) echo 'checked="checked"'; ?>>The school's cafeteria was damaged</label>
       </div>
       
       <div class="control-group" id="cafeteriaDetails">
         <label class="control-label" for="inputCafeteriaDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputCafeteriaDetails" name="q_building_cafeteria_notes">
-          <label class="checkbox"><input type="checkbox" name="q_building_cafeteria_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputCafeteriaDetails" name="q_building_cafeteria_notes" value="<?php if (!empty($status['q_building_cafeteria_notes'])) echo $status['q_building_cafeteria_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_building_cafeteria_required" value="1" <?php if (!empty($status['q_building_cafeteria_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needOther" name="q_building_contents" class="pChk" value="1">Other contents of the school's building were damaged</label>
+          <label class="checkbox"><input type="checkbox" id="needOther" name="q_building_contents" class="pChk" value="1" <?php if (!empty($status['q_building_contents'])) echo 'checked="checked"'; ?>>Other contents of the school's building were damaged</label>
       </div>
       
       <div class="control-group" id="otherDetails">
         <label class="control-label" for="inputOtherDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputOtherDetails" name="q_building_contents_notes">
-          <label class="checkbox"><input type="checkbox" name="q_building_contents_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputOtherDetails" name="q_building_contents_notes" value="<?php if (!empty($status['q_building_contents_notes'])) echo $status['q_building_contents_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_building_contents_required" value="1" <?php if (!empty($status['q_building_contents_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needADAcomp" name="q_building_ada" class="pChk" value="1">The ADA compliance of the school's building was affected</label>
+          <label class="checkbox"><input type="checkbox" id="needADAcomp" name="q_building_ada" class="pChk" value="1" <?php if (!empty($status['q_building_ada'])) echo 'checked="checked"'; ?>>The ADA compliance of the school's building was affected</label>
       </div>
       
       <div class="control-group" id="ADAcompDetails">
         <label class="control-label" for="inputADAcompDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputADAcompDetails" name="q_building_ada_notes">
-          <label class="checkbox"><input type="checkbox" name="q_building_ada_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputADAcompDetails" name="q_building_ada_notes" value="<?php if (!empty($status['q_building_ada_notes'])) echo $status['q_building_ada_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_building_ada_required" value="1" <?php if (!empty($status['q_building_ada_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needEtc" name="q_building_access" class="pChk" value="1">There are other issues preventing students, faculty, and staff from physically entering the building</label>
+          <label class="checkbox"><input type="checkbox" id="needEtc" name="q_building_access" class="pChk" value="1" <?php if (!empty($status['q_building_access'])) echo 'checked="checked"'; ?>>There are other issues preventing students, faculty, and staff from physically entering the building</label>
       </div>
       
       <div class="control-group" id="etcDetails">
         <label class="control-label" for="inputEtcDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputEtcDetails" name="q_building_access_notes">
-          <label class="checkbox"><input type="checkbox" name="q_building_access_required" value="1">Necessary for Opening</label>
+          <input type="text" id="inputEtcDetails" name="q_building_access_notes" value="<?php if (!empty($status['q_building_access_notes'])) echo $status['q_building_access_notes']; ?>">
+          <label class="checkbox"><input type="checkbox" name="q_building_access_required" value="1" <?php if (!empty($status['q_building_access_required'])) echo 'checked="checked"'; ?>>Necessary for Opening</label>
         </div>
       </div>     
 
