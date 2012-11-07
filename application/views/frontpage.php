@@ -26,7 +26,7 @@
 	        			      var schoolstatus = ' class="closed"><i icon-minus-sign></i>' + this.status + '</td></tr>';
 	        			      break;
 	        			    case 'relocated':
-	        			      var schoolstatus = ' class="relocated">' + this.status + '</td></tr>';
+	        			      var schoolstatus = ' class="relocated">' + this.status. + '</td></tr>';
 							  break;
 	        			    default:
 	        			      var schoolstatus = '>No data found</td></tr>';
@@ -82,10 +82,6 @@
       <table class="table" id="resultsTable">
         <th>School Info</th><th>Status</th>
         <tbody>
-          <tr>
-            <td><a href="school_landing.html">School 1 </a></td>
-            <td class="closed"><i></i> Closed </td>
-          </tr>
         </tbody>
       </table>
     </div>
