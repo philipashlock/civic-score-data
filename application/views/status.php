@@ -1,29 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title> School Status Finder </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<?php include 'header_meta_inc_view.php';?>
 
-  <!-- Le styles -->
-  <link href="/mockup/css/bootstrap.css" rel="stylesheet">
-  <link href="/mockup/css/bootstrap-responsive.css" rel="stylesheet">
-  <link href="/mockup/css/styles.css" rel="stylesheet">
-
-  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
-  <!-- Le fav and touch icons -->
-  <link rel="shortcut icon" href="assets/ico/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/mockup/assets/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/mockup/assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/mockup/assets/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="/mockup/assets/ico/apple-touch-icon-57-precomposed.png">
-  
    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
    <script src="/mockup/js/bootstrap.js"></script>
   <script>
@@ -93,18 +69,10 @@
   });
 });
   </script>
-</head>
-<body>
-  <div class="container">
-  <!--header -->
-  <header class="page-header span9 row">
-    <div class="row">
-    <a href="../mockup/index.html"><div id="logo" class="span6"><h1>School Status Finder</h1></div></a>
-    <div class="span3">
-      <a href="#aboutModal" role="button" class="btn btn-info" data-toggle="modal">About</a>
-    </div>
-    </div>
-  </header>
+
+<?php include 'header_inc_view.php';?>
+
+
   <div class="span9">
   <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
   </div>
