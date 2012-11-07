@@ -95,22 +95,22 @@
       
           <div class="control-group">
             <label class="control-label" for="inputSchoolName">School Name: </label>
-            <div class="controls"><input type="text" id="inputSchoolName" value="<?php echo $entity['full_name']; ?>" disabled></div>
+            <div class="controls"><input type="text" id="inputSchoolName" value="<?php if (!empty($entity['full_name'])) echo $entity['full_name']; ?>" disabled></div>
           </div>
         
           <div class="control-group">
             <label class="control-label" for="inputContactName">Point of Contact: </label>
-            <div class="controls"><input type="text" id="inputContactName" name="contact_point_name" placeholder="Point of Contact"></div>
+            <div class="controls"><input type="text" id="inputContactName" name="contact_point_name" value="<?php if (!empty($status['contact_point_name'])) $status['contact_point_name']; ?>" placeholder="Point of Contact"></div>
           </div>
         
           <div class="control-group">
             <label class="control-label" for="inputContactPhone">Phone Number: </label>
-            <div class="controls"><input type="text" id="inputContactPhone" value="<?php echo $entity['phone']; ?>"></div>
+            <div class="controls"><input type="text" id="inputContactPhone" name="contact_point_phone" value="<?php if (!empty($status['contact_point_phone'])) echo $status['contact_point_phone']; elseif (!empty($entity['phone'])) echo $entity['phone']; ?>"></div>
           </div>
           
           <div class="control-group">
             <label class="control-label" for="inputContactEmail">Email: </label>
-            <div class="controls"><input type="text" id="inputContactEmail" value=""></div>
+            <div class="controls"><input type="text" id="inputContactEmail" name="contact_point_email" value="<?php if (!empty($status['contact_point_email'])) echo $status['contact_point_email']; ?>"></div>
           </div>
         
           <div class="control-group">
@@ -118,9 +118,10 @@
             <div class="controls">
               <select name="status">
                 <option>-- Select School Status --</option>
-                <option>Open</option>
-                <option>Relocated</option>
-                <option>Closed</option>
+				<?php if (!empty($status['status'])) $status = $status['status']; else $status = ''; ?>
+                <option value="open"<?php if ($status == 'open') echo ' selected="selected"'?>>Open</option>
+                <option value="relocated"<?php if ($status == 'relocated') echo ' selected="selected"'?>>Relocated</option>
+                <option value="closed"<?php if ($status == 'closed') echo ' selected="selected"'?>>Closed</option>
               </select>
             </div>
           </div>
