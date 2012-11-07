@@ -201,14 +201,14 @@
         </div> 
           
       <div>
-          <label class="checkbox"><input type="checkbox" id="needSupplies" name="q_resources" class="pChk" value="">The school's supplies and technology were damaged</label>
+          <label class="checkbox"><input type="checkbox" id="needSupplies" name="q_student_resources" class="pChk" value="">The school's supplies and technology were damaged</label>
       </div>
       
       <div class="control-group" id="supplyDetails">
         <label class="control-label" for="inputSupplyDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputSupplyDetails" name="q_resources_notes">
-          <label class="checkbox"><input type="checkbox" name="q_resources_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputSupplyDetails" name="q_student_resources_notes">
+          <label class="checkbox"><input type="checkbox" name="q_student_resources_required" value="">Necessary for Opening</label>
         </div>
       </div>
       
