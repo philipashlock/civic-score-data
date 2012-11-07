@@ -195,7 +195,7 @@
             <label class="control-label" for="inputElectricityDetails">Please explain </label>
             <div class="controls">
               <input type="text" id="inputElectricityDetails" name="q_electricity_notes">
-              <label class="checkbox"><input type="checkbox" value="" name="q_electricity_required">Necessary for Opening</label>
+              <label class="checkbox"><input type="checkbox" value="" name="q_electricity_status_required">Necessary for Opening</label>
             </div>
           </div>
         </div> 
@@ -213,19 +213,19 @@
       </div>
       
       <div>
-          <label class="checkbox"><input type="checkbox" id="needWaterDamage" name="q_water" class="pChk" value="">The school has water damage</label>
+          <label class="checkbox"><input type="checkbox" id="needWaterDamage" name="q_building_water" class="pChk" value="">The school has water damage</label>
       </div>
       
       <div class="control-group" id="waterDetails">
-        <label class="control-label" for="inputWaterDetails" name="q_water_notes">Please explain </label>
+        <label class="control-label" for="inputWaterDetails" name="q_building_water_notes">Please explain </label>
         <div class="controls">
           <input type="text" id="inputWaterDetails">
-          <label class="checkbox"><input type="checkbox" name="q_water_required" value="">Necessary for Opening</label>
+          <label class="checkbox"><input type="checkbox" name="q_building_water_required" value="">Necessary for Opening</label>
         </div>
       </div>
       
       <div>
-          <label class="checkbox"><input type="checkbox" id="needMold" name="q_mold" class="pChk" value="">There is mold in the school</label>
+          <label class="checkbox"><input type="checkbox" id="needMold" name="q_building_mold" class="pChk" value="">There is mold in the school</label>
       </div>
       
       <div class="control-group" id="moldDetails">
@@ -237,62 +237,62 @@
       </div>
           
       <div>
-          <label class="checkbox"><input type="checkbox" id="needStructure" name="q_structural" class="pChk" value="">The school's building has structural damage</label>
+          <label class="checkbox"><input type="checkbox" id="needStructure" name="q_building_structural" class="pChk" value="">The school's building has structural damage</label>
       </div>
           
       <div class="control-group" id="structureDetails">
         <label class="control-label" for="inputStructureDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputStructureDetails" name="q_structural_notes">
-          <label class="checkbox"><input type="checkbox" name="q_structural_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputStructureDetails" name="q_building_structural_notes">
+          <label class="checkbox"><input type="checkbox" name="q_building_structural_required" value="">Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needCafeteria" name="q_cafeteria" class="pChk" value="">The school's cafeteria was damaged</label>
+          <label class="checkbox"><input type="checkbox" id="needCafeteria" name="q_building_cafeteria" class="pChk" value="">The school's cafeteria was damaged</label>
       </div>
       
       <div class="control-group" id="cafeteriaDetails">
         <label class="control-label" for="inputCafeteriaDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputCafeteriaDetails" name="q_cafeteria_notes">
-          <label class="checkbox"><input type="checkbox" name="q_cafeteria_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputCafeteriaDetails" name="q_building_cafeteria_notes">
+          <label class="checkbox"><input type="checkbox" name="q_building_cafeteria_required" value="">Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needOther" name="q_contents" class="pChk" value="">Other contents of the school's building were damaged</label>
+          <label class="checkbox"><input type="checkbox" id="needOther" name="q_building_contents" class="pChk" value="">Other contents of the school's building were damaged</label>
       </div>
       
       <div class="control-group" id="otherDetails">
         <label class="control-label" for="inputOtherDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputOtherDetails" name="q_contents_notes">
-          <label class="checkbox"><input type="checkbox" name="q_contents_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputOtherDetails" name="q_building_contents_notes">
+          <label class="checkbox"><input type="checkbox" name="q_building_contents_required" value="">Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needADAcomp" name="q_ada" class="pChk" value="">The ADA compliance of the school's building was affected</label>
+          <label class="checkbox"><input type="checkbox" id="needADAcomp" name="q_building_ada" class="pChk" value="">The ADA compliance of the school's building was affected</label>
       </div>
       
       <div class="control-group" id="ADAcompDetails">
         <label class="control-label" for="inputADAcompDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputADAcompDetails" name="q_ada_notes">
-          <label class="checkbox"><input type="checkbox" name="q_ada_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputADAcompDetails" name="q_building_ada_notes">
+          <label class="checkbox"><input type="checkbox" name="q_building_ada_required" value="">Necessary for Opening</label>
         </div>
       </div>
          
       <div>
-          <label class="checkbox"><input type="checkbox" id="needEtc" name="q_access" class="pChk" value="">There are other issues preventing students, faculty, and staff from physically entering the building</label>
+          <label class="checkbox"><input type="checkbox" id="needEtc" name="q_building_access" class="pChk" value="">There are other issues preventing students, faculty, and staff from physically entering the building</label>
       </div>
       
       <div class="control-group" id="etcDetails">
         <label class="control-label" for="inputEtcDetails">Please explain </label>
         <div class="controls">
-          <input type="text" id="inputEtcDetails" name="q_access_notes">
-          <label class="checkbox"><input type="checkbox" name="q_access_required" value="">Necessary for Opening</label>
+          <input type="text" id="inputEtcDetails" name="q_building_access_notes">
+          <label class="checkbox"><input type="checkbox" name="q_building_access_required" value="">Necessary for Opening</label>
         </div>
       </div>     
 
