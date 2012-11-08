@@ -25,18 +25,16 @@
       $(this).tab('show');
     });
 
-    function nextTab(elem) {
-      $(elem + ' li.active')
-        .next()
-        .find('a[data-toggle="tab"]')
-        .click();
-    }
-    function prevTab(elem) {
-      $(elem + ' li.active')
-        .prev()
-        .find('a[data-toggle="tab"]')
-        .click();
-    }
+	 $('#needsProceed').click(function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+	});
+
+
+	$("#accessProceed").click(function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+	});
 
     $('.pChk').click(function() {
         if( $("#needElectricity").is(':checked')) {
