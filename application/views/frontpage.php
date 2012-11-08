@@ -74,7 +74,7 @@
           <label class="control-label" for="inputLocation">Location: </label>
           <div class="controls"><input type="text" id="inputLocation" placeholder="State, City, County"></div>
         </div>
-          <button type="submit" class="btn btn-success" id="submit" data-toggle="button" data-loading-text="Loading..."><i class="icon-search icon-white"></i> Search</button>
+          <button type="submit" class="btn btn-success" id="submit" data-loading-text="Loading..."><i class="icon-search icon-white"></i> Search</button>
           <button type="submit" class="btn btn-warning" id="reset">Reset</button>
 
       </fieldset>

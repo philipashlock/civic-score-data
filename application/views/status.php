@@ -25,16 +25,18 @@
       $(this).tab('show');
     });
 
-    $('#needsProceed').click(function (e) {
-      e.preventDefault();
-	  $(this).tab('show');
-    });
-
-
-    $("#accessProceed").click(function (e) {
-	  e.preventDefault();
-	  $(this).tab('show');
-    });
+    function nextTab(elem) {
+      $(elem + ' li.active')
+        .next()
+        .find('a[data-toggle="tab"]')
+        .click();
+    }
+    function prevTab(elem) {
+      $(elem + ' li.active')
+        .prev()
+        .find('a[data-toggle="tab"]')
+        .click();
+    }
 
     $('.pChk').click(function() {
         if( $("#needElectricity").is(':checked')) {
@@ -96,9 +98,9 @@
   
   <div class="span9">
     <ul class="nav nav-tabs span9" id="myTab">
-      <li class="active"><a href="#infoForm">School Info</a></li>
-      <li><a href="#needsForm">Needs and Damage</a></li>
-      <li><a href="#accessForm">Accessibility</a></li>
+      <li class="active" data-toggle="tab"><a href="#infoForm">School Info</a></li>
+      <li><a href="#needsForm" data-toggle="tab">Needs and Damage</a></li>
+      <li><a href="#accessForm" data-toggle="tab">Accessibility</a></li>
     </ul>
   </div>
   
