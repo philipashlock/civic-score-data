@@ -87,7 +87,11 @@
           
         <div class="control-group">
           <label class="control-label" for="inputLocation">Location: </label>
-          <div class="controls"><input type="text" id="inputLocation" placeholder="State, City, County"></div>
+          <div class="controls"><input type="text" id="inputLocation" placeholder="Full address"></div>
+        </div>
+
+        <div class="control-group">
+          <p class="help-inline"><i class="icon-question-sign"></i> Location will find the school district for an address and display the schools in that district</p>
         </div>
 
           <button type="submit" class="btn btn-success" id="submit" data-loading-text="Loading..." autocomplete="off"><i class="icon-search icon-white"></i> Search</button>
