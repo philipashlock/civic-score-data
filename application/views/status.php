@@ -19,6 +19,14 @@
       e.preventDefault();
       $(this).tab('show');
     })
+    $('#accessProceed').click(function (e) {
+      e.preventDefault();
+      $('#accessForm').tab('show');
+    })
+    $('#needsProceed').click(function (e) {
+      e.preventDefault();
+      $('#needsForm').tab('show');
+    })
 
     $('.pChk').click(function() {
         if( $("#needElectricity").is(':checked')) {
@@ -145,7 +153,7 @@
             </div>
           </div>
       
-          <button id="needsProceed" class="btn btn-primary" disabled>Save and Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
+          <button id="accessProceed" class="btn btn-primary">Save and Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
       
       </fieldset>
     </div>
