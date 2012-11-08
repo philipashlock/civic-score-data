@@ -18,13 +18,13 @@
 
 	        			 switch(this.status) {
 	        			   case 'open':
-	        			      var schoolstatus = ' class="open"><i class="icon-ok-sign icon-white"></i>' + capitaliseFirstLetter(this.status) + '</td></tr>';
+	        			      var schoolstatus = ' class="open"><i class="icon-ok-sign"></i> ' + capitaliseFirstLetter(this.status) + '</td></tr>';
 	        			      break;
 	        			    case 'closed':
-	        			      var schoolstatus = ' class="closed"><i class="icon-minus-sign icon-white"></i>' + capitaliseFirstLetter(this.status) + '</td></tr>';
+	        			      var schoolstatus = ' class="closed"><i class="icon-minus-sign"></i> ' + capitaliseFirstLetter(this.status) + '</td></tr>';
 	        			      break;
 	        			    case 'relocated':
-	        			      var schoolstatus = ' class="relocated"><i class="icon-warning-sign icon-white"></i>' + capitaliseFirstLetter(this.status) + '</td></tr>';
+	        			      var schoolstatus = ' class="relocated"><i class="icon-warning-sign"></i> ' + capitaliseFirstLetter(this.status) + '</td></tr>';
 							  break;
 	        			    default:
 	        			      var schoolstatus = ' >No data found</td></tr>';
