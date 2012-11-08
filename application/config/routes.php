@@ -44,6 +44,7 @@ $route['school/district/(:num)'] = "school/district/$1";
 $route['school/(:num)'] = "school/school_id/$1";
 $route['status/school/(:num)'] = "status/school/$1";
 $route['status/district/(:num)'] = "status/district/$1";
+$route['status/update/(:any)'] = "status/update/$1";
 
 
 

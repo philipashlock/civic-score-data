@@ -86,7 +86,7 @@
     </ul>
   </div>
   
-  <form method="post" action="/status/update" class="tab-content span9">
+  <form method="post" action="/status/update/<?php if (!empty($status)) echo "edit"; else echo "add" ?>" class="tab-content span9">
   
     <!-- Step1 School Info -->
     <div id="infoForm" class="tab-pane active">
@@ -298,7 +298,7 @@
       </div>     
 
     <input type="hidden" name="entity_nces_id" value="<?php echo $entity['id_nces']; ?>" /> 
-    <input type="hidden" name="entity_type" value="school" /> 
+    <input type="hidden" name="entity_type" value="school" />
 
     <input type="submit" class="btn btn-success" value="Submit and Return to School Page" /> 
     </fieldset>

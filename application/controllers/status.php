@@ -60,25 +60,27 @@ class Status extends CI_Controller {
 	
 
 	
-	function update() {
+	function update($type) {
 
 		$this->load->helper('url');
 
 		$entity_type = $this->input->post('entity_type', TRUE);
 		$entity_nces_id = $this->input->post('entity_nces_id', TRUE);
-		//$entity_nces_id = $this->input->post('status', TRUE);
-		
 		
 
 		$data = $this->input->post();
-	
-		$this->db->insert('status', $data);	
-	
-//		echo $this->db->last_query(); exit;
+		
+		if ($type == 'edit') {
+			$this->db->where('entity_nces_id', $entity_nces_id);
+			$this->db->update('status', $data); 
+		} 
+		
+		if ($type == 'add') {
+			$this->db->insert('status', $data);				
+		}
 		
 		$redirect_url = "/$entity_type/$entity_nces_id";
 
-		// with 200 redirect
 		redirect($redirect_url, 'refresh');
 			
 	}
