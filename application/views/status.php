@@ -1,7 +1,8 @@
 <?php include 'header_meta_inc_view.php';?>
 
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-   <script src="/mockup/js/bootstrap.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+
   <script>
   $(document).ready(function() {
     $(function() {
