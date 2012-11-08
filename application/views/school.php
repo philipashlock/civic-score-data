@@ -69,31 +69,61 @@
 
 	<?php endif; ?>
 
-     <div class="row">
-       <div id="schoolName" class="span6">
-         <h3><?php echo $entity['full_name']; ?></h3>
-         <address>
-           <h4>Address:</h4><br/>
-           <?php echo $entity['location_address']; ?><br/>
-           <?php echo $entity['location_city']; ?>, <?php echo $entity['location_state']; ?> <?php echo $entity['location_zip']; ?><br/>
-           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>">View on a map</a></p>
-           <h4>Phone:</h4> <?php if (!empty($status['contact_point_phone'])) echo $status['contact_point_phone']; elseif (!empty($entity['phone'])) echo $entity['phone']; ?><br/>
-           <h4>Email:</h4> <?php if (!empty($status['contact_point_email'])) echo $status['contact_point_email']; else echo "No email address listed"; ?><br/>
-         </address>
-       </div>
-       <div class="span3">
-         <a href="../status/school/<?php echo $entity['id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i> Edit School</a>
-       </div>
-     </div>
-     <div id="status">
-        <h3>Status</h3>
-	<?php if (!empty($status['status'])): echo ""?>
-       <p><icon></i><?php echo $status['status']; ?></p>
-	<?php else : ?>
-      <p>No Status Data Found</p>
-	<?php endif ?>
-	     </div>
-	
+
+
+
+    <div class="row" id="schoolName">
+
+
+	 		<div class="row">
+
+				<div class="span5">
+					<h3><?php echo $entity['full_name']; ?></h3>		         
+				</div>
+
+				<div  class="span3 offset1" id="schooolStatus">
+				   <h3>Status</h3>
+				<?php if (!empty($status['status'])): echo ""?>
+				  <p><icon></i><?php echo $status['status']; ?></p>
+				<?php else : ?>
+				 <p>No Status Data Found</p>
+				<?php endif ?>
+				</div>
+
+			</div>
+
+	 		<div class="row">
+
+		       <div class="span4">
+			
+		         <address>
+		           <h4>Address:</h4>
+		           <?php echo $entity['location_address']; ?><br/>
+		           <?php echo $entity['location_city']; ?>, <?php echo $entity['location_state']; ?> <?php echo $entity['location_zip']; ?><br/>
+		           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>">View on a map</a></p>
+		         </address>
+
+		          <h4>Phone:</h4> <?php if (!empty($status['contact_point_phone'])) echo $status['contact_point_phone']; elseif (!empty($entity['phone'])) echo $entity['phone']?><br/>
+
+		       </div>
+
+				<div class="span3 offset2">
+		          <h4>Email:</h4> <?php if (!empty($district_status['contact_point_email'])) echo $district_status['contact_point_email']; else echo "No email address listed"; ?><br/>
+		          <h4>Website:</h4> <?php if (!empty($district_status['website'])) echo '<a href="' . $district_status['website']. '">' . $district_status['website'] . '</a>'; ?><br/>
+
+		         <a href="../status/school/<?php echo $entity['id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i> Edit School</a>
+		
+				</div>
+
+
+		 </div>	
+		
+    </div>
+
+
+
+
+
 	
      <div id="details">
        <h3>Details</h3>
