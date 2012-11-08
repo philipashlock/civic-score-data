@@ -99,7 +99,27 @@
 <?php include 'header_inc_view.php';?>
 
 
-<?php if(isset($messages['error'])) echo $messages['error'];?>
+<?php if(!empty($messages)): ?>
+
+	<div class="span9">
+	
+		<?php if(isset($messages['error'])):?>	
+		<div class="alert alert-error">
+			<?php echo $messages['error']; ?>
+		</div>
+		<?php endif; ?>
+
+		<?php if(isset($messages['success'])):?>	
+		<div class="alert alert-success">
+			<?php echo $messages['success']; ?>
+		</div>
+		<?php endif; ?>
+
+	</div>
+
+<?php endif; ?>
+
+
 
   <div class="span9">
   <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
