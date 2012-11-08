@@ -30,9 +30,13 @@
 
          </address>
        </div>
+
+<!-- Hiding this until it's functional 
+
        <div class="span3">
          <a href="../status/district/<?php echo $district['agency_id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i> Edit District</a>
        </div>
+-->
      </div>	
 
      <div id="status">
