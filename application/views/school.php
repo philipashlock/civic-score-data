@@ -31,16 +31,14 @@
          <a href="../status/school/<?php echo $entity['id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i>  Submit Data</a>
        </div>
      </div>
-	<?php if (!empty($status['status'])): ?>
      <div id="status">
-       <h3>Status</h3>
-       <p><?php echo $status['status']; ?></p>
-     </div>
+        <h3>Status</h3>
+	<?php if (!empty($status['status'])): echo ""?>
+       <p><icon></i><?php echo $status['status']; ?></p>
 	<?php else : ?>
-     <div id="status">
-       <h3>No Status Info</h3>
-     </div>
+      <p>No Status Data Found</p>
 	<?php endif ?>
+	     </div>
      <div id="details">
        <h3>Details</h3>
        <h4>Accessibility</h4>
