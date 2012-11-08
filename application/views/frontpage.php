@@ -84,6 +84,10 @@
           <label class="control-label" for="inputNameorID">School Name: </label>
           <div class="controls"><input type="text" id="inputNameorID" placeholder="Name"></div>
         </div>
+
+        <div class="control-group">
+          <label class="control-label">OR</label>
+        </div>
           
         <div class="control-group">
           <label class="control-label" for="inputLocation">Location: </label>
@@ -91,7 +95,9 @@
         </div>
 
         <div class="control-group">
-          <p class="help-inline"><i class="icon-question-sign"></i> Location will find the school district for an address and display the schools in that district</p>
+          <p class="help-inline"><i class="icon-question-sign"></i> Location will find the school district for an address and display the schools in that district </p>
+          <p class="help-inline"><i class="icon-warning-sign"></i> <em>Location is currently not working for NYC addresses</em></p>
+
         </div>
 
           <button type="submit" class="btn btn-success" id="submit" data-loading-text="Loading..." autocomplete="off"><i class="icon-search icon-white"></i> Search</button>
