@@ -93,13 +93,13 @@
 
 
 		<?php 		
-		function format_needs($needs_type) {
+		function format_needs(&$needs_type) {
 			if (isset($needs_type)) { 
 				if ($needs_type == 1) 		return '<i class="icon-wrench"></i> '; 
 				elseif ($needs_type == 0) 	return '<i class="icon-ok"></i> ';
 			} else {						return 'No data found'; } 
 		}	
-		function format_req($req_flag) {
+		function format_req(&$req_flag) {
 			if (isset($req_flag)) { 
 				if ($req_flag == 1) 		return '<i class="icon-ok"></i> '; 
 				elseif ($req_flag == 0) 	return '';
