@@ -12,9 +12,18 @@
         $(this).button('loading');
 
    	    var searchstring = $("#inputNameorID").val();
+   	    var locationstring = $("#inputLocation").val();
+
+		if (searchstring) {
+			ajax_url = 'schools?search=' + searchstring;
+		}
+		
+		if (locationstring) {
+			ajax_url = 'schools?location=' + locationstring;
+		}		
 
 				$.ajax({
-				  url: '/api/schools?search=' + searchstring,
+				  url: '/api/' + ajax_url,
 				  success: function(data) {
 					
 					$.each(data, function(){

@@ -56,27 +56,14 @@ class Api extends REST_Controller {
 			$data['id'] 							= $this->input->get('id', TRUE);
 			
 			
-			if(!empty($data['location'])) {
-				
-				$location 					= $this->geocode(urlencode($data['location']));
+			if(!empty($data['location'])) {				
+				$location = $this->geocode(urlencode($data['location']));
 
-				if(!empty($location['ResultSet']['Result'])) {
-
-					$data['latitude'] 			= $location['ResultSet']['Result'][0]['latitude'];
-					$data['longitude'] 			= $location['ResultSet']['Result'][0]['longitude'];
-					$data['city_geocoded'] 		= $location['ResultSet']['Result'][0]['city'];
-					$data['state_geocoded'] 	= $location['ResultSet']['Result'][0]['state'];
-
-				}		
-
-				if(!empty($data['latitude']) && !empty($data['longitude'])) {
-
-					$districts = $this->get_district_by_location($data['latitude'], $data['longitude']);
-
+				if(!empty($location['latitude']) && !empty($location['longitude'])) {
+					$districts = $this->get_district_by_location($location['latitude'], $location['longitude']);
 				}				
-				
-				
 			}
+			
 			if(!empty($data['id'])) {
 				$districts = $this->get_district_by_id($data['id']);
 			}
@@ -150,6 +137,18 @@ class Api extends REST_Controller {
 			$entity_type = 'id_nces';
 			$nces_id = $this->input->get('id', TRUE);		
 		}
+		
+		if($this->input->get('location', TRUE)) {				
+			$location = $this->geocode(urlencode($this->input->get('location', TRUE)));
+
+			if(!empty($location['latitude']) && !empty($location['longitude'])) {
+				$districts = $this->get_district_by_location($location['latitude'], $location['longitude']);
+			}	
+			
+			$entity_type = 'agency_id_nces';			
+			$nces_id = $districts[0]['agency_id_nces'];
+				
+		}	
 				
 		if(!empty($nces_id)) {
 			
@@ -574,8 +573,22 @@ class Api extends REST_Controller {
 
 
 		$location = unserialize($locations);
+		
+		if(!empty($location['ResultSet']['Result'])) {
 
-		return $location;
+			$geocode['latitude'] 			= $location['ResultSet']['Result'][0]['latitude'];
+			$geocode['longitude'] 			= $location['ResultSet']['Result'][0]['longitude'];
+			$geocode['city_geocoded'] 		= $location['ResultSet']['Result'][0]['city'];
+			$geocode['state_geocoded'] 	= $location['ResultSet']['Result'][0]['state'];
+
+		}		
+		
+		if(!empty($geocode)) {
+			return $geocode;		
+		} else {
+			return false;			
+		}
+
 
 	}	
 		
