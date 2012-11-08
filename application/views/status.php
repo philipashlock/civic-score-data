@@ -91,6 +91,8 @@
 <?php include 'header_inc_view.php';?>
 
 
+<?php if(isset($messages['error'])) echo $messages['error'];?>
+
   <div class="span9">
   <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
   </div>
@@ -317,6 +319,10 @@
             <label class="control-label" for="inputTeacherPercent">What (approximate) percentage of faculty and staff can get to school? </label>
             <div class="controls"><input type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentaged'])) echo $status['q_teacher_percentage']; ?>" placeholder="Attendance%"></div>
           </div>
+
+
+          Email: <input type="text" name="email" id="inputEmail">
+          Password: <input type="password" name="password" id="inputPasskey">
       
           <input type="submit" class="btn btn-success" value="Authenticate and Submit" /> 
           <p class="help-inline"><i class="icon-question-sign"></i>In order to submit new school data you need to obtain a passkey. To request a passkey click <a href=""> here </a></p>
