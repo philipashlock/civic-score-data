@@ -9,14 +9,9 @@
 	    $("#submit").click(function (event) { 
 		
         event.preventDefault();
-<<<<<<< HEAD
-        $("#submit").button('loading');
-			  var searchstring = $("#inputNameorID").val();
-=======
         $(this).button('loading');
 
    	    var searchstring = $("#inputNameorID").val();
->>>>>>> Trying to fix loading button
 
 				$.ajax({
 				  url: '/api/schools?search=' + searchstring,
@@ -85,11 +80,8 @@
           <label class="control-label" for="inputLocation">Location: </label>
           <div class="controls"><input type="text" id="inputLocation" placeholder="State, City, County"></div>
         </div>
-<<<<<<< HEAD
+
           <button type="submit" class="btn btn-success" id="submit" data-loading-text="Loading..." autocomplete="off"><i class="icon-search icon-white"></i> Search</button>
-=======
-          <button type="button" class="btn btn-success" id="submit" data-loading-text="Loading..."><i class="icon-search icon-white"></i> Search</button>
->>>>>>> Trying to fix loading button
           <button type="submit" class="btn btn-warning" id="reset">Reset</button>
 
       </fieldset>
