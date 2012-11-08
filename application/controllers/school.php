@@ -47,6 +47,14 @@ class School extends CI_Controller {
 		$data['entity'] = $entity;
 		$data['status'] = $status;
 
+		// get district data
+		$district_id = $entity['agency_id_nces'];
+		$district = $this->get_entity_by_id('district', $district_id);		
+		$district_status = $this->get_status_by_id('district', $district_id);
+
+		$data['district'] = $district;
+		$data['district_status'] = $district_status;
+
 		$this->load->view('school', $data);
 	
 	}
@@ -61,7 +69,7 @@ class School extends CI_Controller {
 		$data['entity'] = $entity;
 		$data['status'] = $status;
 
-		$this->load->view('status', $data);
+		$this->load->view('school', $data);
 			
 
 	}		
