@@ -67,7 +67,13 @@
 				if ($needs_type == 1) 		return '<i class="icon-wrench"></i>'; 
 				elseif ($needs_type == 0) 	return '<i class="icon-ok"></i>';
 			} else {						return 'No data found'; } 
-		}			
+		}	
+		function format_req($req_flag) {
+			if (isset($req_flag)) { 
+				if ($req_flag == 1) 		return '<i class="icon-wrench"></i>'; 
+				elseif ($req_flag == 0) 	return '<i class="icon-ok"></i>';
+			} else {						return 'No data found'; } 
+		}		
 		?>
 
         <h4>Needs and Damages</h4>

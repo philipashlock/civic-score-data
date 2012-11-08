@@ -4,6 +4,10 @@
    <script src="/mockup/js/bootstrap.js"></script>
   <script>
   $(document).ready(function() {
+    $(function() {
+        $( ".datePicker" ).datepicker();
+    });
+    
     $("#supplyDetails").hide();
     $("#electricityDetails").hide();
     $("#waterDetails").hide();
@@ -137,12 +141,12 @@
         
           <div class="control-group">
             <label class="control-label" for="inputTeacherOpen">When does/did your school open for staff, teachers, and other personnel? </label>
-            <div class="controls"><input type="text" id="inputTeacherOpen" name="open_date_teachers" placeholder="##/##/####"></div>
+            <div class="controls"><input type="text" class="datePicker" id="inputTeacherOpen" name="open_date_teachers" placeholder="##/##/####"></div>
           </div>
           
           <div class="control-group">
             <label class="control-label" for="inputStudentOpen">When does/did your school open for students? </label>
-            <div class="controls"><input type="text" id="inputStudentOpen" name="open_date_student" placeholder="##/##/####"></div>
+            <div class="controls"><input type="text" class="datePicker" id="inputStudentOpen" name="open_date_student" placeholder="##/##/####"></div>
           </div>
       
           <div class="control-group">
