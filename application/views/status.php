@@ -138,7 +138,7 @@
             <span class="control-label">Current School Status:</span>
             <div class="controls">
               <select name="status">
-                <option>-- Select School Status --</option>
+                <option value="">-- Select School Status --</option>
 				<?php if (!empty($status['status'])) $entity_status = $status['status']; else $entity_status = ''; ?>
                 <option value="open"<?php if ($entity_status == 'open') echo ' selected="selected"'?>>Open</option>
                 <option value="relocated"<?php if ($entity_status == 'relocated') echo ' selected="selected"'?>>Relocated</option>
