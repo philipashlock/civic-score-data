@@ -27,6 +27,12 @@ class Status extends CI_Controller {
 		$this->load->view('status', $data);
 	}
 	
+	function register() {
+
+		$this->load->view('register');
+		
+	}
+	
 	
 	function district($id) {
 
