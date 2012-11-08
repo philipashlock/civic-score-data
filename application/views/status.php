@@ -312,10 +312,34 @@
       
         </fieldset>
       </div>
-    </div>  <!-- End Step2 School Access -->
+    </div>  <!-- End Step3 School Access -->
       
 
   
   </form>
 
 <?php include 'footer_inc_view.php';?>
+
+  <!--submission modal -->
+  <div id="submitModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="submitModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="submitModalLabel">Submit Info: Authentication</h3>
+    </div>
+    <div class="modal-body">
+      <p>Please enter your passkey. If you don't have a passkey, request one <a href"">here</a>.</p>
+      <form>
+        <fieldset>
+          <input type="text" name="passkey" id="inputPasskey">
+          <input type="submit" class="btn btn-success" value="Submit" />
+          <button class="btn btn-success">Cancel</button>  
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    </div>
+  </div>
+  </div>
+  </body>
+</html>
