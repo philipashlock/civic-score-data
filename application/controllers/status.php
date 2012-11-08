@@ -80,6 +80,12 @@ class Status extends CI_Controller {
 			unset($data['email']);
 			unset($data['password']);			
 
+			// date formatting			
+			if(!empty($data['open_date_student'])) $data['open_date_student'] = date("Y-m-d H:i:s", strtotime($data['open_date_student']));
+			if(!empty($data['open_date_teachers'])) $data['open_date_teachers'] = date("Y-m-d H:i:s", strtotime($data['open_date_teachers']));			
+
+			// var_dump($data); exit;
+
 			if ($type == 'edit') {
 				$this->db->where('entity_nces_id', $entity_nces_id);
 				$this->db->update('status', $data); 

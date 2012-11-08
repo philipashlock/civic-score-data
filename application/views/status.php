@@ -147,12 +147,12 @@
         
           <div class="control-group">
             <label class="control-label" for="inputTeacherOpen">When does/did your school open for staff, teachers, and other personnel? </label>
-            <div class="controls"><input type="text" class="datePicker" id="inputTeacherOpen" name="open_date_teachers" placeholder="##/##/####"></div>
+            <div class="controls"><input type="text" class="datePicker" id="inputTeacherOpen" name="open_date_teachers" placeholder="##/##/####" value="<?php if (!empty($status['open_date_teachers'])) echo date("m/d/Y", strtotime($status['open_date_teachers'])); ?>"></div>
           </div>
           
           <div class="control-group">
             <label class="control-label" for="inputStudentOpen">When does/did your school open for students? </label>
-            <div class="controls"><input type="text" class="datePicker" id="inputStudentOpen" name="open_date_student" placeholder="##/##/####"></div>
+            <div class="controls"><input type="text" class="datePicker" id="inputStudentOpen" name="open_date_student" placeholder="##/##/####" value="<?php if (!empty($status['open_date_student'])) echo date("m/d/Y", strtotime($status['open_date_student'])); ?>"></div>
           </div>
       
           <div class="control-group">
