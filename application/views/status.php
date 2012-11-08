@@ -319,11 +319,24 @@
           </div>
 
 
-          Email: <input type="text" name="email" id="inputEmail">
-          Password: <input type="password" name="password" id="inputPasskey">
+        <div class="control-group">
+          <p class="help-inline"><i class="icon-question-sign"></i>In order to submit new school data you need to obtain a passkey. To request a passkey <a href="http://civicagency.org/">contact us</a></p>
+		</div>
+
+		<fieldset>
+          <div class="control-group info">
+            <label class="control-label" for="inputEmail">Your Email: </label>
+            <div class="controls"><input type="text" id="inputEmail" name="email"></div>
+          </div>
+
+          <div class="control-group info">
+            <label class="control-label" for="inputPasskey">Your Password: </label>
+            <div class="controls"><input type="password" id="inputPasskey" name="password"></div>
+          </div>
+		</fieldset>
+			
       
           <input type="submit" class="btn btn-success" value="Authenticate and Submit" /> 
-          <p class="help-inline"><i class="icon-question-sign"></i>In order to submit new school data you need to obtain a passkey. To request a passkey click <a href=""> here </a></p>
       
         </fieldset>
       </div>
