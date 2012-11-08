@@ -308,7 +308,8 @@
             <div class="controls"><input type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentaged'])) echo $status['q_teacher_percentage']; ?>" placeholder="Attendance%"></div>
           </div>
       
-          <input type="submit" class="btn btn-success" value="Submit and Return to School Page" /> 
+          <input type="submit" class="btn btn-success" value="Authenticate and Submit" /> 
+          <p class="help-inline"><i class="icon-question-sign"></i>In order to submit new school data you need to obtain a passkey. To request a passkey click <a href=""> here </a></p>
       
         </fieldset>
       </div>
@@ -331,7 +332,7 @@
       <form>
         <fieldset>
           <input type="text" name="passkey" id="inputPasskey">
-          <input type="submit" class="btn btn-success" value="Submit" />
+          <input type="submit" class="btn btn-success" value="Submit and Return to School Page" />
           <button class="btn btn-success">Cancel</button>  
         </fieldset>
       </form>
