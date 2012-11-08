@@ -27,13 +27,14 @@ CREATE TABLE `status` (
   `entity_type` varchar(255) NOT NULL,
   `entity_nces_id` varchar(255) NOT NULL,
   `contact_point_name` text,
+  `contact_point_phone` text,
   `contact_point_email` text,
   `website` text,
   `status` varchar(255) DEFAULT NULL,
   `open_date_student` datetime DEFAULT NULL,
   `open_date_teachers` datetime DEFAULT NULL,
   `relocation_information` text,
-  `q_fema_resources` text,
+  `q_fema_resources` tinyint(1) DEFAULT NULL,
   `q_student_transport` text,
   `q_student_percentage` text,
   `q_teacher_transport` text,
@@ -66,7 +67,7 @@ CREATE TABLE `status` (
   `q_building_access_notes` text,
   `q_building_access_required` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +76,6 @@ CREATE TABLE `status` (
 
 LOCK TABLES `status` WRITE;
 /*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` VALUES (6,'school','340633001536','0','0','hello','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','0','0','0','0','0',0,NULL,NULL,0,NULL,NULL,0,NULL,NULL,0,NULL,NULL,'0','0',NULL,'0','0',NULL,'0','0',NULL,'0','0',NULL,'0','0',NULL);
 /*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-06 17:47:00
+-- Dump completed on 2012-11-08  0:03:11
