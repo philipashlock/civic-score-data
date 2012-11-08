@@ -17,3 +17,9 @@
 .relocated {
   background-color: #F3F781;
 }
+
+#districtName {
+background : #F2F2F2;
+padding : 1em;
+width : 100%;
+}
