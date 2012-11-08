@@ -13,6 +13,39 @@
     if (!empty($entity)) {
 	?>
   <div id="schoolinfo" class="span9">
+	
+	<?php if (!empty($district)): ?>
+     <div class="row">
+       <div id="districtName" class="span6">
+         <h3><?php if(isset($district['state_district_name'])) echo $district['state_district_name']; elseif(isset($district['agency_name'])) echo 'District: ' . $district['agency_name']; ?></h3>
+         <address>
+           <h4>Address:</h4><br/>
+           <?php echo $district['location_address']; ?><br/>
+           <?php echo $district['location_city']; ?>, <?php echo $district['location_state']; ?> <?php echo $district['location_zip']; ?><br/>
+           <p><a href="https://maps.google.com/?q=<?php echo $district['latitude']; ?>,<?php echo $district['longitude']; ?>">View on a map</a></p>
+
+           <h4>Phone:</h4> <?php if (!empty($district_status['contact_point_phone'])) echo $district_status['contact_point_phone']; elseif (!empty($district['state_phone'])) echo $district['state_phone'];   elseif (!empty($district['phone'])) echo $district['phone']?><br/>
+           <h4>Email:</h4> <?php if (!empty($district_status['contact_point_email'])) echo $district_status['contact_point_email']; elseif (!empty($district['supt_email'])) echo $district['supt_email']; else echo "No email address listed"; ?><br/>
+           <h4>Website:</h4> <?php if (!empty($district_status['website'])) echo '<a href="' . $district_status['website']. '">' . $district_status['website'] . '</a>'; elseif (!empty($district['website'])) echo '<a href="' . $district['website']. '">' . $district['website'] . '</a>';?><br/>
+
+         </address>
+       </div>
+       <div class="span3">
+         <a href="../status/district/<?php echo $district['agency_id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i> Edit District</a>
+       </div>
+     </div>	
+
+     <div id="status">
+        <h3>Status</h3>
+	<?php if (!empty($district_status['status'])): echo ""?>
+       <p><icon></i><?php echo $district_status['status']; ?></p>
+	<?php else : ?>
+      <p>No Status Data Found</p>
+	<?php endif ?>
+	     </div>
+
+	<?php endif; ?>
+
      <div class="row">
        <div id="schoolName" class="span6">
          <h3><?php echo $entity['full_name']; ?></h3>

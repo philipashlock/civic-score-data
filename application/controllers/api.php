@@ -440,15 +440,17 @@ class Api extends REST_Controller {
 		   }
 		}		
 		
-		
-		// make sure null values are really null
-		function check_null(&$item, $key)
-		{ $item = (empty($item)) ? null : $item; }		
-		array_walk($status, 'check_null');
+
 		
 		
 		
 		if (!empty($status)) {
+			
+		
+			// make sure null values are really null
+			function check_null(&$item, $key)
+			{ $item = (empty($item)) ? null : $item; }		
+			array_walk($status, 'check_null');			
 			
 			$type = $status['entity_type'];
 			$id = $status['entity_nces_id'];
@@ -506,7 +508,7 @@ class Api extends REST_Controller {
 		   }
 		}		
 		
-		return $schools;
+		if(!empty($schools)) return $schools;
 		
 	}
 	

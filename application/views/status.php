@@ -91,7 +91,6 @@
 <?php include 'header_inc_view.php';?>
 
 
-
   <div class="span9">
   <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
   </div>
@@ -104,7 +103,8 @@
     </ul>
   </div>
   
-  <form method="post" action="/status/update/<?php if (!empty($status)) echo "edit"; else echo "add" ?>" class="tab-content span9">
+
+  <form method="post" action="/status/update/<?php if (empty($status['error'])) echo "edit"; else echo "add" ?>" class="tab-content span9">
   
     <!-- Step1 School Info -->
     <div id="infoForm" class="tab-pane active">
