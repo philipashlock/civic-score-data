@@ -336,7 +336,7 @@
 
 
         <div class="control-group">
-          <p class="help-inline"><i class="icon-question-sign"></i>In order to submit new school data you need to obtain a passkey. To request a passkey <a href="http://civicagency.org/">contact us</a></p>
+          <p class="help-inline"><i class="icon-question-sign"></i> In order to submit new school data you need to <a href="/status/register">register</a></p>
 		</div>
 
 		<fieldset>

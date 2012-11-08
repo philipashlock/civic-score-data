@@ -21,7 +21,7 @@
 	 		<div class="row">
 
 				<div class="span5">
-				 	<h3>District: <?php if(isset($district['state_district_name'])) echo $district['state_district_name']; elseif(isset($district['agency_name'])) echo 'District: ' . $district['agency_name']; ?></h3>
+				 	<h3>District: <?php if(isset($district['state_district_name'])) echo $district['state_district_name']; elseif(isset($district['agency_name'])) echo  $district['agency_name']; ?></h3>
 				</div>
 
 				<div  class="span3 offset1" id="status">

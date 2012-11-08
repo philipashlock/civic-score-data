@@ -21,10 +21,12 @@ class Status extends CI_Controller {
 			
 			$data['school'] = (!empty($school[0])) ? $school[0] : null;
 			
-		}		
+			$this->load->view('status', $data);			
+			
+		} else {
+			$this->load->view('register');			
+		}	
 		
-		
-		$this->load->view('status', $data);
 	}
 	
 	function register() {
