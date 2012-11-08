@@ -19,22 +19,32 @@
     $("#ADAcompDetails").hide();
     $("#etcDetails").hide();
     
-    
-    $('#myTab a').click(function (e) {
-      e.preventDefault();
-      $(this).tab('show');
-    });
+
+	 $('#infoBack').click(function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+	});
 
 	 $('#needsProceed').click(function (e) {
 	e.preventDefault();
 	$(this).tab('show');
 	});
+	
+	 $('#needsBack').click(function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+	});	
 
 
 	$("#accessProceed").click(function (e) {
 	e.preventDefault();
 	$(this).tab('show');
 	});
+	
+	$("#accessBack").click(function (e) {
+	e.preventDefault();
+	$(this).tab('show');
+	});	
 
     $('.pChk').click(function() {
         if( $("#needElectricity").is(':checked')) {
@@ -95,14 +105,17 @@
   <p>Do you have information about a school you work at or live near? Please submit as much specific information as you can. This information will supplement the data national recovery teams are receiving from field offices. Hopefully your help will mean that the recovery effort is more efficient and directed. Thanks for volunteering!</p>
   </div>
   
-  <div class="span9">
-    <ul class="nav nav-tabs span9" id="myTab">
-      <li class="active" data-toggle="tab"><a href="#infoForm">School Info</a></li>
-      <li><a href="#needsForm" data-toggle="tab">Needs and Damage</a></li>
-      <li><a href="#accessForm" data-toggle="tab">Accessibility</a></li>
-    </ul>
-  </div>
   
+<!-- removing this until it works properly
+
+ <div class="span9">
+   <ul class="nav nav-tabs span9" id="myTab">
+     <li class="active" data-toggle="tab"><a href="#infoForm">School Info</a></li>
+     <li><a href="#needsForm" data-toggle="tab">Needs and Damage</a></li>
+     <li><a href="#accessForm" data-toggle="tab">Accessibility</a></li>
+   </ul>
+ </div>
+-->
 
   <form method="post" action="/status/update/<?php if (empty($status['error'])) echo "edit"; else echo "add" ?>" class="tab-content span9">
   
@@ -163,7 +176,7 @@
             </div>
           </div>
       
-          <button id="needsProceed" data-target="#needsForm" class="btn btn-primary">Save and Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
+          <button id="needsProceed" data-target="#needsForm" class="btn btn-primary">Proceed to Accessibility Section <i class="icon-chevron-right icon-white"></i></button>
       
       </fieldset>
     </div>
@@ -285,7 +298,10 @@
   <input type="hidden" name="entity_nces_id" value="<?php echo $entity['id_nces']; ?>" /> 
   <input type="hidden" name="entity_type" value="school" />
 
-            <button id="accessProceed" data-target="#accessForm" class="btn btn-primary">Save and Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
+
+  <button id="infoBack" data-target="#infoForm" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Info Section</button>
+  
+<button id="accessProceed" data-target="#accessForm" class="btn btn-primary">Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
   
   </fieldset>
   </div>
@@ -335,7 +351,9 @@
           </div>
 		</fieldset>
 			
-      
+
+      <button id="needsBack" data-target="#needsForm" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Needs Section</button>
+	  
           <input type="submit" class="btn btn-success" value="Authenticate and Submit" /> 
       
         </fieldset>
