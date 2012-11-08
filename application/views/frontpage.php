@@ -14,7 +14,7 @@
 				  success: function(data) {
 					
 					$.each(data, function(){
-              			$("#results").show()
+              			$("#results").show();
 
 	        			 switch(this.status) {
 	        			   case 'open':
@@ -27,7 +27,7 @@
 	        			      var schoolstatus = ' class="relocated"><i class="icon-warning-sign icon-white"></i>' + capitaliseFirstLetter(this.status) + '</td></tr>';
 							  break;
 	        			    default:
-	        			      var schoolstatus = '>No data found</td></tr>';
+	        			      var schoolstatus = ' >No data found</td></tr>';
 	        			 }
 	
 						function capitaliseFirstLetter(string) {
