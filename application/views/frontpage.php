@@ -110,7 +110,7 @@
     <div>
     <div id="results" class="span9">
       <h2>Results</h2>
-      <table class="table" id="resultsTable">
+      <table class="table table-striped" id="resultsTable">
         <th>School Info</th><th>Status</th>
         <tbody>
           <tr><td></td><td></td>

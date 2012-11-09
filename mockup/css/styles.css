@@ -1,3 +1,7 @@
+.container {
+	padding-bottom : 5em;
+}
+
 #logo {
   float: left;
 }
@@ -21,6 +25,10 @@
 
 #schoolInfo {
 	
+}
+
+#newNeed fieldset {
+	margin-bottom : 2em;
 }
 
 #districtName, 

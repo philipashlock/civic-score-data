@@ -191,7 +191,7 @@ function format_label($label) {
 			?>
 
 	        <h4>Needs and Damages</h4>
-	        <table class="table" id="needTable">
+	        <table class="table table-hover" id="needTable">
 	         <th>Category</th><th>Present?</th><th>Details</th><th>Priority?</th>
 	          <tr>
 	             <td>Electricity</td>

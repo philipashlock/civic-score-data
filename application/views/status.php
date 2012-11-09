@@ -137,19 +137,17 @@
  </div>
 -->
 
+<div class="span9">
+<h2><?php if (!empty($entity['full_name'])) echo $entity['full_name']; ?></h2>
+</div>
+
   <form method="post" action="/status/update/<?php if (empty($status['error'])) echo "edit"; else echo "add" ?>" class="tab-content span9">
   
     <!-- Step1 School Info -->
     <div id="infoForm" class="tab-pane active">
       <h3>Step 1. School Information</h3>
       <div id="newInfo" class="form-horizontal">
-        <fieldset>
-      
-          <div class="control-group">
-            <label class="control-label" for="inputSchoolName">School Name: </label>
-            <div class="controls"><input type="text" id="inputSchoolName" value="<?php if (!empty($entity['full_name'])) echo $entity['full_name']; ?>" disabled></div>
-          </div>
-        
+        <fieldset>      
           <div class="control-group">
             <label class="control-label" for="inputContactName">Point of Contact: </label>
             <div class="controls"><input type="text" id="inputContactName" name="contact_point_name" value="<?php if (!empty($status['contact_point_name'])) echo $status['contact_point_name']; ?>" placeholder="Point of Contact"></div>
@@ -317,13 +315,12 @@
 
   <input type="hidden" name="entity_nces_id" value="<?php echo $entity['id_nces']; ?>" /> 
   <input type="hidden" name="entity_type" value="school" />
-
-
-  <button id="infoBack" data-target="#infoForm" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Info Section</button>
-  
-<button id="accessProceed" data-target="#accessForm" class="btn btn-primary">Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
   
   </fieldset>
+
+	<button id="infoBack" data-target="#infoForm" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Info Section</button>  
+	<button id="accessProceed" data-target="#accessForm" class="btn btn-primary">Proceed to Needs Section <i class="icon-chevron-right icon-white"></i></button>
+
   </div>
   </div>    <!-- End Step2 School Needs -->
   
@@ -341,7 +338,12 @@
       
           <div class="control-group">
             <label class="control-label" for="inputStudentPercent">What (approximate) percentage of your students can get to school? </label>
-            <div class="controls"><input type="text" id="inputStudentPercent" name="q_student_percentage" value="<?php if (!empty($status['q_student_percentaged'])) echo $status['q_student_percentage']; ?>" placeholder="Attendance%"></div>
+            <div class="controls">
+				<div class="input-append">
+				<input placeholder="00" class="span2" size="3" maxlength="3" id="appendedInput" type="text" id="inputStudentPercent" name="q_student_percentage" value="<?php if (!empty($status['q_student_percentaged'])) echo $status['q_student_percentaged']; ?>">
+				<span class="add-on">%</span>
+				</div>
+			</div>	
           </div>
 
           <div class="control-group">
@@ -351,7 +353,12 @@
       
           <div class="control-group">
             <label class="control-label" for="inputTeacherPercent">What (approximate) percentage of faculty and staff can get to school? </label>
-            <div class="controls"><input type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentaged'])) echo $status['q_teacher_percentage']; ?>" placeholder="Attendance%"></div>
+            <div class="controls">
+				<div class="input-append">
+				<input placeholder="00" class="span2" size="3" maxlength="3" id="appendedInput" type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentaged'])) echo $status['q_teacher_percentage']; ?>">
+				<span class="add-on">%</span>
+				</div>
+			</div>
           </div>
 
 
@@ -372,8 +379,7 @@
 		</fieldset>
 			
 
-      <button id="needsBack" data-target="#needsForm" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Needs Section</button>
-	  
+      	  <button id="needsBack" data-target="#needsForm" class="btn btn-primary"><i class="icon-chevron-left icon-white"></i> Back to Needs Section</button>	  
           <input type="submit" class="btn btn-success" value="Authenticate and Submit" /> 
       
         </fieldset>
