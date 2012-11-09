@@ -122,14 +122,24 @@ class Status extends CI_Controller {
 	}
 	
 	
-	function new_user() {
+	function user($user) {
+		$entity_type = $this->input->post('entity_type', TRUE);
+		$entity_nces_id = $this->input->post('entity_nces_id', TRUE);		
+		
+		
 		
 		// $name, $email, $password
 		
 		// $user['name'] = 'John Doe';
 		// $user['email'] = 'me@john.com';
 		// $password = 'password';
-		// $user['role'] = 'admin';
+		// $user['role'] = 'admin';		
+		
+	}
+	
+	
+	function new_user($user) {
+
 
 		// borrowed from: http://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/
 
@@ -164,7 +174,12 @@ class Status extends CI_Controller {
 		if ($query->num_rows() > 0) {
 		   foreach ($query->result() as $rows)  {	
 
+				$user['id']							= $rows->id		 ;
+				$user['name']							= $rows->name		 ;
+				$user['email']							= $rows->email		 ;
 				$user['hash']							= $rows->hash		 ;
+				$user['role']							= $rows->role		 ;				
+
 
 		   }
 		
@@ -181,7 +196,7 @@ class Status extends CI_Controller {
 			$hash = $salt . $hash;
 
 			if ( $hash == $user['hash'] ) {
-				return true;
+				return $user;
 			} else {
 				return false;
 			}		
