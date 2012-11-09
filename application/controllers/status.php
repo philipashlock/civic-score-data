@@ -89,8 +89,11 @@ class Status extends CI_Controller {
 			unset($data['password']);			
 
 			// date formatting			
-			if(!empty($data['open_date_student'])) $data['open_date_student'] = date("Y-m-d H:i:s", strtotime($data['open_date_student']));
-			if(!empty($data['open_date_teachers'])) $data['open_date_teachers'] = date("Y-m-d H:i:s", strtotime($data['open_date_teachers']));			
+			if(!empty($data['open_date_student']) && strtotime($data['open_date_student']) > 0) {$data['open_date_student'] = date("Y-m-d H:i:s", strtotime($data['open_date_student']));} 
+			else {$data['open_date_student'] = null;}
+			
+			if(!empty($data['open_date_teachers']) && strtotime($data['open_date_teachers']) > 0) {$data['open_date_teachers'] = date("Y-m-d H:i:s", strtotime($data['open_date_teachers']));} 
+			else {$data['open_date_student'] = null;}						
 
 			// var_dump($data); exit;
 
@@ -122,24 +125,60 @@ class Status extends CI_Controller {
 	}
 	
 	
-	function user($user) {
-		$entity_type = $this->input->post('entity_type', TRUE);
-		$entity_nces_id = $this->input->post('entity_nces_id', TRUE);		
+	function user() {
 		
+		if($this->input->post('admin_email', TRUE)) {
+			$user_form = $this->input->post();
+			
+			
+			// $user_form['password']
+			// $user_form['name'] 		
+			// $user_form['role'] 	
+			// $user_form['email'] 							
 		
+			$admin_email = $this->input->post('admin_email', TRUE);
+			$admin_pass = $this->input->post('admin_password', TRUE);	
+			
+			$admin = $this->check_user($admin_email, $admin_pass);
+			
+			// Make sure editor has admin privileges
+			if ($admin && $admin['role'] == 'admin') {
+				
+				//Check to see if this user is already in the system
+				
+				// If they're not add them
+
+					// remove admin from array
+					unset($user_form['admin_email']);
+					unset($user_form['admin_password']);				 	
+				
+					$this->new_user($user_form);
+					
+					// load success message
+					$data['messages']['success'] = 'User added';
+					$this->load->view('user', $data);
+			}
+			
+				
+		} else {
+			
+			//show empty view
+			$this->load->view('user');			
+			
+		}
+	
 		
-		// $name, $email, $password
-		
-		// $user['name'] = 'John Doe';
-		// $user['email'] = 'me@john.com';
-		// $password = 'password';
-		// $user['role'] = 'admin';		
+	
 		
 	}
 	
 	
 	function new_user($user) {
 
+		// $user['name'] = 'John Doe';
+		// $user['email'] = 'me@john.com';
+		// $user['password'] = 'password';
+		// $user['role'] = 'admin';
 
 		// borrowed from: http://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/
 
@@ -149,7 +188,7 @@ class Status extends CI_Controller {
 		$salt = hash('sha256', uniqid(mt_rand(), true) . 'sandy school finder abracadabra' . strtolower($user['email']));
 
 		// Prefix the password with the salt
-		$hash = $salt . $password;
+		$hash = $salt . $user['password'];
 
 		// Hash the salted password a bunch of times
 		for ( $i = 0; $i < 100000; $i ++ ) {
@@ -160,7 +199,9 @@ class Status extends CI_Controller {
 		$hash = $salt . $hash;	
 		
 		$user['hash'] = $hash;
-
+		
+		//remove original password from array
+		unset($user['password']);
 		
 		$this->db->insert('user', $user);		
 		
