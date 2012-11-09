@@ -18,18 +18,46 @@
   background-color: #F3F781;
 }
 
-#districtName {
-background : #F2F2F2;
-margin-bottom : 1em;
-padding : .5em;
-}
-
 
 #schoolName {
 margin-bottom : 3em;		
 }
 
+#districtName, 
+#schoolName {
+	margin-bottom : 2em;
+	padding : .5em;
+    border: 1px solid #D4D4D4;
+border-top : 0;	
+background : #F2F2F2;
+}
+
+#schoolName {
+background : #FAFAFA;
+}
+
 .displayboxHead {
 	background-color : #ccc;
-	padding : .25em 0;
+
+    background-color: #FAFAFA;
+    background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);
+    background-repeat: repeat-x;
+    border: 1px solid #D4D4D4;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    min-height: 40px;
+    padding-left: 20px;
+    padding-right: 20px
+
+	
+}
+
+#schoolHead.displayboxHead {
+	border-bottom : 1px solid #ccc;
+}
+
+
+.right {
+	float : right;
+	
 }

@@ -10,6 +10,27 @@
 
 
   <?php
+
+
+function format_label($label) {
+	
+	switch($label) {
+		case 'relocated':
+			$style = ' label-warning';
+			break;
+		case 'open':
+			$style = ' label-success';
+			break;			
+		case 'closed':
+			$style = ' label-important';
+			break;	
+	}
+	return $style;
+}
+
+
+
+
     if (!empty($entity)) {
 	?>
   <div id="schoolinfo" class="span9">
@@ -17,27 +38,27 @@
 	<?php if (!empty($district)): ?>
 
 
-	<div class="row displayboxHead">
+	<div id="districtHead" class="row displayboxHead">
 		
-		<div  class="span3" id="entityTitle">
-			District
-		</div>
+		<div class="row">
+			
+			<h4 class="span2">District</h4>
 		
-		<div  class="span2 offset4" id="status">
-		<?php if (!empty($district_status['status'])): echo ""?>
-			<span class="label"><?php echo $district_status['status']; ?></span>			
-		<?php else : ?>
-			<span class="label">No Status Data Found</span>
-		<?php endif ?>
-		</div>				
+			<div class="right">
+				<?php if (!empty($district_status['status'])): ?>
+					<h5 class="label<?php echo format_label($district_status['status'])?>"><?php echo ucwords($district_status['status']); ?></h5>			
+				<?php else : ?>
+					<h5 class="label">No Status Data Found</h5>
+				<?php endif ?>
+			</div>				
+		</div>	
 		
 	</div>
 
      <div class="row" id="districtName">
 
 	 		<div class="row">
-				<div class="span9" id="status">
-		
+				<div class="span9" id="status">		
 				 	<h3><?php if(isset($district['state_district_name'])) echo $district['state_district_name']; elseif(isset($district['agency_name'])) echo  $district['agency_name']; ?></h3>
 				</div>
 			</div>
@@ -79,24 +100,28 @@
 
 
 
-    <div class="row" id="schoolName">
+	<div id="schoolHead" class="row displayboxHead">
+		<div class="row">
+			
+			<h4 class="span2">School</h4>
 
+			<div class="right">
+				<?php if (!empty($status['status'])): echo ""?>
+				  <h5 class="label<?php echo format_label($status['status'])?>"><?php echo ucwords($status['status']); ?></h5>
+				<?php else : ?>
+					<h5 class="label">No Status Data Found</h5>
+				<?php endif ?>
+			</div>				
+		</div>
+		
+	</div>
+
+     <div class="row" id="schoolName">
 
 	 		<div class="row">
-
-				<div class="span5">
+				<div class="span9" id="status">		
 					<h3><?php echo $entity['full_name']; ?></h3>		         
 				</div>
-
-				<div  class="span3 offset1" id="schooolStatus">
-				   <h3>Status</h3>
-				<?php if (!empty($status['status'])): echo ""?>
-				  <p><icon></i><?php echo $status['status']; ?></p>
-				<?php else : ?>
-				 <p>No Status Data Found</p>
-				<?php endif ?>
-				</div>
-
 			</div>
 
 	 		<div class="row">
@@ -110,24 +135,21 @@
 		           <p><a href="https://maps.google.com/?q=<?php echo $entity['latitude']; ?>,<?php echo $entity['longitude']; ?>">View on a map</a></p>
 		         </address>
 
-		          <h4>Phone:</h4> <?php if (!empty($status['contact_point_phone'])) echo $status['contact_point_phone']; elseif (!empty($entity['phone'])) echo $entity['phone']?><br/>
+		          <h4>Phone:</h4> <?php if (!empty($district_status['contact_point_phone'])) echo $district_status['contact_point_phone']; elseif (!empty($district['state_phone'])) echo $district['state_phone'];   elseif (!empty($district['phone'])) echo $district['phone']?><br/>
 
 		       </div>
 
 				<div class="span3 offset2">
-		          <h4>Email:</h4> <?php if (!empty($district_status['contact_point_email'])) echo $district_status['contact_point_email']; else echo "No email address listed"; ?><br/>
-		          <h4>Website:</h4> <?php if (!empty($district_status['website'])) echo '<a href="' . $district_status['website']. '">' . $district_status['website'] . '</a>'; ?><br/>
+		          	<h4>Email:</h4> <?php if (!empty($district_status['contact_point_email'])) echo $district_status['contact_point_email']; else echo "No email address listed"; ?><br/>
+		          	<h4>Website:</h4> <?php if (!empty($district_status['website'])) echo '<a href="' . $district_status['website']. '">' . $district_status['website'] . '</a>'; ?><br/>
 
-		         <a href="../status/school/<?php echo $entity['id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i> Edit School</a>
-		
+		         	<a href="../status/school/<?php echo $entity['id_nces']; ?>" role="button" class="btn btn-success"><i class="icon-star icon-white"></i> Edit School</a>		
 				</div>
 
 
-		 </div>	
+		 	</div>	
 		
-    </div>
-
-
+     </div>	
 
 
 
