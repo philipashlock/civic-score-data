@@ -15,24 +15,31 @@
   <div id="schoolinfo" class="span9">
 	
 	<?php if (!empty($district)): ?>
+
+
+	<div class="row displayboxHead">
+		
+		<div  class="span3" id="entityTitle">
+			District
+		</div>
+		
+		<div  class="span2 offset4" id="status">
+		<?php if (!empty($district_status['status'])): echo ""?>
+			<span class="label"><?php echo $district_status['status']; ?></span>			
+		<?php else : ?>
+			<span class="label">No Status Data Found</span>
+		<?php endif ?>
+		</div>				
+		
+	</div>
+
      <div class="row" id="districtName">
 
-
 	 		<div class="row">
-
-				<div class="span5">
-				 	<h3>District: <?php if(isset($district['state_district_name'])) echo $district['state_district_name']; elseif(isset($district['agency_name'])) echo  $district['agency_name']; ?></h3>
+				<div class="span9" id="status">
+		
+				 	<h3><?php if(isset($district['state_district_name'])) echo $district['state_district_name']; elseif(isset($district['agency_name'])) echo  $district['agency_name']; ?></h3>
 				</div>
-
-				<div  class="span3 offset1" id="status">
-				   <h3>Status</h3>
-				<?php if (!empty($district_status['status'])): echo ""?>
-				  <p><icon></i><?php echo $district_status['status']; ?></p>
-				<?php else : ?>
-				 <p>No Status Data Found</p>
-				<?php endif ?>
-				</div>
-
 			</div>
 
 	 		<div class="row">

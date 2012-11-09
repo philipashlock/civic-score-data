@@ -20,11 +20,16 @@
 
 #districtName {
 background : #F2F2F2;
-padding : 1em;
-width : 100%;
 margin-bottom : 1em;
+padding : .5em;
 }
+
 
 #schoolName {
 margin-bottom : 3em;		
+}
+
+.displayboxHead {
+	background-color : #ccc;
+	padding : .25em 0;
 }
