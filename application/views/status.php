@@ -340,7 +340,7 @@
             <label class="control-label" for="inputStudentPercent">What (approximate) percentage of your students can get to school? </label>
             <div class="controls">
 				<div class="input-append">
-				<input placeholder="00" class="span2" size="3" maxlength="3" id="appendedInput" type="text" id="inputStudentPercent" name="q_student_percentage" value="<?php if (!empty($status['q_student_percentaged'])) echo $status['q_student_percentaged']; ?>">
+				<input placeholder="00" class="span2" size="3" maxlength="3" id="appendedInput" type="text" id="inputStudentPercent" name="q_student_percentage" value="<?php if (!empty($status['q_student_percentage'])) echo $status['q_student_percentage']; ?>">
 				<span class="add-on">%</span>
 				</div>
 			</div>	
@@ -355,7 +355,7 @@
             <label class="control-label" for="inputTeacherPercent">What (approximate) percentage of faculty and staff can get to school? </label>
             <div class="controls">
 				<div class="input-append">
-				<input placeholder="00" class="span2" size="3" maxlength="3" id="appendedInput" type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentaged'])) echo $status['q_teacher_percentage']; ?>">
+				<input placeholder="00" class="span2" size="3" maxlength="3" id="appendedInput" type="text" id="inputTeacherPercent" name="q_teacher_percentage" value="<?php if (!empty($status['q_teacher_percentage'])) echo $status['q_teacher_percentage']; ?>">
 				<span class="add-on">%</span>
 				</div>
 			</div>
