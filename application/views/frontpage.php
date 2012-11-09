@@ -76,39 +76,39 @@
 
     
     <!--search form -->
-    <div id="search" class="span9">
-    <span class="help-block">Search to find your school:</span>
-    <form class="form-horizontal">
-      <fieldset>
-        <div class="control-group">
-          <label class="control-label" for="inputNameorID">School Name: </label>
-          <div class="controls"><input type="text" id="inputNameorID" placeholder="Name"></div>
-        </div>
+    <div id="search" class="row-fluid">
+	    <span class="help-block">Search to find your school:</span>
+	    <form class="form-horizontal">
+	      <fieldset>
+	        <div class="control-group">
+	          <label class="control-label" for="inputNameorID">School Name: </label>
+	          <div class="controls"><input type="text" id="inputNameorID" placeholder="Name"></div>
+	        </div>
 
-        <div class="control-group">
-          <label class="control-label">OR</label>
-        </div>
+	        <div class="control-group">
+	          <label class="control-label">OR</label>
+	        </div>
           
-        <div class="control-group">
-          <label class="control-label" for="inputLocation">Location: </label>
-          <div class="controls"><input type="text" id="inputLocation" placeholder="Full address"></div>
-        </div>
+	        <div class="control-group">
+	          <label class="control-label" for="inputLocation">Location: </label>
+	          <div class="controls"><input type="text" id="inputLocation" placeholder="Full address"></div>
+	        </div>
 
-        <div class="control-group">
-          <p class="help-inline"><i class="icon-question-sign"></i> Location will find the school district for an address and display the schools in that district </p>
-          <p class="help-inline"><i class="icon-warning-sign"></i> <em>Location is currently not working for NYC addresses</em></p>
+	        <div class="control-group">
+	          <p class="help"><i class="icon-question-sign"></i> Location will find the school district for an address and display the schools in that district </p>
+	          <p class="help"><i class="icon-warning-sign"></i> <em>Location is currently not working for NYC addresses</em></p>
 
-        </div>
+	        </div>
 
-          <button type="submit" class="btn btn-success" id="submit" data-loading-text="Loading..." autocomplete="off"><i class="icon-search icon-white"></i> Search</button>
-          <button type="submit" class="btn btn-warning" id="reset">Reset</button>
+	          <button type="submit" class="btn btn-success" id="submit" data-loading-text="Loading..." autocomplete="off"><i class="icon-search icon-white"></i> Search</button>
+	          <button type="submit" class="btn btn-warning" id="reset">Reset</button>
 
-      </fieldset>
-    </form>
-    
+	      </fieldset>
+	    </form>
+    </div>
+
     <!--results -->
-    <div>
-    <div id="results" class="span9">
+    <div id="results" class="row-fluid">
       <h2>Results</h2>
       <table class="table table-striped" id="resultsTable">
         <th>School Info</th><th>Status</th>
