@@ -39,8 +39,8 @@ CREATE TABLE `districts` (
   `phone` text NOT NULL,
   `congressional_code` text NOT NULL,
   `state_agency_id` text NOT NULL,
-  `latitude` text NOT NULL,
   `longitude` text NOT NULL,
+  `latitude` text NOT NULL,
   `agency_type` text NOT NULL,
   PRIMARY KEY (`district_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2048 DEFAULT CHARSET=latin1;
@@ -65,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-11-05  3:19:47
+-- Dump completed on 2012-11-09  0:50:54
