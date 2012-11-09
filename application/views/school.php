@@ -115,6 +115,9 @@ function format_label($label) {
 		</div>
 		
 	</div>
+	
+	
+	
 
      <div class="row" id="schoolName">
 
@@ -124,7 +127,7 @@ function format_label($label) {
 				</div>
 			</div>
 
-	 		<div class="row">
+	 		<div class="row" id="schoolInfo">
 
 		       <div class="span4">
 			
@@ -149,144 +152,146 @@ function format_label($label) {
 
 		 	</div>	
 		
+		
+	     <div id="details">
+	       <h3>Details</h3>
+	       <h4>Accessibility</h4>
+	       <table class="table" id="accessTable">
+	         <th>Personnel Category</th><th>Transporation</th><th>Attendance %</th>
+	         <tr>
+	           <td>Students</td>
+	           <td>	<?php if (!empty($status['q_student_transport'])): echo $status['q_student_transport'];
+	                      else: ?>No data found<?php endif ?></td>
+	           <td>	<?php if (!empty($status['q_student_percentage'])): echo $status['q_student_percentage'];
+	                      else: ?>No data found<?php endif ?></td>
+	         </tr>
+	         <tr>
+	           <td>Teachers and Staff</td>
+	           <td>	<?php if (!empty($status['q_teacher_transport'])): echo $status['q_teacher_transport'];
+	                      else: ?>No data found<?php endif ?></td>
+	           <td>	<?php if (!empty($status['q_teacher_percentage'])): echo $status['q_teacher_percentage'];
+	                      else: ?>No data found<?php endif ?></td>
+	           </tr>
+	        </table>
+
+
+			<?php 		
+			function format_needs(&$needs_type) {
+				if (isset($needs_type)) { 
+					if ($needs_type == 1) 		return '<i class="icon-wrench"></i> '; 
+					elseif ($needs_type == 0) 	return '<i class="icon-ok"></i> ';
+				} else {						return 'No data found'; } 
+			}	
+			function format_req(&$req_flag) {
+				if (isset($req_flag)) { 
+					if ($req_flag == 1) 		return '<i class="icon-ok"></i> '; 
+					elseif ($req_flag == 0) 	return '';
+				} else {						return 'No data found'; } 
+			}		
+			?>
+
+	        <h4>Needs and Damages</h4>
+	        <table class="table" id="needTable">
+	         <th>Category</th><th>Present?</th><th>Details</th><th>Priority?</th>
+	          <tr>
+	             <td>Electricity</td>
+	             <td>
+					<?php echo format_needs($status['q_electricity']); ?>
+				 </td>
+	             <td><?php if (!empty($status['q_electricity_notes'])): echo $status['q_electricity_notes'];
+	                         else: ?>No data found<?php endif ?></td>
+	             <td><?php if (isset($status['q_electricity_status_required'])): echo $status['q_electricity_status_required'];
+	                         else: ?>No data found<?php endif ?></td>
+	           </tr>
+	           <tr>
+	              <td>Supplies and Technology</td>
+	              <td>				
+					<?php echo format_needs($status['q_student_resources']); ?>
+				  </td>
+	              <td><?php if (!empty($status['q_student_resources_notes'])): echo $status['q_student_resources_notes'];
+	                          else: ?>No data found<?php endif ?></td>
+	              <td><?php echo format_req($status['q_student_resources_required']); ?></td>
+	            </tr>
+	            <tr>
+	               <td>Water Damage</td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_water']); ?>
+				   </td>
+	               <td><?php if (!empty($status['q_building_water_notes'])): echo $status['q_building_water_notes'];
+	                           else: ?>No data found<?php endif ?></td>
+	               <td><?php echo format_req($status['q_building_water_required']); ?></td>
+	             </tr>
+	             <tr>
+	                <td>Mold</td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_mold']); ?>
+				   </td>
+	                <td><?php if (!empty($status['q_building_mold_notes'])): echo $status['q_building_mold_notes'];
+	                            else: ?>No data found<?php endif ?></td>
+	                <td><?php echo format_req($status['q_building_mold_required']); ?></td>
+	              </tr>
+	              <tr>
+	                 <td>Structural Damage</td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_structural']); ?>
+				   </td>
+
+	                 <td><?php if (!empty($status['q_building_structural_notes'])): echo $status['q_building_structural_notes'];
+	                             else: ?>No data found<?php endif ?></td>
+	                 <td><?php echo format_req($status['q_building_structural_required']); ?></td>
+	               </tr>
+	               <tr>
+	                  <td>Cafeteria</td>
+		           <td>				
+				     <?php echo format_needs($status['q_building_cafeteria']); ?>
+				   </td>
+
+	                  <td><?php if (!empty($status['q_building_cafeteria_notes'])): echo $status['q_building_cafeteria_notes'];
+	                              else: ?>No data found<?php endif ?></td>
+	                  <td><?php echo format_req($status['q_building_cafeteria_required']); ?></td>
+	                </tr>
+	                <tr>
+	                   <td>Other Contents</td>
+			           <td>				
+					     <?php echo format_needs($status['q_building_contents']); ?>
+					   </td>
+
+	                   <td><?php if (!empty($status['q_building_contents_notes'])): echo $status['q_building_contents_notes'];
+	                               else: ?>No data found<?php endif ?></td>
+	                   <td><?php echo format_req($status['q_building_contents_required']); ?></td>
+	                 </tr>
+	                 <tr>
+	                    <td>ADA Compliance</td>
+			           <td>				
+					     <?php echo format_needs($status['q_building_ada']); ?>
+					   </td>
+
+	                    <td><?php if (!empty($status['q_building_ada_notes'])): echo $status['q_building_ada_notes'];
+	                                else: ?>No data found<?php endif ?></td>
+	                    <td><?php echo format_req($status['q_building_ada_required']); ?></td>
+	                  </tr>
+	                  <tr>
+	                     <td>Access Damage</td>
+			           <td>				
+					     <?php echo format_needs($status['q_building_access']); ?>
+					   </td>
+
+	                     <td><?php if (!empty($status['q_building_access_notes'])): echo $status['q_building_access_notes'];
+	                                 else: ?>No data found<?php endif ?></td>
+	                     <td><?php echo format_req($status['q_building_access_required']); ?></td>
+	                   </tr>
+
+	         </table>
+	     </div>		
+		
+		
      </div>	
 
 
 
 	
-     <div id="details">
-       <h3>Details</h3>
-       <h4>Accessibility</h4>
-       <table class="table" id="accessTable">
-         <th>Personnel Category</th><th>Transporation</th><th>Attendance %</th>
-         <tr>
-           <td>Students</td>
-           <td>	<?php if (!empty($status['q_student_transport'])): echo $status['q_student_transport'];
-                      else: ?>No data found<?php endif ?></td>
-           <td>	<?php if (!empty($status['q_student_percentage'])): echo $status['q_student_percentage'];
-                      else: ?>No data found<?php endif ?></td>
-         </tr>
-         <tr>
-           <td>Teachers and Staff</td>
-           <td>	<?php if (!empty($status['q_teacher_transport'])): echo $status['q_teacher_transport'];
-                      else: ?>No data found<?php endif ?></td>
-           <td>	<?php if (!empty($status['q_teacher_percentage'])): echo $status['q_teacher_percentage'];
-                      else: ?>No data found<?php endif ?></td>
-           </tr>
-        </table>
 
-
-		<?php 		
-		function format_needs(&$needs_type) {
-			if (isset($needs_type)) { 
-				if ($needs_type == 1) 		return '<i class="icon-wrench"></i> '; 
-				elseif ($needs_type == 0) 	return '<i class="icon-ok"></i> ';
-			} else {						return 'No data found'; } 
-		}	
-		function format_req(&$req_flag) {
-			if (isset($req_flag)) { 
-				if ($req_flag == 1) 		return '<i class="icon-ok"></i> '; 
-				elseif ($req_flag == 0) 	return '';
-			} else {						return 'No data found'; } 
-		}		
-		?>
-
-        <h4>Needs and Damages</h4>
-        <table class="table" id="needTable">
-         <th>Category</th><th>Present?</th><th>Details</th><th>Priority?</th>
-          <tr>
-             <td>Electricity</td>
-             <td>
-				<?php echo format_needs($status['q_electricity']); ?>
-			 </td>
-             <td><?php if (!empty($status['q_electricity_notes'])): echo $status['q_electricity_notes'];
-                         else: ?>No data found<?php endif ?></td>
-             <td><?php if (isset($status['q_electricity_status_required'])): echo $status['q_electricity_status_required'];
-                         else: ?>No data found<?php endif ?></td>
-           </tr>
-           <tr>
-              <td>Supplies and Technology</td>
-              <td>				
-				<?php echo format_needs($status['q_student_resources']); ?>
-			  </td>
-              <td><?php if (!empty($status['q_student_resources_notes'])): echo $status['q_student_resources_notes'];
-                          else: ?>No data found<?php endif ?></td>
-              <td><?php echo format_req($status['q_student_resources_required']); ?></td>
-            </tr>
-            <tr>
-               <td>Water Damage</td>
-	           <td>				
-			     <?php echo format_needs($status['q_building_water']); ?>
-			   </td>
-               <td><?php if (!empty($status['q_building_water_notes'])): echo $status['q_building_water_notes'];
-                           else: ?>No data found<?php endif ?></td>
-               <td><?php echo format_req($status['q_building_water_required']); ?></td>
-             </tr>
-             <tr>
-                <td>Mold</td>
-	           <td>				
-			     <?php echo format_needs($status['q_building_mold']); ?>
-			   </td>
-                <td><?php if (!empty($status['q_building_mold_notes'])): echo $status['q_building_mold_notes'];
-                            else: ?>No data found<?php endif ?></td>
-                <td><?php echo format_req($status['q_building_mold_required']); ?></td>
-              </tr>
-              <tr>
-                 <td>Structural Damage</td>
-	           <td>				
-			     <?php echo format_needs($status['q_building_structural']); ?>
-			   </td>
-
-                 <td><?php if (!empty($status['q_building_structural_notes'])): echo $status['q_building_structural_notes'];
-                             else: ?>No data found<?php endif ?></td>
-                 <td><?php echo format_req($status['q_building_structural_required']); ?></td>
-               </tr>
-               <tr>
-                  <td>Cafeteria</td>
-	           <td>				
-			     <?php echo format_needs($status['q_building_cafeteria']); ?>
-			   </td>
-
-                  <td><?php if (!empty($status['q_building_cafeteria_notes'])): echo $status['q_building_cafeteria_notes'];
-                              else: ?>No data found<?php endif ?></td>
-                  <td><?php echo format_req($status['q_building_cafeteria_required']); ?></td>
-                </tr>
-                <tr>
-                   <td>Other Contents</td>
-		           <td>				
-				     <?php echo format_needs($status['q_building_contents']); ?>
-				   </td>
-
-                   <td><?php if (!empty($status['q_building_contents_notes'])): echo $status['q_building_contents_notes'];
-                               else: ?>No data found<?php endif ?></td>
-                   <td><?php echo format_req($status['q_building_contents_required']); ?></td>
-                 </tr>
-                 <tr>
-                    <td>ADA Compliance</td>
-		           <td>				
-				     <?php echo format_needs($status['q_building_ada']); ?>
-				   </td>
-
-                    <td><?php if (!empty($status['q_building_ada_notes'])): echo $status['q_building_ada_notes'];
-                                else: ?>No data found<?php endif ?></td>
-                    <td><?php echo format_req($status['q_building_ada_required']); ?></td>
-                  </tr>
-                  <tr>
-                     <td>Access Damage</td>
-		           <td>				
-				     <?php echo format_needs($status['q_building_access']); ?>
-				   </td>
-
-                     <td><?php if (!empty($status['q_building_access_notes'])): echo $status['q_building_access_notes'];
-                                 else: ?>No data found<?php endif ?></td>
-                     <td><?php echo format_req($status['q_building_access_required']); ?></td>
-                   </tr>
-
-         </table>
-       </table>
-     </div>
   </div>
-    </div>
   <?php
   }
   ?>

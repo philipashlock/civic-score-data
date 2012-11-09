@@ -19,8 +19,8 @@
 }
 
 
-#schoolName {
-margin-bottom : 3em;		
+#schoolInfo {
+	
 }
 
 #districtName, 
@@ -56,6 +56,10 @@ background : #FAFAFA;
 	border-bottom : 1px solid #ccc;
 }
 
+
+#details {
+	margin-top : 3em;
+}
 
 .right {
 	float : right;
