@@ -157,18 +157,82 @@ class Status extends CI_Controller {
 					// load success message
 					$data['messages']['success'] = 'User added';
 					$this->load->view('user', $data);
+			} else {
+				$data['messages']['error'] = 'Admin authentication failed';
+			}
+			
+			if(isset($data['messages']['error'])) {
+				$this->load->view('user', $data);				
 			}
 			
 				
+		} 
+		
+		else {
+			$this->load->view('user');					
+		}		
+		
+	}
+	
+	
+	function user_update() {
+
+		if($this->input->post('email', TRUE)) {
+			
+			$user = $this->check_user($this->input->post('email', TRUE), $this->input->post('password', TRUE));
+
+			// Make sure editor has admin privileges
+			if ($user) {			
+				
+				$user = $this->input->post();
+				$user['password'] = $user['new_password'];
+				unset($user['new_password']);
+
+				if($this->update_user($user)) {
+					// load success message
+					$data['messages']['success'] = 'Password updated';
+					$this->load->view('user_update', $data);					
+				} else {				
+					// updating user failed
+					$data['messages']['error'] = 'Updating user failed';											
+				}
+
+			} else {				
+				// submitted user/pass didn't validate
+				$data['messages']['error'] = "Email or password didn't validate";		
+			}
+			
+			// submitted fields didn't validate			
+			if (empty($data['messages'])) {
+				$data['messages']['error'] = "Fields didn't validate";
+			}
+			
+			if(isset($data['messages']['error'])) {
+				$this->load->view('user_update', $data);
+			}											
+
+		}
+		
+		else {
+			$this->load->view('user_update');
+		}			
+		
+	}
+	
+	
+	function update_user($user) {
+	
+		$user = $this->pass_to_hash($user);
+		
+		$this->db->where('email', $user['email']);		
+		if($this->db->update('user', $user)) {
+			return true;
 		} else {
-			
-			//show empty view
-			$this->load->view('user');			
-			
+			return false;
 		}
 	
 		
-	
+
 		
 	}
 	
@@ -180,6 +244,14 @@ class Status extends CI_Controller {
 		// $user['password'] = 'password';
 		// $user['role'] = 'admin';
 
+		$user = $this->pass_to_hash($user);
+		
+		$this->db->insert('user', $user);		
+		
+	}
+	
+	
+	function pass_to_hash($user) {
 		// borrowed from: http://alias.io/2010/01/store-passwords-safely-with-php-and-mysql/
 
 		// Create a 256 bit (64 characters) long random salt
@@ -203,9 +275,9 @@ class Status extends CI_Controller {
 		//remove original password from array
 		unset($user['password']);
 		
-		$this->db->insert('user', $user);		
-		
+		return $user;		
 	}
+	
 	
 	function check_user($email, $password) {
 

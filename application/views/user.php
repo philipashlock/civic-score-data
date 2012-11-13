@@ -57,7 +57,7 @@
         
           <div class="control-group info-warning">
             <label class="control-label" for="inputTeacherOpen">Password </label>
-            <div class="controls"><input type="text" class="datePicker" id="inputTeacherOpen" name="password" placeholder="*********" value="<?php if (!empty($status['open_date_teachers'])) echo date("m/d/Y", strtotime($status['open_date_teachers'])); ?>"></div>
+            <div class="controls"><input type="password" name="password" placeholder="*********" value=""></div>
           </div>
 
 
