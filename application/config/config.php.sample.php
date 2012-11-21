@@ -3,9 +3,15 @@
 
 $config['website_root'] = 'http://your_url.dev';
 
-$config['yahoo_api_key'] = 'your_api_key';
-
 $config['ganalytics_id'] = 'your_google_analytics_id';
+
+$config['faq_source_url'] = 'http://www.usa.gov/About/developer_resources/allfaqs.xml';
+$config['xml_file_path'] = '/tmp/your/file/path/';
+
+
+$config['open_calais_api'] = 'your_api_key';
+$config['enable_calais'] = false;
+
 
 
 

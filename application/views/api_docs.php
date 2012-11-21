@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>SandySchool API</title>
+	<title>FAQs API</title>
 
 <style type="text/css">
 
@@ -45,57 +45,50 @@ code {
 </head>
 <body>
 
-<h1>Welcome to the experimental SandySchools API</h1>
+<h1>Welcome to the experimental FAQs API</h1>
 
 
-<h1>SandySchools Methods &amp; Resources</h1>
+<h1>Methods &amp; Resources</h1>
 
-<h2>School Search by School Name or District ID</h2>
-<pre>URL: <?php echo $website_root ?>/api/schools</pre>
-
-<p>Parameters</p>
-
-<ul>
-	<li><strong>search</strong> This is any string that can be searched</li>
-	<li><strong>district</strong> This is the NCES ID for the School District</li>
-</ul>
-
-<h3>Example Calls</h3>
-<p>
-	<a href="<?php echo $website_root ?>/api/schools?search=atlantic%20ave"><?php echo $website_root ?>/api/schools?search=atlantic%20ave</a>
-</p>
-<p>
-	<a href="<?php echo $website_root ?>/api/schools?district=3406330"><?php echo $website_root ?>/api/schools?district=3406330</a>
-</p>
-
-
-<h2>District Search by Location, County, District ID</h2>
-<pre>URL: <?php echo $website_root ?>/api/district</pre>
+<h2>Answer Search</h2>
+<pre>URL: <?php echo $website_root ?>/api/answer</pre>
 
 <p>Parameters</p>
 
 <ul>
-	<li><strong>id</strong> This is the NCES ID for the School District</li>
-	<li><strong>location</strong> This is any string that can be geocoded</li>
-	<li><strong>county</strong> This is any string that can be searched on the county field</li>
+	<li><strong>topic</strong> This will list Answers for the given topic</li>
+	<li><strong>id</strong> This FAQ Answer ID</li>
+	<li><strong>search</strong> This will provide a keyword search for Answers</li>
+</ul>
 
+<h3>Example Calls</h3>
+<p>
+	<a href="<?php echo $website_root ?>/api/answer?topic=Reference and General Government"><?php echo $website_root ?>/api/answer?topic=Reference and General Government</a>
+</p>
+<p>
+	<a href="<?php echo $website_root ?>/api/answer?id=2139"><?php echo $website_root ?>/api/answer?id=2139</a>
+</p>
+<p>
+	<a href="<?php echo $website_root ?>/api/answer?search=Passports"><?php echo $website_root ?>/api/answer?search=Passports</a>
+</p>
+
+
+
+<h2>Topics</h2>
+<pre>URL: <?php echo $website_root ?>/api/topic</pre>
+
+<p>Parameters</p>
+
+<ul>
+	<li><strong>name</strong> List all sub topics for a given topic</li>
 </ul>
 
 
 
 <h3>Example Calls</h3>
 <p>
-	<a href="<?php echo $website_root ?>/api/district?id=3406330"><?php echo $website_root ?>/api/district?id=3406330</a>
+	<a href="<?php echo $website_root ?>/api/topic?name=Reference and General Government"><?php echo $website_root ?>/api/topic?name=Reference and General Government</a>
 </p>
-<p>
-	<a href="<?php echo $website_root ?>/api/district?location=haddon%20heights"><?php echo $website_root ?>/api/district?location=haddon%20heights</a>
-</p>
-
-<p>
-	<a href="<?php echo $website_root ?>/api/district?county=Middlesex"><?php echo $website_root ?>/api/district?county=Middlesex</a>
-</p>
-
-
 
 
 <?php
