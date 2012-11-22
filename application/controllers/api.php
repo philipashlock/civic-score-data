@@ -21,6 +21,32 @@ class Api extends REST_Controller {
 		$this->load->view('api_docs', $data);
 	}
 
+function topic_interlink(&$topics) {
+		
+	$topics['api_topic'] = $this->config->item('website_root') . '/api/topic?name=' . urlencode($topics['topic']);
+	
+	if(!empty($topics['sub_topic'])) {
+		$topics['api_answers'] = $this->config->item('website_root') . '/api/answer?topic=' . urlencode($topics['topic']) . '&sub_topic=' . urlencode($topics['sub_topic']);
+	} else {
+		$topics['api_answers'] = $this->config->item('website_root') . '/api/answer?topic=' . urlencode($topics['topic']);		
+	}
+		
+}
+
+
+function answer_interlink(&$answers) {
+		
+		
+	$answers['api_topic'] = $this->config->item('website_root') . '/api/topic?name=' . urlencode($answers['topic']);
+		
+	if(!empty($answers['sub_topic'])) {
+		$answers['api_answers'] = $this->config->item('website_root') . '/api/answer?topic=' . urlencode($answers['topic']) . '&sub_topic=' . urlencode($answers['sub_topic']);
+	}		
+		
+	$answers['api_answer'] = $this->config->item('website_root') . '/api/answer?id=' . $answers['faq_id'];
+		
+}
+
 
 	
 	function topic_get() {	
@@ -39,8 +65,12 @@ class Api extends REST_Controller {
 				$this->db->distinct();
 				$query = $this->db->get_where('taxonomy', $search);								
 			
-				if($query->num_rows() > 0) {
-					return	$this->response($query->result_array(), 200);
+				$results = $query->result_array();
+				
+				array_walk($results, array($this, 'topic_interlink'));
+			
+				if(!empty($results)) {
+					return	$this->response($results, 200);
 				} else {
 					$response = array('error' => "No topic named $taxonomy found");
 					return $this->response($response, 400);
@@ -50,10 +80,12 @@ class Api extends REST_Controller {
 			$this->db->select('topic');			
 			$this->db->distinct();
 			$query = $this->db->get('taxonomy');
-					
+
+			$results = $query->result_array();			
+			array_walk($results, array($this, 'topic_interlink'));			
 			
 			if($query->num_rows() > 0) {
-				return	$this->response($query->result_array(), 200);
+				return	$this->response($results, 200);
 			}			
 			
 		}
@@ -78,13 +110,20 @@ class Api extends REST_Controller {
 			$topic = $this->input->get('topic', TRUE);					
 		}
 		
+		if($this->input->get('sub_topic', TRUE)) {
+			$sub_topic = $this->input->get('sub_topic', TRUE);					
+		}
+		
 		if($this->input->get('answer', TRUE)) {
 			$answer = $this->input->get('answer', TRUE);					
 		}						
 						
 		if(!empty($faq_id)) {
 								
-				$search = array('faq_id' => $faq_id);
+				$search = array('answers.faq_id' => $faq_id);
+				$this->db->select('answers.*, taxonomy.*');							
+				$this->db->group_by('answers.faq_id');
+				$this->db->join('taxonomy', 'answers.faq_id = taxonomy.faq_id');				
 				
 				$query = $this->db->get_where('answers', $search);				
 
@@ -97,7 +136,11 @@ class Api extends REST_Controller {
 		}
 		if(!empty($search)) {
 												
-				$this->db->like('answer_text', $search);
+				$this->db->like('answers.answer_text', $search);
+				$this->db->select('answers.faq_id, answers.question, taxonomy.*');		
+				$this->db->group_by('answers.faq_id');
+				$this->db->join('taxonomy', 'answers.faq_id = taxonomy.faq_id');									
+				
 				$query = $this->db->get('answers'); 
 
 				if($query->num_rows() > 0) {
@@ -109,9 +152,6 @@ class Api extends REST_Controller {
 		}
 		if(!empty($topic)) {
 												
-				$sub_topic = (!empty($sub_topic)) ? $sub_topic : null;	
-				$sub_topic_operator = ($sub_topic) ? 'taxonomy.sub_topic' : 'taxonomy.sub_topic IS NULL';							
-				// $sub_topic_operator => $sub_topic
 						
 				if(!empty($answer) && $answer == 'true') {
 					$this->db->select('answers.*, taxonomy.*');							
@@ -126,14 +166,20 @@ class Api extends REST_Controller {
 				
 				// $this->db->limit(10);
 				
-				$search = array('taxonomy.topic' => $topic);								
+				$search = array('taxonomy.topic' => $topic);
+				if(!empty($sub_topic)) $search['taxonomy.sub_topic'] = $sub_topic;
+												
 				$query = $this->db->get_where('answers', $search);
 				
 				// echo $this->db->last_query();
 				// exit;
 				
+				$results = $query->result_array();
+				
+				array_walk($results, array($this, 'answer_interlink'));				
+				
 				if($query->num_rows() > 0) {
-					return	$this->response($query->result_array(), 200);
+					return	$this->response($results, 200);
 				} else {
 					$response = array('error' => "No topic named $taxonomy found");
 					return $this->response($response, 400);
@@ -141,9 +187,9 @@ class Api extends REST_Controller {
 		}		
 		else {
 
-			$this->db->select('topic');			
+			$this->db->select('question');			
 			$this->db->distinct();
-			$query = $this->db->get('taxonomy');
+			$query = $this->db->get('answers');
 					
 			
 			if($query->num_rows() > 0) {
