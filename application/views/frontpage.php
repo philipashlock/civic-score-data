@@ -12,15 +12,11 @@
         $(this).button('loading');
 
    	    var searchstring = $("#inputNameorID").val();
-   	    var locationstring = $("#inputLocation").val();
 
 		if (searchstring) {
-			ajax_url = 'answers?search=' + searchstring;
+			ajax_url = 'answer?search=' + searchstring;
 		}
-		
-		if (locationstring) {
-			ajax_url = 'answers?location=' + locationstring;
-		}		
+	
 
 				$.ajax({
 				  url: '/api/' + ajax_url,
@@ -31,8 +27,8 @@
 
 
 			  			$('#resultsTable').append(
-					        			'<tr><td><a href="../school/' + this.id_nces + '">' +
-					        			 this.full_name + '</a></td><td'
+					        			'<tr><td><a href="../answer/' + this.faq_id + '">' +
+					        			 this.question + '</a></td><td>' + this.topic + '</td>'
 					      				);					   
 			 							});
 				    }
