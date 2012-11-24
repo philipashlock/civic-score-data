@@ -61,14 +61,33 @@
 	<div data-role="content">	
 
 		<input type="search" value="Search">
+		
+		<?php
 
-		<ul data-role="listview" data-inset="true">
-			<li><a href="#">Acura</a></li>
-			<li><a href="#">Audi</a></li>
-			<li><a href="#">BMW</a></li>
-			<li><a href="#">Cadillac</a></li>
-			<li><a href="#">Ferrari</a></li>
-		</ul>
+
+		if(!empty($subtopics)) {		
+
+			echo '<ul data-role="listview" data-inset="true">';
+
+
+			foreach ($subtopics as $subtopic) {
+
+				if(!empty($subtopic['sub_topic'])) {
+				
+					$subtopic_url = urlencode($subtopic['sub_topic']);
+					$topic_url = urlencode($subtopic['topic']);				
+					echo '<li><a href="/answers/topic/?name=' . $topic_url . '&sub_topic=' . $subtopic_url . '">' . $subtopic['sub_topic'] . '</a></li>';
+				
+					
+				}
+								
+			}
+
+		echo '</ul>';
+
+		}
+		?>		
+
 	
 	</div><!-- /content -->
 

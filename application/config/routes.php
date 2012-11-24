@@ -38,10 +38,11 @@
 |
 */
 
-$route['default_controller'] = "frontpage";
+$route['default_controller'] = "topics";
 $route['404_override'] = '';
 $route['school/district/(:num)'] = "school/district/$1";
-$route['school/(:num)'] = "school/school_id/$1";
+//$route['topics/(:any)'] = "topics/get_topic_name/$1";
+$route['answers/(:num)'] = "answers/get_answer/$1";
 $route['status/school/(:num)'] = "status/school/$1";
 $route['status/district/(:num)'] = "status/district/$1";
 $route['status/update/(:any)'] = "status/update/$1";

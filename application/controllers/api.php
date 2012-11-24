@@ -26,9 +26,9 @@ function topic_interlink(&$topics) {
 	$topics['api_topic'] = $this->config->item('website_root') . '/api/topic?name=' . urlencode($topics['topic']);
 	
 	if(!empty($topics['sub_topic'])) {
-		$topics['api_answers'] = $this->config->item('website_root') . '/api/answer?topic=' . urlencode($topics['topic']) . '&sub_topic=' . urlencode($topics['sub_topic']);
+		$topics['api_answers'] = $this->config->item('website_root') . '/api/answers?topic=' . urlencode($topics['topic']) . '&sub_topic=' . urlencode($topics['sub_topic']);
 	} else {
-		$topics['api_answers'] = $this->config->item('website_root') . '/api/answer?topic=' . urlencode($topics['topic']);		
+		$topics['api_answers'] = $this->config->item('website_root') . '/api/answers?topic=' . urlencode($topics['topic']);		
 	}
 		
 }
@@ -40,10 +40,10 @@ function answer_interlink(&$answers) {
 	$answers['api_topic'] = $this->config->item('website_root') . '/api/topic?name=' . urlencode($answers['topic']);
 		
 	if(!empty($answers['sub_topic'])) {
-		$answers['api_answers'] = $this->config->item('website_root') . '/api/answer?topic=' . urlencode($answers['topic']) . '&sub_topic=' . urlencode($answers['sub_topic']);
+		$answers['api_answers'] = $this->config->item('website_root') . '/api/answers?topic=' . urlencode($answers['topic']) . '&sub_topic=' . urlencode($answers['sub_topic']);
 	}		
 		
-	$answers['api_answer'] = $this->config->item('website_root') . '/api/answer?id=' . $answers['faq_id'];
+	$answers['api_answer'] = $this->config->item('website_root') . '/api/answers?id=' . $answers['faq_id'];
 		
 }
 
@@ -94,7 +94,7 @@ function answer_interlink(&$answers) {
 	}
 	
 	
-	function answer_get() {	
+	function answers_get() {	
 
 		
 		
@@ -143,8 +143,13 @@ function answer_interlink(&$answers) {
 				
 				$query = $this->db->get('answers'); 
 
+				$results = $query->result_array();
+
+				array_walk($results, array($this, 'answer_interlink'));				
+
+
 				if($query->num_rows() > 0) {
-					return	$this->response($query->result_array(), 200);
+					return	$this->response($results, 200);
 				} else {
 					$response = array('error' => "No topic named $taxonomy found");
 					return $this->response($response, 400);

@@ -55,20 +55,53 @@
 <div data-role="page">
 
 	<div data-role="header">
-		<h1>FAQs</h1>
+		<h1>FAQ Answers</h1>
 	</div><!-- /header -->
 
 	<div data-role="content">	
 
 		<input type="search" value="Search">
+		
+		<?php
 
-		<ul data-role="listview" data-inset="true">
-			<li><a href="#">Acura</a></li>
-			<li><a href="#">Audi</a></li>
-			<li><a href="#">BMW</a></li>
-			<li><a href="#">Cadillac</a></li>
-			<li><a href="#">Ferrari</a></li>
-		</ul>
+
+	
+	  if(!empty($answers)) {		
+      
+	  	echo '<ul data-role="listview" data-inset="true">';
+      
+      
+	  	foreach ($answers as $answer) {
+      
+	  		echo '<li><a href="/answers/' . $answer['faq_id'] . '">' . $answer['question'] . '</a></li>';
+      
+	  	}
+      
+	  	echo '</ul>';
+
+		}
+		
+		
+	  if(!empty($answer)) {		
+
+	  	echo $answer['question'];
+
+		echo '<div>';
+	  	echo $answer['answer_html'];	
+		echo '</div>';
+	
+		echo '<div>';
+	  	echo $answer['last_updated'];	
+		echo '</div>';
+	
+		echo '<div>';
+	  	echo $answer['topic'];	
+		echo '</div>';	
+	
+		}		
+		
+		?>		
+
 	
 	</div><!-- /content -->
 
