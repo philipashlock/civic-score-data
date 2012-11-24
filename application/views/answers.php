@@ -78,7 +78,7 @@
 	  	}
       
 	  	echo '</ul>';
-
+		$answer = null;
 		}
 		
 		
