@@ -44,23 +44,35 @@
     });
     </script>
 
+    
+<?php
+
+if(!empty($answers[0]['topic'])) {
+
+	$heading = $answers[0]['topic'];
+	
+	if (!empty($answers[0]['sub_topic'])) $heading = $answers[0]['sub_topic'] . ' &bull; ' . $heading;
+}
+
+if(!empty($answer['question'])) $heading = $answer['question'];
+
+$title = $heading;
+
+?>
 
 <?php include 'header_inc_view.php';?>
 
-    
 
-
-
-
-<div data-role="page">
+<div data-role="page" data-add-back-btn="true">
 
 	<div data-role="header">
-		<h1>FAQ Answers</h1>
+		<h1><?php echo $heading; ?></h1>
+			<a href="/" data-icon="home" class="ui-btn-right">Home</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
 
-		<input type="search" value="Search">
+		<input type="search" value="Search" id="search-basic" >
 		
 		<?php
 
@@ -84,19 +96,23 @@
 		
 	  if(!empty($answer)) {		
 
-	  	echo $answer['question'];
+	  	echo "<h3>{$answer['question']}</h3>";
 
-		echo '<div>';
+		echo '<div class="ui-body ui-body-d ui-corner-all">';
 	  	echo $answer['answer_html'];	
+
+		echo '<p style="font-style : italic; color : #ccc">Last Updated: ';
+	  	echo date("F j, Y, g:ia", strtotime($answer['last_updated']));	
+		echo '</p>';
+
+
 		echo '</div>';
 	
-		echo '<div>';
-	  	echo $answer['last_updated'];	
-		echo '</div>';
+
+
+		
+		echo '<a href="/topics/subtopics/?name=' . urlencode($answer['topic']) . '" data-theme="b" data-icon="arrow-l" data-role="button">' . $answer['topic'] . '</a>';
 	
-		echo '<div>';
-	  	echo $answer['topic'];	
-		echo '</div>';	
 	
 		}		
 		

@@ -45,17 +45,21 @@
     </script>
 
 
-<?php include 'header_inc_view.php';?>
+	<?php
 
-    
+	if(!empty($subtopics[0]['topic'])) $heading = $subtopics[0]['topic'];
 
+	$title = $heading;
 
+	?>
 
+	<?php include 'header_inc_view.php';?>
 
-<div data-role="page">
+<div data-role="page" data-add-back-btn="true">
 
 	<div data-role="header">
-		<h1>FAQs</h1>
+		<h1><?php echo $heading?></h1>
+					<a href="/" data-icon="home" class="ui-btn-right">Home</a>
 	</div><!-- /header -->
 
 	<div data-role="content">	
@@ -84,6 +88,9 @@
 			}
 
 		echo '</ul>';
+		
+		echo '<a href="/answers/topic?name=' . urlencode($subtopics[0]['topic']) . '" data-theme="b" data-icon="arrow-l" data-role="button">All FAQs for ' . $subtopics[0]['topic'] . '</a>';
+		
 
 		}
 		?>		
