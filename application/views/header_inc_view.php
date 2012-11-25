@@ -14,4 +14,4 @@
 
 		<div data-role="content">	
 
-			<form action="/answers/search"><input type="search" placeholder="Search" name="phrase"></form>	
+			<form action="/answers/search"><input type="search" placeholder="Search" name="phrase" x-webkit-speech onwebkitspeechchange="this.form.submit();"></form>	
