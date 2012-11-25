@@ -55,16 +55,6 @@
 
 	<?php include 'header_inc_view.php';?>
 
-<div data-role="page" data-add-back-btn="true">
-
-	<div data-role="header">
-		<h1><?php echo $heading?></h1>
-					<a href="/" data-icon="home" class="ui-btn-right">Home</a>
-	</div><!-- /header -->
-
-	<div data-role="content">	
-
-		<input type="search" value="Search">
 		
 		<?php
 

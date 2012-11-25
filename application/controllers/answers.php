@@ -56,6 +56,25 @@ class Answers extends CI_Controller {
 		
 	}
 	
+	
+	function search() {
+		
+		if($this->input->get('phrase', TRUE)) {
+			$phrase = $this->input->get('phrase', TRUE);					
+		}	
+		
+
+		$url = $this->config->item('website_root') . '/api/answers?search=' . urlencode($phrase);	
+		
+		$answers = $this->curl_to_json($url);
+
+		$data['answers'] = $answers;
+		$data['search'] = $phrase;
+		
+		$this->load->view('answers', $data);		
+		
+	}	
+	
 	function get_answer($faq_id) {
 		
 		$url = $this->config->item('website_root') . '/api/answers?id=' . $faq_id;	

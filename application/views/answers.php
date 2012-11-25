@@ -47,14 +47,20 @@
     
 <?php
 
-if(!empty($answers[0]['topic'])) {
+if(!empty($search)) {
+	
+	$heading = 'Search: ' . $search;
+}
+
+else if(!empty($answers[0]['topic'])) {
 
 	$heading = $answers[0]['topic'];
 	
 	if (!empty($answers[0]['sub_topic'])) $heading = $answers[0]['sub_topic'] . ' &bull; ' . $heading;
 }
 
-if(!empty($answer['question'])) $heading = $answer['question'];
+else if(!empty($answer['question'])) $heading = $answer['question'];
+
 
 $title = $heading;
 
@@ -62,17 +68,6 @@ $title = $heading;
 
 <?php include 'header_inc_view.php';?>
 
-
-<div data-role="page" data-add-back-btn="true">
-
-	<div data-role="header">
-		<h1><?php echo $heading; ?></h1>
-			<a href="/" data-icon="home" class="ui-btn-right">Home</a>
-	</div><!-- /header -->
-
-	<div data-role="content">	
-
-		<input type="search" value="Search" id="search-basic" >
 		
 		<?php
 
