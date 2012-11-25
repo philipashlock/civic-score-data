@@ -1,50 +1,5 @@
 <?php include 'header_meta_inc_view.php';?>
   
-    <script>
-    $(document).ready(function() {
-	
-      $("#results").hide();
-      $("#submit").button();
-
-	    $("#submit").click(function (event) { 
-		
-        event.preventDefault();
-        $(this).button('loading');
-
-   	    var searchstring = $("#inputNameorID").val();
-
-		if (searchstring) {
-			ajax_url = 'answer?search=' + searchstring;
-		}
-	
-
-				$.ajax({
-				  url: '/api/' + ajax_url,
-				  success: function(data) {
-					
-					$.each(data, function(){
-              			$("#results").show();
-
-
-			  			$('#resultsTable').append(
-					        			'<tr><td><a href="../answer/' + this.faq_id + '">' +
-					        			 this.question + '</a></td><td>' + this.topic + '</td>'
-					      				);					   
-			 							});
-				    }
-				  });
-				
-				$(this).button('reset');		  		
-        
-        });	
- 
-
-
-
-    });
-    </script>
-
-
 	<?php
 
 	if(!empty($subtopics[0]['topic'])) $heading = $subtopics[0]['topic'];
