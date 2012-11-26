@@ -56,6 +56,10 @@ function answer_interlink(&$answers) {
 		if($this->input->get('name', TRUE)) {
 			$name = $this->input->get('name', TRUE);					
 		}
+		
+		if($this->input->get('faq_id', TRUE)) {
+			$faq_id = $this->input->get('faq_id', TRUE);					
+		}		
 						
 		if(!empty($name)) {
 								
@@ -75,7 +79,28 @@ function answer_interlink(&$answers) {
 					$response = array('error' => "No topic named $taxonomy found");
 					return $this->response($response, 400);
 				}
-		} else {
+		} 
+		elseif(!empty($faq_id)) {
+		
+			$search = array('faq_id' => $faq_id);
+							
+			$this->db->select('topic, sub_topic');			
+			$this->db->distinct();
+			$query = $this->db->get_where('taxonomy', $search);								
+		
+			$results = $query->result_array();
+									
+			array_walk($results, array($this, 'topic_interlink'));
+		
+			if(!empty($results)) {
+				return	$this->response($results, 200);
+			} else {
+				$response = array('error' => "No topics for FAQ ID $faq_id found");
+				return $this->response($response, 400);
+			}		
+			
+		} 
+		else {
 
 			$this->db->select('topic');			
 			$this->db->distinct();
