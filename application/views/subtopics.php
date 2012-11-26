@@ -16,8 +16,9 @@
 
 		if(!empty($subtopics)) {		
 
-			echo '<ul data-role="listview" data-inset="true">';
+			echo '<ul data-role="listview" data-inset="true" data-divider-theme="b">';
 
+			echo '<li data-role="list-divider">Sub-topics for ' . $heading . '</li>';
 
 			foreach ($subtopics as $subtopic) {
 

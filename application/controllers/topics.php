@@ -48,10 +48,19 @@ class Topics extends CI_Controller {
 		$subtopics = $this->curl_to_json($url);
 
 		$data['subtopics'] = $subtopics;
-		$data['hello'] = $url;		
 		
-		$this->load->view('subtopics', $data);		
+		//var_dump($data); exit;
 		
+		// If there are no subtopics for this topic, point directly to the list of all answers for this topic
+		if(count($subtopics) == 1 && empty($subtopics[0]['sub_topic'])) {
+			$this->load->helper('url');			
+			$redirect = $this->config->item('website_root') . '/answers/topic?name=' . urlencode($topic);
+			redirect($redirect);	
+		}
+		else {
+			$this->load->view('subtopics', $data);					
+		}
+
 	}
 	
 	

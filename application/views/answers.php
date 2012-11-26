@@ -29,19 +29,20 @@ $title = $heading;
 
 
 	
-	  if(!empty($answers)) {		
-      
-	  	echo '<ul data-role="listview" data-inset="true">';
-      
-      
-	  	foreach ($answers as $answer) {
-      
-	  		echo '<li><a href="/answers/' . $answer['faq_id'] . '">' . $answer['question'] . '</a></li>';
-      
-	  	}
-      
-	  	echo '</ul>';
-		$answer = null;
+		if(!empty($answers)) {		
+
+			echo '<ul data-role="listview" data-inset="true" data-divider-theme="b">';
+
+			echo '<li data-role="list-divider">Entries for ' . $heading . '</li>';
+
+			foreach ($answers as $answer) {
+
+			echo '<li><a href="/answers/' . $answer['faq_id'] . '">' . $answer['question'] . '</a></li>';
+
+			}
+
+			echo '</ul>';
+			$answer = null;
 		}
 		
 		
@@ -61,11 +62,43 @@ $title = $heading;
 	
 
 
-		
-		echo '<a href="/topics/subtopics/?name=' . urlencode($answer['topic']) . '" data-theme="b" data-icon="arrow-l" data-role="button">' . $answer['topic'] . '</a>';
-	
-	
+		if(!empty($topics)) {		
+
+			echo '<ul data-role="listview" data-inset="true" data-theme="c" data-divider-theme="b">';
+			echo '<li data-role="list-divider">Topics for this Entry</li>';
+
+			foreach ($topics as $topic) {
+				
+				$heading = $topic['topic'];
+				if (!empty($topic['sub_topic'])) $heading = $heading . ' &bull; ' . $topic['sub_topic'];				
+				
+				$url = '/answers/topic/?name=' . urlencode($topic['topic']);
+				if(!empty($topic['sub_topic'])) $url = $url . '&sub_topic=' . urlencode($topic['sub_topic']);				
+				
+
+				echo '<li><a href="' . $url . '">' . $heading . '</a></li>';
+				
+				$url = null;
+				$heading = null;
+
+			}
+
+			echo '</ul>';
 		}		
+		
+		
+		
+		// echo '<a href="/topics/subtopics/?name=' . urlencode($answer['topic']) . '" data-theme="b" data-icon="arrow-l" data-role="button">' . $answer['topic'] . '</a>';
+	
+	
+		}	
+		
+		if(!empty($error))	{
+			
+		  	echo "<h3>{$error[0]}</h3>";
+				
+			
+		}
 		
 		?>		
 

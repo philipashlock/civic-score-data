@@ -17,7 +17,8 @@
 
 		if(!empty($topics)) {		
 
-			echo '<ul data-role="listview" data-inset="true">';
+			echo '<ul data-role="listview" data-inset="true" data-divider-theme="b">';
+			echo '<li data-role="list-divider">Topics</li>';
 
 
 			foreach ($topics as $topic) {

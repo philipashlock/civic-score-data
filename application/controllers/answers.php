@@ -35,19 +35,20 @@ class Answers extends CI_Controller {
 	}
 	
 
-	function topic() {
+	function topic($topic = null, $subtopic = null) {
 		
-		if($this->input->get('name', TRUE)) {
+		if($this->input->get('name', TRUE) && is_null($topic)) {
 			$topic = $this->input->get('name', TRUE);					
 		}	
 
-		if($this->input->get('sub_topic', TRUE)) {
+		if($this->input->get('sub_topic', TRUE) && is_null($subtopic)) {
 			$subtopic = $this->input->get('sub_topic', TRUE);					
 		}
 		
 
-		$url = $this->config->item('website_root') . '/api/answers?topic=' . urlencode($topic) . '&sub_topic=' . urlencode($subtopic);	
-		
+		$url = $this->config->item('website_root') . '/api/answers?topic=' . urlencode($topic);
+		if(!empty($subtopic)) $url = $url . '&sub_topic=' . urlencode($subtopic);	
+				
 		$answers = $this->curl_to_json($url);
 
 		$data['answers'] = $answers;
@@ -71,6 +72,8 @@ class Answers extends CI_Controller {
 		$data['answers'] = $answers;
 		$data['search'] = $phrase;
 		
+		if(empty($answers)) $data['error'] = array("No results found for &#8220;$phrase&#8221;");
+		
 		$this->load->view('answers', $data);		
 		
 	}	
@@ -81,11 +84,28 @@ class Answers extends CI_Controller {
 		
 		$answer = $this->curl_to_json($url);
 
-		$data['answer'] = $answer[0];
+		$data['answer'] = $answer[0];				
+
+		if(!empty($data['answer'])) {
+			
+			$topics = $this->get_answer_topics($data['answer']['faq_id']);
+			if(!empty($topics)) {
+				$data['topics'] = $topics;
+			}
+			
+		}
+		
 		
 		$this->load->view('answers', $data);		
+				
+	}
+	
+	function get_answer_topics($faq_id) {
 		
+		$url = $this->config->item('website_root') . '/api/topic?faq_id=' . $faq_id;	
+		$topics = $this->curl_to_json($url);
 		
+		return $topics;
 	}
 	
 	
