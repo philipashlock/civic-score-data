@@ -86,7 +86,7 @@ class Scraper extends REST_Controller {
 			// Now that we're at the right depth, hop to the next "[item name]" until the end of tree/file.
 			while ($XMLReader->name === "Row") {
 				
-				// append to where clause to limit output -  && $count < 200
+				// For testing - append to where clause above to limit output:  && $count < 200
 				
 				// Skip the first row since it's just column headings
 				if ($count > 1) {

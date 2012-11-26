@@ -47,29 +47,42 @@ code {
 
 <h1>Welcome to the experimental FAQs API</h1>
 
+<h1>Formats</h1>
+
+<p>
+	The default format returned is <strong>json</strong>, but <strong>xml</strong> and <strong>csv</strong> are also supported. You can specify the format by 
+	appending the format extension after the resource, eg getting xml for answers would be "/api/answers.xml" 
+	or you can specify format as another query parameter, eg "/api/answers?format=xml"
+</p>	
 
 <h1>Methods &amp; Resources</h1>
 
-<h2>Answer Search</h2>
-<pre>URL: <?php echo $website_root ?>/api/answer</pre>
+<h2>Answers</h2>
+<pre>URL: <?php echo $website_root ?>/api/answers</pre>
 
 <p>Parameters</p>
 
 <ul>
 	<li><strong>topic</strong> This will list Answers for the given topic</li>
+	<li><strong>sub_topic</strong> This will list Answers for the given sub-topic (meant to be used with the topic parameter)</li>
+	
 	<li><strong>id</strong> This FAQ Answer ID</li>
 	<li><strong>search</strong> This will provide a keyword search for Answers</li>
 </ul>
 
 <h3>Example Calls</h3>
 <p>
-	<a href="<?php echo $website_root ?>/api/answer?topic=Reference and General Government"><?php echo $website_root ?>/api/answer?topic=Reference and General Government</a>
+	<a href="<?php echo $website_root ?>/api/answers?topic=Reference+and+General+Government"><?php echo $website_root ?>/api/answers?topic=Reference+and+General+Government</a>
 </p>
 <p>
-	<a href="<?php echo $website_root ?>/api/answer?id=2139"><?php echo $website_root ?>/api/answer?id=2139</a>
+	<a href="<?php echo $website_root ?>/api/answers?topic=Reference+and+General+Government&amp;sub_topic=Agencies"><?php echo $website_root ?>/api/answers?topic=Reference+and+General+Government&amp;sub_topic=Agencies</a>
+</p>
+
+<p>
+	<a href="<?php echo $website_root ?>/api/answers?id=2139"><?php echo $website_root ?>/api/answers?id=2139</a>
 </p>
 <p>
-	<a href="<?php echo $website_root ?>/api/answer?search=Passports"><?php echo $website_root ?>/api/answer?search=Passports</a>
+	<a href="<?php echo $website_root ?>/api/answers?search=Passports"><?php echo $website_root ?>/api/answers?search=Passports</a>
 </p>
 
 
@@ -81,14 +94,25 @@ code {
 
 <ul>
 	<li><strong>name</strong> List all sub topics for a given topic</li>
+	<li><strong>faq_id</strong> List all topics/sub-topics for a given FAQ, specified by the FAQ ID</li>
 </ul>
 
 
 
 <h3>Example Calls</h3>
+
 <p>
-	<a href="<?php echo $website_root ?>/api/topic?name=Reference and General Government"><?php echo $website_root ?>/api/topic?name=Reference and General Government</a>
+	<a href="<?php echo $website_root ?>/api/topic"><?php echo $website_root ?>/api/topic</a>
 </p>
+<p>
+	<a href="<?php echo $website_root ?>/api/topic?name=Reference+and+General+Government"><?php echo $website_root ?>/api/topic?name=Reference+and+General+Government</a>
+</p>
+
+<p>
+	<a href="<?php echo $website_root ?>/api/topic?faq_id=2139"><?php echo $website_root ?>/api/topic?faq_id=2139</a>
+</p>
+
+	
 
 
 <?php
