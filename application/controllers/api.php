@@ -162,6 +162,7 @@ function answer_interlink(&$answers) {
 		if(!empty($search)) {
 												
 				$this->db->like('answers.answer_text', $search);
+				$this->db->or_like('answers.answer_html', $search);
 				$this->db->select('answers.faq_id, answers.question, taxonomy.*');		
 				$this->db->group_by('answers.faq_id');
 				$this->db->join('taxonomy', 'answers.faq_id = taxonomy.faq_id');									
