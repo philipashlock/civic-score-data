@@ -28,143 +28,54 @@ class Scraper extends REST_Controller {
 	
 	function scrape_get() {
 
-		$url  			= $this->config->item('faq_source_url');
-		$xml_file_path 	= $this->config->item('xml_file_path');
+		$yelp_url  			= $this->config->item('yelp_url');
+		$yelp_key 			= $this->config->item('yelp_key');
+		$yelp_category 		= $this->config->item('yelp_category');
 
-		// make sure we have up to date xml, otherwise, get a new copy
-		//$this->get_xml($url, $xml_file_path);
+//location=california&ywsid=r-ueNmYxYr_4ovslu0tHag&category=departmentsofmotorvehicles
+// http://api.yelp.com/business_review_search?location=colorado&ywsid=r-ueNmYxYr_4ovslu0tHag&category=departmentsofmotorvehicles
 
-		$records = $this->save_records($xml_file_path);
+		$states = $this->state_abbr();
+
+		$records = 0;
+		foreach ($states as $state) {
+			
+			$query_url = $yelp_url . 'location=' . $state . '&category=' . $yelp_category . '&ywsid=' . $yelp_key;
+						
+			$response = $this->curl_decode_json($query_url);
+			
+			$records += $this->save_records($response);		
+			
+		}
+
 		
-		return	$this->response($records, 200);
+		
+		$status = "Returned $records records";
+		
+		return	$this->response($status, 200);
 	
 	}
 	
 	
+
 	
-	function get_xml($url, $xml_file_path) {
-
-		//TODO
-		// Check to see if we already have the file and only download again if older than 24 hours. 
-
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	function save_records($response) {
 		
-		$data = curl_exec($ch);
-		
-		curl_close($ch);
-		
-		file_put_contents($xml_file_path, $data);
-		
-		return true;
+		//header('Content-type: application/json');
+		//print json_encode($response);
+		//exit;		
 
-	}		
-	
-	
-	function save_records($xml_file_path) {
-		
-			// Specify configuration for Tidy
-			$config = array(
-			           'indent'         => true,
-			           'output-xhtml'   => false,
-			           'output-html'   => true,	
-					   'show-warnings'	=> false,
-					   'show-body-only' => true,
-			           'wrap'           => 200);
+		$count = 0;
 
-
-			$count = 1;
-
-
-			$XMLReader = new XMLReader;	
-			$XMLReader->open($xml_file_path);
-
-			// Move to the first "[item name]" node in the file.
-			while ($XMLReader->read() && $XMLReader->name !== "Row");
-
-
-			// Now that we're at the right depth, hop to the next "[item name]" until the end of tree/file.
-			while ($XMLReader->name === "Row") {
+		if(!empty($response['businesses'])) {				
 				
-				// For testing - append to where clause above to limit output:  && $count < 200
-				
-				// Skip the first row since it's just column headings
-				if ($count > 1) {
-
-
-					$xml = null;
-					$xml = $XMLReader->readOuterXML();					
-					$xml = $this->insert_cdata($xml);
-
-					$xml_validate = $this->check_xml($xml);
-
-					if ($xml_validate === true) {
-
-						$node = new SimpleXMLElement($xml);
-
-						$record = null;
-						//if($count > 5) exit;
-
-						$record['url'] 			= (string)$node->Item[0];
-
-						$record['faq_id']			= substr($record['url'], strpos($record['url'], '?p_faq_id=') + 10);
-
-						$record['question'] 	= (string)$node->Item[1];
-						//$record['answer'] 		= (string)$node->Item[2];  
-
-
-						$search = array('<![CDATA[', ']]>', '<BR>', '</LI>', '</P>', '</UL>', '&nbsp;');
-						$replace = array('', '', " \n", "</LI> \n", "</P> \n\n", "</UL> \n\n", ' ');
-
-
-						$answer = (string)$node->Item[2];
-						$answer = html_entity_decode($answer);										
-						$answer_clean 				= str_replace($search, $replace, $answer);
-						$record['answer_text'] 		= strip_tags($answer_clean);                
-
-						$tidy = new tidy;
-						$tidy->parseString($answer_clean, $config, 'utf8');
-						$tidy->cleanRepair();
-
-						$record['answer_html'] = $tidy->value;		
-
-
-
-						$record['ranking'] 		= (string)$node->Item[3];                        
-						$record['last_updated'] = (string)$node->Item[4];
-					
-						$record['last_updated'] = ($record['last_updated']) ? date(DATE_ATOM, strtotime($record['last_updated'])) : null;
-						//$record['last_updated'] = ($record['last_updated']) ? strtotime($record['last_updated']) : null;					
-						//$today = date("Y-m-d H:i:s");
-
-						$record['topic'] 		= (string)$node->Item[5];                        
-						$record['sub_topic'] 	= (string)$node->Item[6];
-
-						// Set empty strings as null
-						array_walk($record, array($this,'check_null'));
-
-						// OpenCalais API Calls 
-						if (isset($this->config->item('enable_calais')) && $this->config->item('enable_calais') === true) {
-							
-							$record = $this->calais_tags($record);
-												
-						}
-										
-						$this->process_record($record);
-					
-					} 
-					else {
-						return $xml_validate;
-					}					
-					
-				}
-
-				// Skip to the next node of interest.
-				$XMLReader->next("Row");
+			foreach($response['businesses'] as $rating) {
+				$this->process_record($rating);
 				$count++;
 			}
+		}
 
-			return array('success' => "Imported $count records");
+		return $count;
 
 	}
 	
@@ -178,29 +89,29 @@ class Scraper extends REST_Controller {
 
 
 
-		if($record['topic'] || $record['subtopic']) {
-
-			$taxonomy = array('faq_id' => $record['faq_id'], 
-							  'topic'  => $record['topic'], 
-							  'sub_topic' => $record['sub_topic']);
-
-			$this->db->insert('taxonomy', $taxonomy);		
-			
-			// unset once saved
-			unset($record['topic']);
-			unset($record['sub_topic']);			
-			
-		}
-
-		if($record['question']) {
-
 			// Save tag and subtopic
 			// unset once saved
 			//unset($record['calais_tag']);
 			//unset($record['calais_topic']);
 
-			$this->db->insert('answers', $record);		
-		}
+
+			unset($record['reviews']);
+			unset($record['neighborhoods']);
+			unset($record['categories']);
+			unset($record['rating_img_url']);
+
+			unset($record['mobile_url']);
+			unset($record['rating_img_url_small']);
+			unset($record['distance']);
+			unset($record['country_code']);	
+
+			unset($record['photo_url_small']);	
+			
+			
+			
+
+			$this->db->insert('ratings', $record);		
+		
 
 	}	
 	
@@ -215,85 +126,8 @@ class Scraper extends REST_Controller {
 	
 	
 	
-	function insert_cdata($xml) {
 
-		$start = array();
-		$position = 0;
-		while($position = strpos($xml, '<Item>', $position+1)) {
-			$start[] = $position+1;
-		}
-		
-		while($position = strpos($xml, '</Item>', $position+1)) {
-			$end[] = $position+1;
-		}		
-		
-		if(isset($start[1]) && ($start[1] > ($start[0] + 6))) {
-			
-			$length = ($end[1] + 6) - $start[1];
-			$encoded = substr($xml, $start[1], $length);
-			$decoded = html_entity_decode(htmlspecialchars($encoded, ENT_NOQUOTES, 'UTF-8', false), ENT_QUOTES, 'UTF-8');
-
-			$xml = str_replace($encoded, $decoded, $xml);
-
-			// recalculate start tags now that we modified the source	
-			$start = array();
-			$position = 0;		
-			while($position = strpos($xml, '<Item>', $position+1)) {
-				$start[] = $position+1;
-			}			
-
-		}
-				
-
-		if(isset($start[2]) && ($start[2] > ($start[1] + 6))) {
-
-			$xml = $this->str_insert('<![CDATA[', $xml, $start[2]+5);
-
-			// recalculate end tag position now that we've modified the source
-			$position = 0;	
-			$end = array();
-			while($position = strpos($xml, '</Item>', $position+1)) {
-				$end[] = $position+1;
-			}						
-
-			$xml = $this->str_insert(']]>', $xml, $end[2]-1);			
-
-			// these were still catching the parser for some reason
-			$search = array('&amp;nbsp;', '&nbsp;');
-			$xml = str_replace($search, ' ', $xml);
-
-		}
-
-		return $xml;	
-
-	}
 	
-	
-	
-	
-	function check_xml($xml){
-	    libxml_use_internal_errors(true);
-
-	    $doc = new DOMDocument('1.0', 'utf-8');
-	    $doc->loadXML($xml);
-
-	    $errors = libxml_get_errors();
-
-	    if(empty($errors)){
-	        return true;
-	    }
-
-	    $error = $errors[0];
-	    if($error->level < 3){
-	        return true;
-	    }
-
-	    $explodedxml = explode("r", $xml);
-	    $badxml = $explodedxml[($error->line)-1];
-
-	    $message = $error->message . ' at line ' . $error->line . '. Bad XML: ' . htmlentities($badxml);
-	    return array('source' => $xml, 'error' => $message);
-	}	
 	
 
 	function calais_tags($record) {
@@ -347,7 +181,7 @@ class Scraper extends REST_Controller {
 	
 	
 	
-	function curl_to_json($url) {
+	function curl_decode_json($url) {
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -375,5 +209,77 @@ class Scraper extends REST_Controller {
 		return json_decode($data, true);	
 
 	}	
+	
+	function state_abbr($abbr = null) {
+		
+	    $state["AL"] = "Alabama";
+	   $state["AK"] = "Alaska";
+	   $state["AS"] = "American Samoa";
+	   $state["AZ"] = "Arizona";
+	   $state["AR"] = "Arkansas";
+	   $state["CA"] = "California";
+	   $state["CO"] = "Colorado";
+	   $state["CT"] = "Connecticut";
+	   $state["DC"] = "Washington D.C.";
+	   $state["DE"] = "Delaware";
+	   $state["FL"] = "Florida";
+	   $state["GA"] = "Georgia";
+	   $state["GU"] = "Guam";
+	   $state["HI"] = "Hawaii";
+	   $state["ID"] = "Idaho";
+	   $state["IL"] = "Illinois";
+	   $state["IN"] = "Indiana";
+	   $state["IA"] = "Iowa";
+	   $state["KS"] = "Kansas";
+	   $state["KY"] = "Kentucky";
+	   $state["LA"] = "Louisiana";
+	   $state["ME"] = "Maine";
+	   $state["MD"] = "Maryland";
+	   $state["MA"] = "Massachusetts";
+	   $state["MI"] = "Michigan";
+	   $state["MN"] = "Minnesota";
+	   $state["MS"] = "Mississippi";
+	   $state["MO"] = "Missouri";
+	   $state["MT"] = "Montana";
+	   $state["NE"] = "Nebraska";
+	   $state["NV"] = "Nevada";
+	   $state["NH"] = "New Hampshire";
+	   $state["NJ"] = "New Jersey";
+	   $state["NM"] = "New Mexico";
+	   $state["NY"] = "New York";
+	   $state["NC"] = "North Carolina";
+	   $state["ND"] = "North Dakota";
+	   $state["MP"] = "Northern Mariana Islands";
+	   $state["OH"] = "Ohio";
+	   $state["OK"] = "Oklahoma";
+	   $state["OR"] = "Oregon";
+	   $state["PA"] = "Pennsylvania";
+	   $state["PR"] = "Puerto Rico";
+	   $state["RI"] = "Rhode Island";
+	   $state["SC"] = "South Carolina";
+	   $state["SD"] = "South Dakota";
+	   $state["TN"] = "Tennessee";
+	   $state["TX"] = "Texas";
+	   $state["UT"] = "Utah";
+	   $state["VT"] = "Vermont";
+	   $state["VI"] = "Virgin Islands";
+	   $state["VA"] = "Virginia";
+	   $state["WA"] = "Washington";
+	   $state["WV"] = "West Virginia";
+	   $state["WI"] = "Wisconsin";
+	   $state["WY"] = "Wyoming";	
+		
+		if($abbr) {
+			return $state[$abbr];			
+		} else {
+			return $state;
+		}
+		
+		
+	}	
+	
+	
+	
+	
 	
 }

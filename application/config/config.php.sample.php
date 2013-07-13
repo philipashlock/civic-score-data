@@ -1,13 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
 $config['website_root'] = 'http://your_url.dev';
 
 $config['ganalytics_id'] = 'your_google_analytics_id';
 
-$config['faq_source_url'] = 'http://www.usa.gov/About/developer_resources/allfaqs.xml';
-$config['xml_file_path'] = '/tmp/your/file/path/';
-
+$config['yelp_key'] = '************';
+$config['yelp_category'] = 'departmentsofmotorvehicles';
+$config['yelp_url'] = 'http://api.yelp.com/business_review_search?';
 
 $config['open_calais_api'] = 'your_api_key';
 $config['enable_calais'] = false;
