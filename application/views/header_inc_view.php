@@ -9,12 +9,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="brand" href="#">CivicScore</a>
+        <a class="brand" href="/">CivicScore</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active"><a href="#">Search Services</a></li>
+            <li class="active"><a href="/about">About</a></li>
+<!--/
             <li><a href="#state">My State</a></li>
             <li><a href="#contact">Contact</a></li>
+-->
           </ul>
         </div><!--/.nav-collapse -->
       </div>

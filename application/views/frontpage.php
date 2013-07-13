@@ -23,7 +23,8 @@
 <div class="row">
 <div class="span1">
 </div>
-<img src="img/map.png">
+
+
 </div>
 <br/>
 <br/>
@@ -50,7 +51,7 @@
 						
   					<tr>
   						<td><?php echo $count?></td>  					
-  						<td><img src="img/dmv1.jpeg" width="115px"</img></td>
+  						<td><img src="<?php echo $ranking['photo_url']?>" width="115px"</img></td>
   						<td><?php echo "{$ranking['city']}, {$ranking['state_code']}"?></td>
   						<td> <?php echo $ranking['avg_rating']?> stars </td>
   						<td>
@@ -94,7 +95,7 @@
 						
   					<tr>
   						<td><?php echo $count?></td>  					
-  						<td><img src="img/dmv1.jpeg" width="115px"</img></td>
+  						<td><img src="<?php echo $ranking['photo_url']?>" width="115px"</img></td>
   						<td><?php echo "{$ranking['city']}, {$ranking['state_code']}"?></td>
   						<td> <?php echo $ranking['avg_rating']?> stars </td>
   						<td>

@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 	<!--Styles -->
-	 <link href="../assets/css/bootstrap.css" rel="stylesheet">
+	 <link href="/css/bootstrap.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px;
       }
     </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
