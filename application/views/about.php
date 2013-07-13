@@ -19,7 +19,7 @@
 
 <?php
 
-if($message) {
+if(!empty($message)) {
 	echo $message;
 }
 
