@@ -12,7 +12,7 @@ This is a basic PHP app using the [CodeIgniter framework](http://www.codeigniter
 
 The functionality of the codebase is broken down into three parts
 
-1. **application/controllers/scraper.php** - A parser which pulls in data from Yelp or other sources. This should only need to be run periodically. A fully populated sql database file has also been included with this repo at **sql/inquiry_usagov.sql**
+1. **application/controllers/scraper.php** - A parser which pulls in data from Yelp or other sources. This should only need to be run periodically. A fully populated sql database file has also been included with this repo at **sql/civicscoredata.sql**
 
 2. **application/controllers/api.php** - A full featured hypermedia REST API. This is documented with an html page which can be viewed at `/api` in your browser or in the source at **application/views/api_docs.php**
 
