@@ -1,17 +1,26 @@
-
-	<title><?php echo $title; ?></title> 
-	
-</head> 
+</head>
 <body>
-	
 
-	<div data-role="page" data-add-back-btn="true">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">CivicScore</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Search Services</a></li>
+            <li><a href="#state">My State</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 
-		<div data-role="header">
-			<h1><?php echo $heading?></h1>
-			<a href="/" data-icon="home" class="ui-btn-right">Home</a>
-		</div><!-- /header -->
 
-		<div data-role="content">	
-
-			<form action="/answers/search"><input type="search" placeholder="Search" name="phrase" x-webkit-speech onwebkitspeechchange="this.form.submit();"></form>	
+	<div class="container">
+		
