@@ -9,7 +9,7 @@
 
 
 	<div class="hero-unit2">
- 	<h1>How fucked is my DMV?</h1>
+ 	<h1>How bad is my DMV?</h1>
  	</br>
   	<h3>The hundred best and worst DMVs in the USA, as rated on Yelp. Have you rated a public agency recently?</h3>
   	<p>
