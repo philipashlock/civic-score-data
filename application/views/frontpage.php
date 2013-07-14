@@ -53,7 +53,20 @@
   						<td><?php echo $count?></td>  					
   						<td><img src="<?php echo $ranking['photo_url']?>" width="115px" height="115px"></td>
   						<td><?php echo "{$ranking['city']}, {$ranking['state_code']}"?></td>
-  						<td> <?php echo $ranking['avg_rating']?> stars </td>
+  						<td>
+							<?php 
+								$rating = $ranking['avg_rating'];
+								while ($rating > 0) {
+									if($rating > 0.5) {
+										echo '<i class="icon-star"></i>';
+									} else {
+										echo '<i class="icon-star-half"></i>';
+									}
+									
+									$rating--;
+								}								
+							?>  							
+						</td>
   						<td>
 							<a class="btn3" href="<?php echo $ranking['url']?>">
   								Reviews
@@ -97,7 +110,20 @@
   						<td><?php echo $count?></td>  					
   						<td><img src="<?php echo $ranking['photo_url']?>" width="115px" height="115px"></td>
   						<td><?php echo "{$ranking['city']}, {$ranking['state_code']}"?></td>
-  						<td> <?php echo $ranking['avg_rating']?> stars </td>
+  						<td> 
+							<?php 
+								$rating = $ranking['avg_rating'];
+								while ($rating > 0) {
+									if($rating > 0.5) {
+										echo '<i class="icon-star"></i>';
+									} else {
+										echo '<i class="icon-star-half"></i>';
+									}
+									
+									$rating--;
+								}								
+							?>							
+						</td>
   						<td>
 							<a class="btn3" href="<?php echo $ranking['url']?>">
   								Reviews
