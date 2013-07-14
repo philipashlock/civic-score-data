@@ -32,6 +32,20 @@ class About extends CI_Controller {
 	{
 		$this->load->helper('url');
 		
+		if($this->input->post('email', TRUE)) {
+			
+			$email = $this->input->post('email', TRUE);	
+			
+			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$subscription = array('email' => $email);							
+				$this->db->insert('subscriptions', $subscription);
+			} else {
+				$email = null;
+			}	
+					
+		}
+		
+		
 		$data = array();
 		
 		// See if we have google analytics tracking code
@@ -44,7 +58,12 @@ class About extends CI_Controller {
 			$data['website_root'] = $this->config->item('website_root');
 		}		
 		
-		$data['message'] = "This feature isn't working yet";
+		if(!empty($email)){
+			$data['message'] = "You've been subscribed";	
+		} else {
+			$data['message'] = "The email address provided was not valid";
+		}
+		
 		
 		$this->load->view('about', $data);
 	}	

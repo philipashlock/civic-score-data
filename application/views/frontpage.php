@@ -51,7 +51,7 @@
 						
   					<tr>
   						<td><?php echo $count?></td>  					
-  						<td><img src="<?php echo $ranking['photo_url']?>" width="115px"</img></td>
+  						<td><img src="<?php echo $ranking['photo_url']?>" width="115px" height="115px"></td>
   						<td><?php echo "{$ranking['city']}, {$ranking['state_code']}"?></td>
   						<td> <?php echo $ranking['avg_rating']?> stars </td>
   						<td>
@@ -95,7 +95,7 @@
 						
   					<tr>
   						<td><?php echo $count?></td>  					
-  						<td><img src="<?php echo $ranking['photo_url']?>" width="115px"</img></td>
+  						<td><img src="<?php echo $ranking['photo_url']?>" width="115px" height="115px"></td>
   						<td><?php echo "{$ranking['city']}, {$ranking['state_code']}"?></td>
   						<td> <?php echo $ranking['avg_rating']?> stars </td>
   						<td>
