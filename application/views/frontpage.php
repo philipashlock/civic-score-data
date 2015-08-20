@@ -58,9 +58,9 @@
 								$rating = $ranking['avg_rating'];
 								while ($rating > 0) {
 									if($rating > 0.5) {
-										echo '<i class="icon-star"></i>';
+										echo '<i class="fa fa-star"></i>';
 									} else {
-										echo '<i class="icon-star-half"></i>';
+										echo '<i class="fa fa-star-half "></i>';
 									}
 									
 									$rating--;
@@ -115,9 +115,9 @@
 								$rating = $ranking['avg_rating'];
 								while ($rating > 0) {
 									if($rating > 0.5) {
-										echo '<i class="icon-star"></i>';
-									} else {
-										echo '<i class="icon-star-half"></i>';
+                    echo '<i class="fa fa-star"></i>';
+                  } else {
+                    echo '<i class="fa fa-star-half "></i>';
 									}
 									
 									$rating--;
