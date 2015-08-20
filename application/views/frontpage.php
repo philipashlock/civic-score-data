@@ -12,7 +12,7 @@
  	<h1>How's my DMV?</h1>
  	</br>
   	<h3>The hundred best and worst DMVs in the USA, as rated on Yelp*. Have you rated a public agency recently?</h3>
-	<p><em>* based on available data</em></p>
+	<p><em>* based on available data (currently <a href="https://github.com/philipashlock/civic-score-data/blob/master/sql/civicscoredata.sql">cached</a> from July 2013 via <a href="https://github.com/philipashlock/civic-score-data/blob/master/application/controllers/scraper.php#L29">Yelp API</a>)</em></p>
   	<p>
     <a class="btn2">
       Rate my DMV

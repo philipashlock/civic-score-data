@@ -32,9 +32,6 @@ class Scraper extends REST_Controller {
 		$yelp_key 			= $this->config->item('yelp_key');
 		$yelp_category 		= $this->config->item('yelp_category');
 
-//location=california&ywsid=r-ueNmYxYr_4ovslu0tHag&category=departmentsofmotorvehicles
-// http://api.yelp.com/business_review_search?location=colorado&ywsid=r-ueNmYxYr_4ovslu0tHag&category=departmentsofmotorvehicles
-
 		$states = $this->state_abbr();
 
 		$records = 0;
